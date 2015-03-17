@@ -1,0 +1,18 @@
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\bin\Debug\TestClient.exe.config
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\bin\Debug\TestClient.exe
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\bin\Debug\TestClient.pdb
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\obj\Debug\TestClient.Form1.resources
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\obj\Debug\TestClient.Properties.Resources.resources
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\obj\Debug\TestClient.exe
+D:\Documents\3rd Year Project\Testing Projects\TestClient\TestClient\obj\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.exe.config
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.exe
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Form1.resources
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properties.Resources.resources
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache

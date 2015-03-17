@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TrackingRESTService.Model.TrackingContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TrackingStates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="time" Type="nvarchar(max)" />
+    <Property Name="place" Type="nvarchar(max)" />
+    <Property Name="temp" Type="nvarchar(max)" />
+    <Property Name="noAlerts" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TrackingRESTServiceModelTrackingContextStoreContainer">
+    <EntitySet Name="TrackingStates" EntityType="Self.TrackingStates" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
