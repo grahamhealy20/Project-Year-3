@@ -67,6 +67,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TrackingRESTService.Model.TrackingContext.mdf" />
+    <Content Include="App_Data\TrackingRESTService.Model.TrackingContext_log.ldf">
+      <DependentUpon>TrackingRESTService.Model.TrackingContext.mdf</DependentUpon>
+    </Content>
     <Content Include="TrackingService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -95,9 +99,7 @@
       <DependentUpon>TrackingService.svc</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <EntityDeploy Include="Model\TrackingContext.edmx">
