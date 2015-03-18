@@ -16,3 +16,12 @@ D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojRe
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Form1.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properties.Resources.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.exe.config
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.exe
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.pdb
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Form1.resources
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properties.Resources.resources
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
