@@ -20,7 +20,7 @@ namespace TestClient.Model
 {
     class Kinect
     {
-        private int noOfFrames = 10;
+        private int noOfFrames = 100;
         private double averageDepth = 0;
         private int frameCounter = 0;
         private bool detectedMotion = false;
