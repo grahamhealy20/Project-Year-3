@@ -26,6 +26,7 @@ namespace TestClient.Model
         private bool detectedMotion = false;
         private int noOfMovedPixels = 0;
         private int noOfNotMovedPixels = 0;
+        private double percentage = 0;
 
         public Kinect()
         {
@@ -96,7 +97,6 @@ namespace TestClient.Model
                 // Add an event handler to be called whenever there is new depth frame data
                 this.sensor.DepthFrameReady += this.SensorDepthFrameReady;
 
-                //this.clientSocket.Connect("127.0.0.1", 8888);
                 // Start the sensor!
                 try
                 {
@@ -128,22 +128,6 @@ namespace TestClient.Model
             return false;
         }
 
-        private double CalcAvgDepth(DepthImagePixel[] pixels)
-        {
-            averageDepth = 0;
-            for (int i = 0; i < pixels.Length; i++)
-            {
-                averageDepth += pixels[i].Depth;
-                //depthPixelsRes[i] = depthPixels[i].Depth - depthPixelsComp[i].Depth;
-                depthPixelsRes[i] = depthPixels[i].Depth;
-            }
-            return averageDepth / pixels.Length;
-        }
-        /// <summary>
-        /// Event handler for Kinect sensor's DepthFrameReady event
-        /// </summary>
-        /// <param name="sender">object sending the event</param>
-        /// <param name="e">event arguments</param>
         private void SensorDepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
         {
             using (DepthImageFrame depthFrame = e.OpenDepthImageFrame())
@@ -154,7 +138,6 @@ namespace TestClient.Model
                     frameCounter++;
                     if (frameCounter == 100)
                     {
-                        //detected.Content = "NoOfFrames reached";
                         frameCounter = 0;
                     }
 
@@ -170,11 +153,8 @@ namespace TestClient.Model
                     }
                     else
                     {
-                        // detected.Content = "Counting " + frameCounter; 
-                    }
 
-                    //detected.Content = CalcAvgDepth(depthPixels);
-                    //depthResult = depthPixels;
+                    }
 
                     // Get the min and max reliable depth for the current frame
                     int minDepth = depthFrame.MinDepth;
@@ -187,7 +167,6 @@ namespace TestClient.Model
                         // Get the depth for this pixel
                         short depth = depthPixels[i].Depth;
                         depthPixelsRes[i] = depth;
-                        //depthResult[i] = depthPixels[i].Depth - depthPixelsComp[i].Depth;
 
                         // To convert to a byte, we're discarding the most-significant
                         // rather than least-significant bits.
@@ -217,42 +196,37 @@ namespace TestClient.Model
 
                     // Code to count number of displaced pixels compared to reference frame. It creates a mask which can then be compared as a % against ref frame.
                     noOfMovedPixels = 0;
+                    noOfNotMovedPixels = 0;
 
                     for (int i = 0; i < depthPixels.Length; i++)
                     {
 
                         depthPixelsRes[i] = (short)(depthPixels[i].Depth - depthPixelsComp[i].Depth);
                         short diffNo = depthPixelsRes[i];
-                        if (diffNo == 0 && diffNo > minDepth && diffNo < maxDepth)
+                        if (diffNo == 0)
                         {
                             noOfNotMovedPixels++;
                         }
                         else if (depthPixelsRes[i] > 0)
                         {
                             noOfMovedPixels++;
-                            detectedMotion = true;
+                            //detectedMotion = true;
                         }
                         else
                         {
-                            detectedMotion = false;
+                            //detectedMotion = false;
                         }
                     }
 
-                    //double percentage = 0;
-                    //percentage = (noOfMovedPixels / 307200) * 100;
-                    //detected.Content = percentage;
+                    percentage = ((double)noOfMovedPixels / (double) 307200) * 100;
 
-
-
-                    //detected.Content = CalcAvgDepth(depthPixels);
-                    //detected.Content = noOfMovedPixels;
-
-                    // Write the pixel data into our bitmap
-                    //this.colorBitmap.WritePixels(
-                    //    new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
-                    //    this.colorPixels,
-                    //    this.colorBitmap.PixelWidth * sizeof(int),
-                    //    0);
+                    if (percentage > 22.00)
+                    {
+                        detectedMotion = true;
+                    }
+                    else {
+                        detectedMotion = false;
+                    }
                 }
             }
         }

@@ -8,24 +8,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//using System.Timers.Timer;
+using System.Timers;
+
 namespace TestClient
 {
     public partial class Form1 : Form
     {
+        private bool started = false;
+        private int frameCounter = 0;
         public Form1()
         {
             InitializeComponent();
+            k.Start();
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-                label1.Invoke((MethodInvoker)(() => label1.Text = DataClass.Slow().ToString()));
+                label1.Invoke((MethodInvoker)(() => label1.Text = "Detection State: " + k.getDetected().ToString()));
+                //System.Threading.Thread.Sleep(100)
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
-        }
+                if (backgroundWorker1.IsBusy == false) {
+                    backgroundWorker1.RunWorkerAsync();  
+                }
+
+         } 
+ 
 
         private void button2_Click(object sender, EventArgs e)
         {
