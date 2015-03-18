@@ -15,26 +15,36 @@ namespace TestClient
 {
     public partial class Form1 : Form
     {
+        private System.Timers.Timer delay;
         private bool started = false;
         private int frameCounter = 0;
+
+        private Model.TrackingSession trackedState;
         public Form1()
         {
             InitializeComponent();
-            k.Start();
+            trackedState = new Model.TrackingSession();
+            delay = new System.Timers.Timer();
+            delay.Interval = 10;
+            delay.Enabled = true;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-                label1.Invoke((MethodInvoker)(() => label1.Text = "Detection State: " + k.getDetected().ToString()));
+          System.Threading.Thread.Sleep(5000);
+            TrackingState state = trackedState.getLatestState();
+            label1.Invoke((MethodInvoker)(() => label1.Text = "Detection State: " + state.getTime().ToString()));
                 //System.Threading.Thread.Sleep(100)
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-                if (backgroundWorker1.IsBusy == false) {
-                    backgroundWorker1.RunWorkerAsync();  
-                }
-
+          started = true;
+          if (started == true) { 
+               backgroundWorker1.RunWorkerAsync();
+                //delay.Start();
+          }
+         
          } 
  
 
@@ -72,10 +82,10 @@ namespace TestClient
                     int userid = Convert.ToInt32(lines[1]);
                     string time = Convert.ToString(lines[2]);
                     string place = Convert.ToString(lines[3]);
-                    string temp = Convert.ToString(lines[4]);
+                    double temp = Convert.ToDouble(lines[4]);
                     int noAlerts = Convert.ToInt32(lines[5]);
 
-                    TrackingState ts = new TrackingState(id, userid, time, place, temp, noAlerts);
+                    TrackingState ts = new TrackingState(userid, time, place, temp, noAlerts);
                     if (RESTConsume.AddState(ts) == 1)
                     {
                         label1.Text = "State POSTED successfully";

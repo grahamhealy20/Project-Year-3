@@ -113,7 +113,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
-        private Model.Kinect k = new Model.Kinect();
     }
 }
 

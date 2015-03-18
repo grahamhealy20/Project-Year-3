@@ -10,13 +10,18 @@ namespace TestClient.Model
   {
 // Add Tracking Code here
 
+    public Sensor()
+    {
+
+    }
     public void start() { 
       // Open conn to serial port
     }
 
-    public void getTemp() { 
+    public double getTemp() { 
       //get resistance from 
-    //convert to temp    
+    //convert to temp  
+        return 28.00;  
     }
   }
 }

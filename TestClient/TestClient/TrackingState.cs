@@ -24,12 +24,11 @@ namespace TestClient
         [DataMemberAttribute]
         private int noAlerts;
 
-        public TrackingState(int Id, int UserId, string time, string place, string temp, int noAlerts) {
-            this.Id = Id;
+        public TrackingState(int UserId, string time, string place, double temp, int noAlerts) {
             this.UserId = UserId;
             this.time = time;
             this.place = place;
-            this.temp = temp;
+            this.temp = temp.ToString();
             this.noAlerts = noAlerts;
         }
 
