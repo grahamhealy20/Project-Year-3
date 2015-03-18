@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Model\CameraFactory.cs" />
     <Compile Include="Model\Kinect.cs" />
+    <Compile Include="Model\Sensor.cs" />
     <Compile Include="Model\SensorFactory.cs" />
     <Compile Include="Model\TrackingSession.cs" />
     <Compile Include="Program.cs" />
