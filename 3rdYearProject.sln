@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingRESTService", "Trac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "TestClient\TestClient\TestClient.csproj", "{74AB2CDA-08AC-4D77-B455-49659BC3BBD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebClient.csproj", "{EC2360B0-0A6E-4939-BB8E-6CAF6C67DE62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{3B4BD4B4-F95C-4C62-9B5A-C297AAC4DF22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{74AB2CDA-08AC-4D77-B455-49659BC3BBD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74AB2CDA-08AC-4D77-B455-49659BC3BBD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74AB2CDA-08AC-4D77-B455-49659BC3BBD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC2360B0-0A6E-4939-BB8E-6CAF6C67DE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC2360B0-0A6E-4939-BB8E-6CAF6C67DE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC2360B0-0A6E-4939-BB8E-6CAF6C67DE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC2360B0-0A6E-4939-BB8E-6CAF6C67DE62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B4BD4B4-F95C-4C62-9B5A-C297AAC4DF22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4BD4B4-F95C-4C62-9B5A-C297AAC4DF22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B4BD4B4-F95C-4C62-9B5A-C297AAC4DF22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B4BD4B4-F95C-4C62-9B5A-C297AAC4DF22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
