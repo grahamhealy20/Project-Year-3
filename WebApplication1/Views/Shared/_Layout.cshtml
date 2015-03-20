@@ -9,6 +9,17 @@
 
 </head>
 <body>
+    @{
+        if (Request.Cookies["FlashMessage"].Value == "Success")
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Success!</strong> Better check yourself, before you wreck yourself!
+            </div>
+            Request.Cookies.Remove("FlashMessage");
+        
+        }
+    }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

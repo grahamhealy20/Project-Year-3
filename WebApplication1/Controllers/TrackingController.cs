@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
             DataContractSerializer obj = new DataContractSerializer(typeof(List<Models.TrackingModel.TrackingState>));
             var objects = (List<Models.TrackingModel.TrackingState>) obj.ReadObject(strm);
 
-            Response.Cookies.Add(new HttpCookie("FlashMessage", "Request Successful!"));
+            Response.Cookies.Add(new HttpCookie("FlashMessage", "Success"));
             return objects;
         }
 
