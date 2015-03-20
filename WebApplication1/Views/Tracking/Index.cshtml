@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebApplication1.Models.TrackingModel.TrackingState>
+
+@{
+    ViewBag.Title = "View";
+}
+    <div class="alert alert-success" role="alert"> Success retrieving data from server! </div>
+
+<h1>Tracking Page</h1>
+
+
+<table class="table">
+    <tr>
+        <th>
+            User Id
+        </th>
+        <th>
+            Time
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Temperature
+        </th>
+        <th>
+            # Alerts
+        </th>
+    </tr>
+
+    @foreach (var st in Model )
+    {
+     <tr>
+        <td>
+            @st.UserId
+        </td>
+        <td>
+            @st.time
+        </td>
+        <td>
+            @st.place
+        </td>
+         <td>
+             @st.temp
+         </td>
+        <td>
+            @st.noAlerts
+        </td>
+    </tr>
+    }
+
+
+</table>
+

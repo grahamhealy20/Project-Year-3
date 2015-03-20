@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Models.TrackingModel
 {
    [DataContractAttribute(Namespace = "http://schemas.datacontract.org/2004/07/TrackingRESTService.Model")]
     public class TrackingState
     {
+
         [DataMemberAttribute]
-        private int Id;
+        public int Id { get; set; }
         [DataMemberAttribute]
-        private int UserId;
+        public int UserId { get; set; }
         [DataMemberAttribute]
-        private string time;
+        public string time { get; set; }
         [DataMemberAttribute]
-        private string place;
+        public string place { get; set; }
         [DataMemberAttribute]
-        private string temp;
+        public string temp { get; set; }
         [DataMemberAttribute]
-        private int noAlerts;
+        public int noAlerts { get; set; }
 
         public TrackingState(int UserId, string time, string place, double temp, int noAlerts)
         {
@@ -31,33 +33,6 @@ namespace WebApplication1.Models.TrackingModel
             this.noAlerts = noAlerts;
         }
 
-        public int getId()
-        {
-            return Id;
-        }
-
-        public int getUserId()
-        {
-            return UserId;
-        }
-
-        public string getTime()
-        {
-            return time;
-        }
-
-        public string getPlace()
-        {
-            return place;
-        }
-
-        public string getTemp()
-        {
-            return temp;
-        }
-        public int getNoAlerts()
-        {
-            return noAlerts;
-        }
+  
     }
 }

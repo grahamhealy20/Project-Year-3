@@ -28,5 +28,7 @@ namespace WebApplication1.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.TrackingModel.TrackingState> TrackingStates { get; set; }
     }
 }
