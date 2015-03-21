@@ -2,7 +2,13 @@
 
 @{
     ViewBag.Title = "View";
+    if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login?returnUrl="
+            + Request.Url.LocalPath);
+    }
 }
+
 
 <h1>Tracking Page</h1>
 

@@ -15,7 +15,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationUserManager _userManager;
 
@@ -61,6 +61,7 @@ namespace WebApplication1.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    Success(string.Format("<strong>{0}</strong> was successfully logged in!", model.Email), true);
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -101,11 +102,13 @@ namespace WebApplication1.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    Success(string.Format("<strong>{0}<strong> was successfully registered!", model.Email), true);
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
+                    Warning(result.ToString());
                     AddErrors(result);
                 }
             }
@@ -210,6 +213,7 @@ namespace WebApplication1.Controllers
                 IdentityResult result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
                 if (result.Succeeded)
                 {
+                    Success(string.Format("<strong>Password</strong> was successfully reset!"), true);
                     return RedirectToAction("ResetPasswordConfirmation", "Account");
                 }
                 else
@@ -437,6 +441,7 @@ namespace WebApplication1.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            Success(string.Format("<strong>Bye Bye!</strong> Missing you already!"), true);
             return RedirectToAction("Index", "Home");
         }
 

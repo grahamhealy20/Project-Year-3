@@ -53,3 +53,6 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Security.Microso
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.pdb
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csprojResolveAssemblyReference.cache
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.InitialCreate.resources
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csproj.GenerateResource.Cache
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.mig1.resources
