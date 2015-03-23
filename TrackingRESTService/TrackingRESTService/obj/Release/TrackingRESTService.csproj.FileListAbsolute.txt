@@ -8,3 +8,13 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityF
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.pdb
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.csprojResolveAssemblyReference.cache
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll.config
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.pdb
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.csprojResolveAssemblyReference.cache
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.pdb
