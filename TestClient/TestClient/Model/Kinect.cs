@@ -33,6 +33,11 @@ namespace TestClient.Model
             
         }
 
+        public delegate void DetectionHandler(object myObject,
+                                            EventArgs myArgs);
+
+        public event DetectionHandler OnMotionDetected;
+
         /// <summary>
         /// Active Kinect sensor
         /// </summary>
@@ -223,6 +228,9 @@ namespace TestClient.Model
                     if (percentage > 22.00)
                     {
                         detectedMotion = true;
+                        // Fire event
+                        EventArgs eventargs = new EventArgs();
+                        OnMotionDetected(this, eventargs);
                     }
                     else {
                         detectedMotion = false;

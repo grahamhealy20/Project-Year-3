@@ -13,16 +13,22 @@ namespace TestClient.Model
         private string place;
         private double temp;
         private int noAlert;
-
         private Kinect sensor = new Kinect();
-        private Sensor tempSensor = new Sensor();
+        //private Sensor tempSensor = new Sensor();
+        public delegate void TrackingHandler(object myObject,
+                                             EventArgs myArgs);
+
+        public event TrackingHandler onTrackingDetected;
+
         public int startTracking() {
             try {
                 // Start Kinect
                 sensor = new Kinect();
-                
+                sensor.Start();
+                EventArgs eargs = new EventArgs();
+                sensor.OnMotionDetected += new Kinect.DetectionHandler(FireTrackingEvent);
                 // Start Temp
-                tempSensor.start();
+                //tempSensor.start();
                 return 1;    
 
             } catch(Exception ex) {
@@ -36,7 +42,7 @@ namespace TestClient.Model
           time = DateTime.Now;
 
           place = "Dublin";
-          temp = tempSensor.getTemp();
+          //temp = tempSensor.getTemp();
           if (sensor.getDetected() == true)
           {
             noAlert++;
@@ -49,7 +55,8 @@ namespace TestClient.Model
           return state;
         }
 
-
-
+        void FireTrackingEvent(object a, EventArgs e) {
+            onTrackingDetected(a, e);
+        } 
     }
 }

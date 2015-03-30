@@ -27,13 +27,19 @@ namespace TestClient
             delay = new System.Timers.Timer();
             delay.Interval = 10;
             delay.Enabled = true;
+            trackedState.onTrackingDetected += new Model.TrackingSession.TrackingHandler(UpdateGUI);
         }
 
+        private void UpdateGUI(object sender, EventArgs e)
+        {
+            textBox1.Invoke((MethodInvoker)(() => textBox1.Text = "MOTION DETECTED, EVENT TRIGGERED BY: " + sender.ToString() + "AT: " + DateTime.Now)); 
+        }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-          System.Threading.Thread.Sleep(5000);
-            TrackingState state = trackedState.getLatestState();
-            label1.Invoke((MethodInvoker)(() => label1.Text = "Detection State: " + state.getTime().ToString()));
+            trackedState.startTracking();
+          //System.Threading.Thread.Sleep(5000);
+            //TrackingState state = trackedState.getLatestState();
+            //label1.Invoke((MethodInvoker)(() => label1.Text = "Detection State: " + state.getTime().ToString()));
                 //System.Threading.Thread.Sleep(100)
         }
 
@@ -41,7 +47,9 @@ namespace TestClient
         {
           started = true;
           if (started == true) { 
-               backgroundWorker1.RunWorkerAsync();
+               //backgroundWorker1.RunWorkerAsync();
+              backgroundWorker1 = new BackgroundWorker();
+              backgroundWorker1.RunWorkerAsync();
                 //delay.Start();
           }
          

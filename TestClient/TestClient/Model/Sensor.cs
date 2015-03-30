@@ -39,8 +39,8 @@ void loop() {             //This function loops while the arduino is powered
 
         // http://stackoverflow.com/questions/195483/c-sharp-check-if-a-com-serial-port-is-already-open
         static private SerialPort MyPort;
-        static void Main(string[] args)
-        {
+
+        void Start() {
             MyPort = new SerialPort("COM1");
             OpenMyPort();
             Console.WriteLine("BaudRate {0}", MyPort.BaudRate);
