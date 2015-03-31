@@ -12,3 +12,11 @@ C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csproj.GenerateResource.Cache
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.exe
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.pdb
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe.config
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.exe
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.pdb
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.pdb
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Form1.resources
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Properties.Resources.resources
+C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csproj.GenerateResource.Cache

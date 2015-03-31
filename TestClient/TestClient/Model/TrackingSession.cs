@@ -32,6 +32,7 @@ namespace TestClient.Model
                 return 1;    
 
             } catch(Exception ex) {
+                // Need to fire event to GUI with ex message.
                 return 0;
             }
         }

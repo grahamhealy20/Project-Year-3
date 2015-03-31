@@ -14,9 +14,9 @@ namespace TrackingRESTService
         private int lastId;
         private Model.TrackingState latest;
 
+        // TEST METHOD
         public void DoWork()
         {
-
             using (var db = new Model.TrackingContext())
             {
               
@@ -27,23 +27,23 @@ namespace TrackingRESTService
         {
             try
             {
+            
                 //Parse string to int
                 int userId = Convert.ToInt32(user_Id);
                 //int lastId = Convert.ToInt32(lastAddedID);
-
                 using (var db = new Model.TrackingContext())
                 {
-                    db.TrackingStates.OrderByDescending(p => p.Id);
+                   List<Model.TrackingState> list = db.TrackingStates.Where(p => p.UserId == userId).ToList();
+                   Model.TrackingState state = list.Last();
 
-
-                    //return db.TrackingStates.Last(p => p.UserId == userId);
-                    return db.TrackingStates.First(p => p.UserId == userId);
-                    //return db.TrackingStates.SingleOrDefault(p => p.Id == 1 && p.UserId == userId);
+                   state.place = "HELLO TEST";
+                   return state;
                 }
             }
             catch (Exception ex)
             {
-                throw new FaultException(ex.Message);
+               return new FaultException(ex.Message);
+               //return null;
             }
         }
 

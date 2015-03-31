@@ -20,10 +20,16 @@ namespace WebApplication1.Controllers
         // GET: Tracking
         public ActionResult Index()
         {
-            Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
-            
-            // objects.Add(new Models.TrackingModel.TrackingState(2, "3:00", "Ballyfermot", 30.00, 4));
+          try { 
             objects = GetAllTrackingState();
+            Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
+           }
+          catch (Exception ex) { 
+            Danger(string.Format("<strong>ERROR: </strong>{0}", ex.Message), true);
+           }    
+            // objects.Add(new Models.TrackingModel.TrackingState(2, "3:00", "Ballyfermot", 30.00, 4));
+           
+           
             return View(objects);
 
         }
