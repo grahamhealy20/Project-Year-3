@@ -27,13 +27,10 @@ namespace TrackingRESTService
         {
             try
             {
-            
-                //Parse string to int
-                int userId = Convert.ToInt32(user_Id);
                 //int lastId = Convert.ToInt32(lastAddedID);
                 using (var db = new Model.TrackingContext())
                 {
-                   List<Model.TrackingState> list = db.TrackingStates.Where(p => p.UserId == userId).ToList();
+                    List<Model.TrackingState> list = db.TrackingStates.Where(p => p.UserId == user_Id).ToList();
                    Model.TrackingState state = list.Last();
 
                    state.place = "HELLO TEST";
@@ -44,6 +41,25 @@ namespace TrackingRESTService
             {
                //return FaultException(ex.Message);
                return null;
+            }
+        }
+
+        public List<Model.TrackingState> GetTrackingStatesByUser(string user_Id)
+        {
+            try
+            {
+                //Parse string to int
+                //int lastId = Convert.ToInt32(lastAddedID);
+                using (var db = new Model.TrackingContext())
+                {
+                    List<Model.TrackingState> list = db.TrackingStates.Where(p => p.UserId == user_Id).ToList();
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                //return FaultException(ex.Message);
+                throw new FaultException(ex.Message);
             }
         }
 

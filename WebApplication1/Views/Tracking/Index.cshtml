@@ -34,7 +34,8 @@
 
     @foreach (var st in Model )
     {
-     <tr>
+        var style = (st.noAlerts > 30) ? "danger" : "";
+     <tr class="@style">
         <td>
             @st.UserId
         </td>

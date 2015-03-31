@@ -20,19 +20,33 @@ namespace WebApplication1.Controllers
         // GET: Tracking
         public ActionResult Index()
         {
-          try { 
-            objects = GetAllTrackingState();
-            Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
+          try {
+              objects = GetAllTrackingStateByID(User.Identity.GetUserId());
+              Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
            }
           catch (Exception ex) { 
             Danger(string.Format("<strong>ERROR: </strong>{0}", ex.Message), true);
            }    
             // objects.Add(new Models.TrackingModel.TrackingState(2, "3:00", "Ballyfermot", 30.00, 4));
-           
-           
             return View(objects);
-
         }
+
+        public ActionResult ListOfStatesID()
+        {
+            try
+            {
+                Warning("IN TRACKING FUNC");
+                objects = GetAllTrackingStateByID(User.Identity.GetUserId());
+                Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
+            }
+            catch (Exception ex)
+            {
+                Danger(string.Format("<strong>ERROR: </strong>{0}", ex.Message), true);
+            }
+            // objects.Add(new Models.TrackingModel.TrackingState(2, "3:00", "Ballyfermot", 30.00, 4));
+            return View(objects);
+        }
+
 
         public ActionResult TrackingInfoID() {
             //state = GetTrackingState(Convert.ToInt32(User.Identity.GetUserId()));
@@ -62,6 +76,17 @@ namespace WebApplication1.Controllers
 
             Response.Cookies.Add(new HttpCookie("FlashMessage", "Success"));
             return state;
+        }
+        public List<Models.TrackingModel.TrackingState> GetAllTrackingStateByID(string id)
+        {
+            string user_id = id;
+        //a99f2883-8ed3-4583-afdb-3f570f159cf3
+            byte[] toByte = proxy.DownloadData((new Uri("http://localhost:4082/TrackingService.svc/TrackingState/" + id)));
+
+            Stream strm = new MemoryStream(toByte);
+            DataContractSerializer obj = new DataContractSerializer(typeof(List<Models.TrackingModel.TrackingState>));
+            var objects = (List<Models.TrackingModel.TrackingState>)obj.ReadObject(strm);
+            return objects;
         }
 
         public string Welcome() {

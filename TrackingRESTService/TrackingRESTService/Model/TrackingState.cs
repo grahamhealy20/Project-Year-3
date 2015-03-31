@@ -15,7 +15,7 @@ namespace TrackingRESTService.Model
     public partial class TrackingState
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string time { get; set; }
         public string place { get; set; }
         public string temp { get; set; }

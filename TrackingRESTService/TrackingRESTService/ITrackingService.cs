@@ -22,6 +22,10 @@ namespace TrackingRESTService
         Model.TrackingState GetLatestTrackingState(string user_Id);
 
         [OperationContract]
+        [WebGet(UriTemplate = "TrackingState/{user_Id}")]
+        List<Model.TrackingState> GetTrackingStatesByUser(string user_Id);
+
+        [OperationContract]
         [WebGet]
         List<Model.TrackingState> GetAllTrackingState();
 

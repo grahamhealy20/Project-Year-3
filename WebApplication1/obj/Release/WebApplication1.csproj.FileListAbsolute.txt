@@ -52,7 +52,6 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Security.Twitter
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.pdb
-D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.InitialCreate.resources
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csproj.GenerateResource.Cache
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.mig1.resources
@@ -173,3 +172,5 @@ C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\Web
 C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\WebApplication1.dll
 C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\WebApplication1.pdb
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.AddMigrationmig.resources
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.mig4.resources
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csprojResolveAssemblyReference.cache

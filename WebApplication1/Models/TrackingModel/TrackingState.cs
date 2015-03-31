@@ -14,7 +14,7 @@ namespace WebApplication1.Models.TrackingModel
         [DataMemberAttribute]
         public int Id { get; set; }
         [DataMemberAttribute]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [DataMemberAttribute]
         public string time { get; set; }
         [DataMemberAttribute]
@@ -24,7 +24,7 @@ namespace WebApplication1.Models.TrackingModel
         [DataMemberAttribute]
         public int noAlerts { get; set; }
 
-        public TrackingState(int UserId, string time, string place, double temp, int noAlerts)
+        public TrackingState(string UserId, string time, string place, double temp, int noAlerts)
         {
             this.UserId = UserId;
             this.time = time;
