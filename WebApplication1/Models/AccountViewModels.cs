@@ -8,6 +8,10 @@ namespace WebApplication1.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        // Custom attributes
+        public string firstName { get; set; }
+        public string lastName { get; set; }
     }
 
     public class ExternalLoginListViewModel

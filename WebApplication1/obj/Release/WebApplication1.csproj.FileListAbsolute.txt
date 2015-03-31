@@ -172,3 +172,4 @@ C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\Web
 C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csproj.GenerateResource.Cache
 C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\WebApplication1.dll
 C:\Users\Graham\Documents\College\Project-Year-3\WebApplication1\obj\Release\WebApplication1.pdb
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.AddMigrationmig.resources

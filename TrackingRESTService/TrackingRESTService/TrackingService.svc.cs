@@ -42,8 +42,8 @@ namespace TrackingRESTService
             }
             catch (Exception ex)
             {
-               return new FaultException(ex.Message);
-               //return null;
+               //return FaultException(ex.Message);
+               return null;
             }
         }
 
