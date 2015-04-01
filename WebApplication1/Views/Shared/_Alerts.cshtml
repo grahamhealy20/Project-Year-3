@@ -6,16 +6,16 @@
 
     if (alerts.Any())
     {
-        
+
     }
 
     foreach (var alert in alerts)
     {
         var dismissableClass = alert.Dismissable ? "alert-dismissable" : null;
-        <div class="alert alert-@alert.AlertStyle @dismissableClass">
+        <div id="alert" class="alert alert-@alert.AlertStyle @dismissableClass">
             @if (alert.Dismissable)
             {
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <button id="dismissBtn" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             }
             @Html.Raw(alert.Message)
         </div>

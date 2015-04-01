@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication1.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Administration";
+}
+
+<h2>Administration</h2>
+
+<div class="row">
+    PERFORMANCE:
+</div>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Access Failed Count
+        </th>
+        <th>
+            Roles
+        </th>
+    </tr>
+
+    @foreach (var st in Model)
+    {
+        var style = (st.AccessFailedCount > 5) ? "danger" : "success";
+        <tr class="@style">
+            <td>
+                @st.firstName
+            </td>
+            <td>
+                @st.lastName
+            </td>
+            <td>
+                @st.Email
+            </td>
+            <td>
+                @st.AccessFailedCount
+            </td>
+            <td>
+                // TODO
+
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+

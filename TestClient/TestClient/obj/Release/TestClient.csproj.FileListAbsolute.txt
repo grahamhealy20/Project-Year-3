@@ -1,11 +1,3 @@
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe.config
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.pdb
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Form1.resources
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Properties.Resources.resources
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csproj.GenerateResource.Cache
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.exe
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.pdb
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csprojResolveAssemblyReference.cache
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Form1.resources
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Properties.Resources.resources
@@ -20,3 +12,11 @@ C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\bin\Relea
 C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Form1.resources
 C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Properties.Resources.resources
 C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csproj.GenerateResource.Cache
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe.config
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Form1.resources
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Properties.Resources.resources
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csproj.GenerateResource.Cache
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.exe
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.pdb

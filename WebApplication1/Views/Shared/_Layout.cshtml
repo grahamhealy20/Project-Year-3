@@ -7,9 +7,8 @@
     <title>@ViewBag.Title - Baby Monitor Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
-<body>
+<body id="body">
     @{ Html.RenderPartial("_Alerts"); }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -28,6 +27,7 @@
                         {
                             <li>@Html.ActionLink("Home", "Index", "Tracking")</li>
                             <li>@Html.ActionLink("Tracking", "Index", "Tracking")</li>
+                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                         }
                         else { 
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -35,7 +35,6 @@
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         }
                     }
-
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -52,6 +51,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/extrajs")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

@@ -61,8 +61,6 @@ namespace WebApplication1.Controllers
             Stream strm = new MemoryStream(toByte); 
             DataContractSerializer obj = new DataContractSerializer(typeof(List<Models.TrackingModel.TrackingState>));
             var objects = (List<Models.TrackingModel.TrackingState>) obj.ReadObject(strm);
-
-            Response.Cookies.Add(new HttpCookie("FlashMessage", "Success"));
             return objects;
         }
 
@@ -73,8 +71,6 @@ namespace WebApplication1.Controllers
             Stream strm = new MemoryStream(toByte);
             DataContractSerializer obj = new DataContractSerializer(typeof(Models.TrackingModel.TrackingState));
             var state = (Models.TrackingModel.TrackingState)obj.ReadObject(strm);
-
-            Response.Cookies.Add(new HttpCookie("FlashMessage", "Success"));
             return state;
         }
         public List<Models.TrackingModel.TrackingState> GetAllTrackingStateByID(string id)
