@@ -26,3 +26,5 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityF
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.pdb
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.Migrations.mig4.resources
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Release\TrackingRESTService.csproj.GenerateResource.Cache

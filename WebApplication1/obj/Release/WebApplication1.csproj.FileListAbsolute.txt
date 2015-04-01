@@ -166,6 +166,7 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.WebPages.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.WebPages.Deployment.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.WebPages.Razor.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.Optimization.xml
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.InitialCreate.resources
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.mig1.resources
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Release\WebApplication1.Migrations.AddMigrationmig.resources
