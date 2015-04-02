@@ -1,0 +1,58 @@
+<head>
+	<title>Test AJAX</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+script>
+    $(document).ready(function () {    
+    });
+    var GetJson = function () {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:4545/Service/Service1.svc/GetJson",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var result = data.GetEmployeeJSONResult;
+                var id = result.Id;
+                var name = result.Name;
+                var salary = result.Salary;
+                $('#jsonData').html('');
+                $('#jsonData').append('<table border="1"><tbody><tr><th>" + 
+                  "Employee Id</th><th>Name</th><th>Salary</th>" + 
+                  "</tr><tr><td>' + id + '</td><td>' + name + 
+                  '</td><td>' + salary + '</td></tr></tbody></table>');
+
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+    var GetXml = function () {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:4545/Service/Service1.svc/GetXml",
+            dataType: "xml",
+            success: function (xml) {
+                $(xml).find('EmployeeXML').each(function () {
+                    var id = $(this).find('Id').text();
+                    var name = $(this).find('Name').text();
+                    var salary = $(this).find('Salary').text();
+                    $('#xmlData').html('');
+                    $('#xmlData').append('<table border="1"><tbody><tr><th>Employee" + 
+                      " Id</th><th>Name</th><th>Salary</th></tr><tr><td>' + 
+                      id + '</td><td>' + name + '</td><td>' + salary + 
+                      '</td></tr></tbody></table>');
+                });
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>
+	<div id="test">
+		Test
+	</div>
+</body>

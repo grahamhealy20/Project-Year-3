@@ -15,7 +15,6 @@ C:\Users\Graham\Documents\College\Project-Year-3\TestClient\TestClient\obj\Relea
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe.config
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.exe
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Release\TestClient.pdb
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Form1.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.Properties.Resources.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Release\TestClient.csproj.GenerateResource.Cache
