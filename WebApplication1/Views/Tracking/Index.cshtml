@@ -21,6 +21,7 @@
     });
 
     var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
+    var iterate = 1;
     //alert(user);
     var x;
     function getNum() {
@@ -45,10 +46,30 @@
                     } else if (noAlerts < 10) {
                         status = "success";
                     }
+
+                    var inverse;
+                    if (iterate == 1) {
+                        inverse = "timeline-inverted";
+                        iterate = 0;
+                    } else {
+                        inverse = "";
+                        iterate = 1;
+                    }
+
                     //alert(ID + " " + UserId + " " +  noAlerts + " " + place + " " + temp + " " + time);
+                    $('<li></li>').addClass(inverse).hide().html(
+                        '<div class="timeline-badge red"><i class="glyphicon glyphicon-flash"></i>'
+                        + '</div><div class="timeline-panel"><div class="timeline-heading">'
+                        + '<h4 class="timeline-title"><i class="glyphicon glyphicon-time"></i>' + time + '</h4>'
+                        +'<p><small class="text-muted"><i class="glyphicon glyphicon-user"></i> ' + UserId + '</small></p>'
+                        + '</div>'
+                        + '<div class="timeline-body">'
+                        +'<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>'
+                        +'</div>'
+                        + '</div>'
+                    ).addClass(status).appendTo('#stateTimeline').fadeIn(2000);
 
-
-                    $('<tr></tr>').hide().html('<td>' + ID + '</td><td>' + UserId + '</td><td>' + noAlerts + '</td><td>' + place + '</td><td>' + temp + '</td><td>' + time + '</td>').addClass(status).appendTo('#tablebod').fadeIn("slow");
+                    //$('<tr></tr>').hide().html('<td>' + ID + '</td><td>' + UserId + '</td><td>' + noAlerts + '</td><td>' + place + '</td><td>' + temp + '</td><td>' + time + '</td>').addClass(status).appendTo('#tablebod').fadeIn("slow");
                     //});
                 });
             },
@@ -91,8 +112,28 @@
                         } else if (noAlerts < 10) {
                             status = "success";
                         }
-                        var rows = $('<tr><td>' + ID + '</td><td>' + UserId + '</td><td>' + noAlerts + '</td><td>' + place + '</td><td>' + temp + '</td><td>' + time + '</td></tr>').addClass(status);
+
+                        var inverse;
+                        if (iterate == 1) {
+                            inverse = "timeline-inverted";
+                            iterate = 0;
+                        } else {
+                            inverse = "";
+                            iterate = 1;
+                        }
+                        //var rows = $('<tr><td>' + ID + '</td><td>' + UserId + '</td><td>' + noAlerts + '</td><td>' + place + '</td><td>' + temp + '</td><td>' + time + '</td></tr>').addClass(status);
                         //rows.hide();
+                        var rows = $('<li></li>').addClass(inverse).hide().html(
+                        '<div class="timeline-badge red"><i class="glyphicon glyphicon-flash"></i>'
+                        + '</div><div class="timeline-panel"><div class="timeline-heading">'
+                        + '<h4 class="timeline-title"><i class="glyphicon glyphicon-time"></i>' + time + '</h4>'
+                        + '<p><small class="text-muted"><i class="glyphicon glyphicon-user"></i> ' + UserId + '</small></p>'
+                        + '</div>'
+                        + '<div class="timeline-body">'
+                        + '<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>'
+                        + '</div>'
+                        + '</div>'
+                    ).addClass(status).appendTo('#stateTimeline').fadeIn(2000);
                         //$('tr:last-child').after(rows);
                         //rows.fadeIn("slow");
                         addRow(rows);
@@ -116,6 +157,9 @@
     };
     </script>
 <div id="trackingInfo">
+    <ul class="timeline" id="stateTimeline">
+
+    </ul>
     <table class="table table-striped table-bordered table-hover" id="table">
 
         <tr>
