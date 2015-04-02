@@ -11,6 +11,8 @@
 }
 
 <h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>
+@{Html.RenderPartial("_MorrisLineChart"); }
+
 <script>
 
     $(document).ready(function () {
