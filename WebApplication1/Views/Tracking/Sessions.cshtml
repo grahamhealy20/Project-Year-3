@@ -1,0 +1,179 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Sessions";
+    if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login?returnUrl="
+            + Request.Url.LocalPath);
+    }
+}
+
+<h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>
+@{Html.RenderPartial("_MorrisLineChart"); }
+
+<script>
+
+    $(document).ready(function () {
+        //alert(useridstring);
+        getNum();
+    });
+
+    var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
+    var iterate = 1;
+    //alert(user);
+    var x;
+    function getNum() {
+        $("#tablebod").empty();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:4082/TrackingService.svc/Session/" + user + "",
+            cache: false,
+            dataType: "xml",
+            success: function (xml) {
+                $(xml).find('Session').each(function () {
+                    var sessionId = $(this).find("Id");
+      
+
+                    $('<div></div>').html(
+                            $('<div></div>').html(
+                                $('<div></div>').html("TEST").addClass('panel-heading'),
+                                $('<div></div>')
+                            ).addClass("panel panel-default")
+                        ).appendTo('#trackingInfo');
+                })
+            },
+            complete: function () {
+                x = document.getElementById("table").rows[table.rows.length - 1].cells[0].innerHTML;
+                setTimeout(getLatestNum(), 2000);
+
+            }
+        });
+    }
+
+
+    function getLatestNum() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:40823/TrackingService.svc/TrackingState/Latest/" + user,
+            cache: false,
+            dataType: "xml",
+            success: function (xml) {
+
+                $(xml).find('Session').each(function () {
+                    $(xml).find('TrackingState').each(function () {
+                        var ID = $(this).find("Id").text();
+                        var UserId = $(this).find("UserId").text();
+                        var noAlerts = $(this).find("noAlerts").text();
+                        var place = $(this).find("place").text();
+                        var temp = $(this).find("temp").text();
+                        var time = $(this).find("time").text();
+
+                        var table = document.getElementById("table");
+                        //x = document.getElementById("table").rows[table.rows.length - 1].cells[0].innerHTML;
+                        //alert(x.innerHTML);
+                        if (x == ID) {
+
+                        } else {
+                            //alert("NOT THE SAME");
+                            x = ID;
+
+                            var status = "";
+                            if (noAlerts > 50) {
+                                status = "danger";
+                            } else if (noAlerts < 10) {
+                                status = "success";
+                            }
+
+                            var inverse;
+                            if (iterate == 1) {
+                                inverse = "timeline-inverted";
+                                iterate = 0;
+                            } else {
+                                inverse = "";
+                                iterate = 1;
+                            }
+                            //var rows = $('<tr><td>' + ID + '</td><td>' + UserId + '</td><td>' + noAlerts + '</td><td>' + place + '</td><td>' + temp + '</td><td>' + time + '</td></tr>').addClass(status);
+                            //rows.hide();
+                            var rows = $('<li></li>').addClass(inverse).hide().html(
+                            '<div class="timeline-badge red"><i class="glyphicon glyphicon-flash"></i>'
+                            + '</div><div class="timeline-panel"><div class="timeline-heading">'
+                            + '<h4 class="timeline-title"><i class="glyphicon glyphicon-time"></i> ' + time + '</h4>'
+                            + '<p><small class="text-muted"><i class="glyphicon glyphicon-user"></i> ' + UserId + '</small></p>'
+                            + '</div>'
+                            + '<div class="timeline-body">'
+                            + '<p>Temperature: ' + temp + ' </p>'
+                            + '</div>'
+                            + '</div>'
+                        ).addClass(status).appendTo('#stateTimeline').fadeIn(2000);
+                            //$('tr:last-child').after(rows);
+                            //rows.fadeIn("slow");
+                            addRow(rows);
+                            //alert(ID);
+                        }
+                    });
+                });
+            },
+            complete: function () {
+                setTimeout(getLatestNum, 2000);
+                //
+            }
+        });
+    }
+
+
+    function addRow(data) {
+        var rows = data;
+        rows.addClass(status).hide();
+        $('#tablebod tr').last().after(rows);
+        rows.fadeIn("slow");
+    };
+</script>
+<div id="trackingInfo">
+    <ul class="timeline" id="stateTimeline"></ul>
+    <table class="table table-striped table-bordered table-hover" id="table">
+
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                User ID
+            </th>
+            <th>
+                # Alerts
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Temp
+            </th>
+            <th>
+                Time
+            </th>
+        </tr>
+        <tbody id="tablebod"></tbody>
+        @*@foreach (var st in Model)
+            {
+                var style = (st.noAlerts > 30) ? "danger" : "";
+                <tr class="@style">
+                    <td>
+                        @st.UserId
+                    </td>
+                    <td>
+                        @st.time
+                    </td>
+                    <td>
+                        @st.place
+                    </td>
+                    <td>
+                        @st.temp
+                    </td>
+                    <td>
+                        @st.noAlerts
+                    </td>
+                </tr>
+            }*@
+    </table>
+</div>

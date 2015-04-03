@@ -65,7 +65,7 @@ namespace TrackingRESTService
 
         /* This method will return the all of the sessions for the specified user*/
         [OperationContract]
-        [WebInvoke(UriTemplate = "Session/Add/TrackingState/{user_Id}", Method = "POST")]
+        [WebInvoke(UriTemplate = "Session/Add/TrackingState/", Method = "POST")]
         int AddStateToLatestSession(Model.TrackingState toAdd);
 
 

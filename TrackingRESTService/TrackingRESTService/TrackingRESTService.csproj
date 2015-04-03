@@ -72,18 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITrackingService.cs" />
-    <Compile Include="Migrations\201504012319283_migration 2\4\15.cs" />
-    <Compile Include="Migrations\201504012319449_mig4.cs" />
-    <Compile Include="Migrations\201504012319449_mig4.Designer.cs">
-      <DependentUpon>201504012319449_mig4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504031332152_mig5.cs" />
-    <Compile Include="Migrations\201504031332152_mig5.Designer.cs">
-      <DependentUpon>201504031332152_mig5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504031345537_test2.cs" />
-    <Compile Include="Migrations\201504031345537_test2.Designer.cs">
-      <DependentUpon>201504031345537_test2.cs</DependentUpon>
+    <Compile Include="Migrations\201504031824545_Migration1.cs" />
+    <Compile Include="Migrations\201504031824545_Migration1.Designer.cs">
+      <DependentUpon>201504031824545_Migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Session.cs" />
@@ -113,14 +104,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504012319449_mig4.resx">
-      <DependentUpon>201504012319449_mig4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504031332152_mig5.resx">
-      <DependentUpon>201504031332152_mig5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504031345537_test2.resx">
-      <DependentUpon>201504031345537_test2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504031824545_Migration1.resx">
+      <DependentUpon>201504031824545_Migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

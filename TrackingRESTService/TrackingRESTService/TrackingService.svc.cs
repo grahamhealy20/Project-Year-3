@@ -236,11 +236,11 @@ namespace TrackingRESTService
             {
                 using(var db = new Model.TrackingContext()) {
                     //List<Model.Session> session = db.Sessions.Where(p => p.UserId == user_Id).ToList();
-                    db.Sessions.OrderByDescending(p => p.Id);
-                    Model.Session session = db.Sessions.First(p => p.UserId == user_Id);
+                    //db.Sessions.OrderByDescending(p => p.Id);
+                    //Model.Session session = db.Sessions.First(p => p.UserId == user_Id);
 
-                    session.states.Add(toAdd);
-                    db.SaveChanges();
+                    //session.states.Add(toAdd);
+                    //db.SaveChanges();
                     //Model.Session singleSession = session.Last();
                     //singleSession.states.Add(toAdd);
                     //db.Sessions.

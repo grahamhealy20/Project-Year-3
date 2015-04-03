@@ -31,6 +31,10 @@ namespace WebApplication1.Controllers
             return View(objects);
         }
 
+        public ActionResult Sessions() {
+            return View();
+        }
+
         public ActionResult ListOfStatesID()
         {
             try
