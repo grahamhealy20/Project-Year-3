@@ -29,3 +29,4 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\T
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.Migrations.mig.resources
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csproj.GenerateResource.Cache
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache

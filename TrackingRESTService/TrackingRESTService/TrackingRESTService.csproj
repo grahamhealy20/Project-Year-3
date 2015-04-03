@@ -72,10 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITrackingService.cs" />
-    <Compile Include="Migrations\201504032115312_mig.cs" />
-    <Compile Include="Migrations\201504032115312_mig.Designer.cs">
-      <DependentUpon>201504032115312_mig.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\SessionContext.cs" />
@@ -102,11 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504032115312_mig.resx">
-      <DependentUpon>201504032115312_mig.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
