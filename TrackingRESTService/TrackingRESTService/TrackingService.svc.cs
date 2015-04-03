@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Diagnostics;
+using System.Data.Entity;
 
 namespace TrackingRESTService
 {
@@ -151,15 +152,15 @@ namespace TrackingRESTService
         // SESSION METHODS
 
 
-        public Model.TrackingState GetLatestSession(string user_Id) {
+        public Model.Session GetLatestSession(string user_Id) {
             try
             {
                 using (var db = new Model.TrackingContext())
                 {
-                    db.TrackingStates.OrderByDescending(p => p.Id);
-                    Model.TrackingState track = db.TrackingStates.First();
-                    //Debug.WriteLine("ID: " + session.Id + "USERID :" + session.UserId);
-                    return track;
+                    Debug.WriteLine("IN METHOD");
+                    return db.Sessions.Include(s => s.states).Where(p => p.UserId == user_Id).OrderByDescending(p => p.Id).First();
+                    //Debug.WriteLine("CALLING OBJ");
+                    //return db.Sessions.Include(s => s.states).First();
                 }
             }
             catch (Exception ex)
@@ -176,26 +177,20 @@ namespace TrackingRESTService
                 using (var db = new Model.TrackingContext())
                 {
                     Debug.WriteLine("IN METHOD");
-                    List<Model.Session> session = db.Sessions.Where(p => p.UserId == user_Id).ToList();
-                    foreach(Model.Session st in session) {
-                        Debug.WriteLine("IN FOR");
-                        Debug.WriteLine("USER ID: " + st.UserId);
-                    }
-                    Model.Session singleSession = session.Last();
 
-                    Model.TrackingState state = singleSession.states.Last();
+                    // Get latest session
+                    Model.Session session = db.Sessions.Include(s => s.states).Where(p => p.UserId == user_Id).OrderByDescending(p => p.Id).First();
+                    //Then access last state in list
 
-                    //List<Model.TrackingState> list = db.TrackingStates.Where(p => p.UserId == user_Id).ToList();
-                    //Model.TrackingState state = list.Last();
-
+                    Model.TrackingState state = session.states.Last();
                     state.place = "HELLO TEST";
+
                     return state;
                 }
             }
             catch (Exception ex)
             {
                 throw new FaultException(ex.Message);
-                //return null;
             }
         }
 
@@ -207,8 +202,7 @@ namespace TrackingRESTService
                 //int lastId = Convert.ToInt32(lastAddedID);
                 using (var db = new Model.TrackingContext())
                 {
-                    List<Model.Session> list = db.Sessions.Where(p => p.UserId == user_Id).ToList();
-                    return list;
+                    return db.Sessions.Include(s => s.states).Where(p => p.UserId == user_Id).ToList();
                 }
             }
             catch (Exception ex)
@@ -236,7 +230,7 @@ namespace TrackingRESTService
         }
 
         /* This method will add a state to the latest session*/
-        public int AddStateToLatestSession(Model.TrackingState toAdd, string user_Id) { 
+        public int AddStateToLatestSession(Model.TrackingState toAdd) { 
             // Get session
             try
             {

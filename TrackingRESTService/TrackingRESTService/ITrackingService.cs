@@ -47,7 +47,7 @@ namespace TrackingRESTService
 
         [OperationContract]
         [WebGet(UriTemplate = "Session/LatestSession/{user_Id}")]
-        Model.TrackingState GetLatestSession(string user_Id);
+        Model.Session GetLatestSession(string user_Id);
 
         /* This method will return the latest state in the session for the user*/
         [OperationContract]
@@ -66,7 +66,7 @@ namespace TrackingRESTService
         /* This method will return the all of the sessions for the specified user*/
         [OperationContract]
         [WebInvoke(UriTemplate = "Session/Add/TrackingState/{user_Id}", Method = "POST")]
-        int AddStateToLatestSession(Model.TrackingState toAdd, string user_Id);
+        int AddStateToLatestSession(Model.TrackingState toAdd);
 
 
     }

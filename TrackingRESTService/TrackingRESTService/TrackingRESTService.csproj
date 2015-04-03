@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Session.cs" />
+    <Compile Include="Model\SessionContext.cs" />
     <Compile Include="Model\TrackingContext.cs" />
     <Compile Include="Model\TrackingState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
