@@ -8,16 +8,6 @@ D:\Documents\3rd Year Project\RESTService\TrackingRESTService\TrackingRESTServic
 D:\Documents\3rd Year Project\RESTService\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
 D:\Documents\3rd Year Project\RESTService\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
 D:\Documents\3rd Year Project\RESTService\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll.config
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.pdb
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.dll
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.dll
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.xml
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
 C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll.config
 C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll
 C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.pdb
@@ -28,3 +18,16 @@ C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRES
 C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache
 C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
 C:\Users\Graham\Documents\College\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll.config
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.pdb
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.xml
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.Migrations.mig4.resources
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.Migrations.mig5.resources
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.Migrations.test2.resources
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csproj.GenerateResource.Cache
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb

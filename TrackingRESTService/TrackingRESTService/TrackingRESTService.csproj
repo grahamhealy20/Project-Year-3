@@ -77,7 +77,16 @@
     <Compile Include="Migrations\201504012319449_mig4.Designer.cs">
       <DependentUpon>201504012319449_mig4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504031332152_mig5.cs" />
+    <Compile Include="Migrations\201504031332152_mig5.Designer.cs">
+      <DependentUpon>201504031332152_mig5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504031345537_test2.cs" />
+    <Compile Include="Migrations\201504031345537_test2.Designer.cs">
+      <DependentUpon>201504031345537_test2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Session.cs" />
     <Compile Include="Model\TrackingContext.cs" />
     <Compile Include="Model\TrackingState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,7 +98,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -103,6 +114,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201504012319449_mig4.resx">
       <DependentUpon>201504012319449_mig4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504031332152_mig5.resx">
+      <DependentUpon>201504031332152_mig5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504031345537_test2.resx">
+      <DependentUpon>201504031345537_test2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

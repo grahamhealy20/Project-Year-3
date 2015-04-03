@@ -13,9 +13,7 @@ namespace TrackingRESTService
     [ServiceContract]
     public interface ITrackingService
     {
-        [OperationContract]
-        [WebGet(UriTemplate = "TrackingState/DoWork")]
-        void DoWork();
+        // TRACKING STATE METHODS
 
         [OperationContract]
         [WebGet(UriTemplate = "TrackingState/Latest/{user_Id}")]
@@ -44,5 +42,32 @@ namespace TrackingRESTService
         [OperationContract]
         [WebInvoke(UriTemplate = "TrackingState/Delete/{id}", Method = "DELETE")]
         bool DeleteState(string id);
+
+        // SESSION METHODS
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Session/LatestSession/{user_Id}")]
+        Model.TrackingState GetLatestSession(string user_Id);
+
+        /* This method will return the latest state in the session for the user*/
+        [OperationContract]
+        [WebGet(UriTemplate = "Session/Latest/{user_Id}")]
+        Model.TrackingState GetLatestSessionState(string user_Id);
+
+        /* This method will return the all of the sessions for the specified user*/
+        [OperationContract]
+        [WebGet(UriTemplate = "Session/{user_id}")]
+        List<Model.Session> GetSessions(string user_Id);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Session/Add/", Method = "POST")]
+        int AddSession(Model.Session toAdd);
+
+        /* This method will return the all of the sessions for the specified user*/
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Session/Add/TrackingState/{user_Id}", Method = "POST")]
+        int AddStateToLatestSession(Model.TrackingState toAdd, string user_Id);
+
+
     }
 }
