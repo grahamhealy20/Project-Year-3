@@ -24,3 +24,4 @@ D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properti
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache

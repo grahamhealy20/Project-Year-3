@@ -95,7 +95,7 @@ namespace TrackingRESTService
                 {
                     db.TrackingStates.Add(p);
                     db.SaveChanges();
-                    lastId = p.Id;
+                    lastId = p.TrackingId;
                     latest = p;
                     //return p.Id;
                     return 1;
@@ -113,7 +113,7 @@ namespace TrackingRESTService
             {
                 using (var db = new Model.TrackingContext())
                 {
-                    Model.TrackingState oldDetails = db.TrackingStates.SingleOrDefault(p => p.Id == state.Id);
+                    Model.TrackingState oldDetails = db.TrackingStates.SingleOrDefault(p => p.TrackingId == state.TrackingId);
 
                     oldDetails.UserId = state.UserId;
                     oldDetails.time = state.time;
@@ -137,7 +137,7 @@ namespace TrackingRESTService
 
                 using (var db = new Model.TrackingContext())
                 {
-                    Model.TrackingState details = db.TrackingStates.SingleOrDefault(p => p.Id == stateId);
+                    Model.TrackingState details = db.TrackingStates.SingleOrDefault(p => p.TrackingId == stateId);
                     db.TrackingStates.Remove(details);
                     db.SaveChanges();
                     return true;
