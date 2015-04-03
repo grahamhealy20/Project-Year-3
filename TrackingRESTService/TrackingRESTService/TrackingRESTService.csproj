@@ -72,9 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITrackingService.cs" />
-    <Compile Include="Migrations\201504032030205_mig.cs" />
-    <Compile Include="Migrations\201504032030205_mig.Designer.cs">
-      <DependentUpon>201504032030205_mig.cs</DependentUpon>
+    <Compile Include="Migrations\201504031824545_Migration1.cs" />
+    <Compile Include="Migrations\201504031824545_Migration1.Designer.cs">
+      <DependentUpon>201504031824545_Migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Session.cs" />
@@ -104,8 +104,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504032030205_mig.resx">
-      <DependentUpon>201504032030205_mig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504031824545_Migration1.resx">
+      <DependentUpon>201504031824545_Migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -111,6 +111,3 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\zh-Hans\System.Spatial.resource
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\zh-Hant\System.Spatial.resources.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.pdb
-D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
-D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migrations.mig.resources
-D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
