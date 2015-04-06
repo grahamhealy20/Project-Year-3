@@ -13,6 +13,7 @@ namespace TrackingRESTService
     // NOTE: In order to launch WCF Test Client for testing this service, please select TrackingService.svc or TrackingService.svc.cs at the Solution Explorer and start debugging.
     public class TrackingService : ITrackingService
     {
+        private Hubs.NotificationHub notifyHub = new Hubs.NotificationHub();
         private int lastId;
         private Model.TrackingState latest;
 
@@ -218,13 +219,16 @@ namespace TrackingRESTService
                 using (var db = new Model.TrackingContext())
                 {
                     db.Sessions.Add(toAdd);
-                    db.SaveChanges();
+                    db.SaveChanges();        
                     //return p.Id;
+                    notifyHub.send(toAdd.UserId, "Session started Successfully!");
                     return 1;
                 }
+
             }
             catch (Exception ex)
             {
+                notifyHub.send(toAdd.UserId, "Error starting session!");
                 throw new FaultException(ex.Message);
             }
         }

@@ -9,3 +9,4 @@
 /// <reference path="npm.js" />
 /// <reference path="respond.js" />
 /// <reference path="respond.matchmedia.addlistener.js" />
+/// <reference path="jquery.signalr-2.2.0.min.js" />

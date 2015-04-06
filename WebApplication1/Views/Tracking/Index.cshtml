@@ -19,9 +19,14 @@
 
 
 <script>
+    $('#alert').empty();
     // attempting to retrieve live data from the db etc
-
+    bootstrap_alert = function () { }
+    bootstrap_alert.warning = function (message) {
+        $('#alert').html(message)
+    }
     $(document).ready(function () {
+
         //alert(useridstring);
         getNum();
     });
@@ -38,6 +43,7 @@
             cache: false,
             dataType: "xml",
             success: function (xml) {
+                bootstrap_alert.warning("Request Success");
                 $(xml).find('TrackingState').each(function () {
                     var ID = $(this).find("Id").text();
                     var UserId = $(this).find("UserId").text();
@@ -95,6 +101,7 @@
             cache: false,
             dataType: "xml",
             success: function (xml) {
+                bootstrap_alert.warning("Request Success");
                 $(xml).find('TrackingState').each(function () {
                     var ID = $(this).find("Id").text();
                     var UserId = $(this).find("UserId").text();
@@ -146,6 +153,9 @@
                         //alert(ID);
                     }
                 });
+            },
+            error: function () {
+                bootstrap_alert.warning("ERROR");
             },
             complete: function () {
                 setTimeout(getLatestNum, 2000);
