@@ -10,12 +10,30 @@
     }
 }
 
-<h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>
+@*<h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>*@
 
 @* Partial views implemented Below still to implement area need more dummy data *@
+@*
 @{Html.RenderPartial("_MorrisLineChart"); }
 @{Html.RenderPartial("_MorrisBarChart");}
 @{Html.RenderPartial("_MorrisDonutChart");}
+*@
+
+
+
+<div style=" margin-top: 40px"><b> Line Chart </b></div>
+<div id="myfirstchart" title="Line Chart" style="height: 400px; border: 1px solid blue; margin:auto; margin-bottom:40px; padding: 50px"></div>
+
+<div><b> Bar Chart </b></div>
+<div id="mysecondchart"  style="height: 400px; border: 1px solid blue; margin-bottom: 40px; padding: 50px"></div>
+
+<div><b> Donut Chart </b></div>
+<div id="mythirdchart" style="height: 400px; border: 1px solid blue; margin-bottom: 40px;  padding: 50px" ></div>
+
+@{Html.RenderPartial("_MorrisLineChart"); }
+@{Html.RenderPartial("_MorrisBarChart"); }
+@{Html.RenderPartial("_MorrisDonutChart"); }
+
 
 
 <script>

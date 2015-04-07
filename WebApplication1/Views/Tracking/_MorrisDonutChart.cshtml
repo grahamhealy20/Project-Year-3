@@ -1,15 +1,8 @@
-﻿
-@{
-    <div class="panel panel-default">
-        <div class="panel-heading"><strong>Panel 3 with dummy data</strong></div>
-        <div class="panel-body" id="chartBody" style="height:300px;">
-        </div>
-    </div>
-
+﻿@{
     <script>
         new Morris.Donut({
             // ID of the element in which to draw the chart.
-            element: 'chartBody',
+            element: 'mythirdchart',
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
             data: [
@@ -28,10 +21,4 @@
             labels: ['Value']
         });
     </script>
-
-
-
-
-
-
 }
