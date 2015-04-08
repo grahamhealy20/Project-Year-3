@@ -47,6 +47,8 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Trackin
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\TrackingRESTService.pdb
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.Core.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.dll
@@ -57,12 +59,14 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Newtons
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Owin.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Security.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Newtonsoft.Json.xml
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache

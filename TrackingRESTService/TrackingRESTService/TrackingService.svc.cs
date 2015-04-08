@@ -6,6 +6,10 @@ using System.ServiceModel;
 using System.Text;
 using System.Diagnostics;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Net;
+using System.Net.Mail;
 
 namespace TrackingRESTService
 {
@@ -254,6 +258,38 @@ namespace TrackingRESTService
                     //Add state and save
                     session.states.Add(toAdd);
                     db.SaveChanges();
+
+                    using (var innerdb = new Model.ApplicationDbContext())
+                    {
+                        //Notify user via email
+                        Model.ApplicationUser user = innerdb.Users.FirstOrDefault(x => x.Id == toAdd.UserId);
+                        string email = user.Email;
+
+                        var fromAddress = new MailAddress("3rdyearprojectemail@gmail.com", "Baby Monitor");
+                        var toAddress = new MailAddress(email, user.firstName + user.lastName);
+                        const string fromPassword = "OMITTED"; // DO NOT COMMIT WITH PW STILL INCLUDED
+                        const string subject = "Event Triggered";
+                        const string body = "Body - Somethings's been detected";
+
+                        var smtp = new SmtpClient
+                        {
+                            Host = "smtp.gmail.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                        };
+                        using (var message = new MailMessage(fromAddress, toAddress)
+                        {
+                            Subject = subject,
+                            Body = body
+                        })
+                        {
+                            smtp.Send(message);
+                        }
+                    }
+
                     return 1;
                 }
             }
