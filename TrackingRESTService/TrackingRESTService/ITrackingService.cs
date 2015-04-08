@@ -46,17 +46,17 @@ namespace TrackingRESTService
         // SESSION METHODS
 
         [OperationContract]
-        [WebGet(UriTemplate = "Session/LatestSession/{user_Id}")]
+        [WebGet(UriTemplate = "Session/LatestSession/{user_Id}", ResponseFormat = WebMessageFormat.Json)]
         Model.Session GetLatestSession(string user_Id);
 
         /* This method will return the latest state in the session for the user*/
         [OperationContract]
-        [WebGet(UriTemplate = "Session/Latest/{user_Id}")]
+        [WebGet(UriTemplate = "Session/Latest/{user_Id}", ResponseFormat = WebMessageFormat.Json)]
         Model.TrackingState GetLatestSessionState(string user_Id);
 
         /* This method will return the all of the sessions for the specified user*/
         [OperationContract]
-        [WebGet(UriTemplate = "Session/{user_id}")]
+        [WebGet(UriTemplate = "Session/{user_id}", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         List<Model.Session> GetSessions(string user_Id);
 
         [OperationContract]

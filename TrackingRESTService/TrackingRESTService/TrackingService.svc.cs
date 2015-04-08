@@ -249,6 +249,11 @@ namespace TrackingRESTService
                     //singleSession.states.Add(toAdd);
                     //db.Sessions.
                     //db.Sessions.Add(singleSession);
+                    // Get latest session
+                    Model.Session session = db.Sessions.Include(s => s.states).Where(p => p.UserId == toAdd.UserId).OrderByDescending(p => p.Id).First();
+                    //Add state and save
+                    session.states.Add(toAdd);
+                    db.SaveChanges();
                     return 1;
                 }
             }
