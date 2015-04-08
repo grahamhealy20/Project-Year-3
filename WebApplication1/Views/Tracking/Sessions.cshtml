@@ -13,6 +13,7 @@
 @{Html.RenderPartial("_MorrisLineChart"); }
 
 <script>
+    var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
     var counter = 0;
     var iterate = 1;
     var table;
@@ -164,7 +165,7 @@
     function getSessionTimeline() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:4082/TrackingService.svc/Session/5c54731b-089a-4f14-81bd-18765a59ad21",
+            url: "http://localhost:4082/TrackingService.svc/Session/" + user + "",
             cache: false,
             dataType: "json",
             success: function (data, status) {
@@ -183,7 +184,6 @@
                     div.appendChild(panelHeader);
 
                     // Create List
-
                     timeline = document.createElement("ul");
                     $(timeline).addClass("timeline");
                     //Add headers
@@ -229,11 +229,11 @@
                         var heading = document.createElement('div');
                         $(heading).addClass("timeline-heading");
                         var headingMain = document.createElement('h4');
-                        headingMain.innerHTML = "TEST";
+                        headingMain.innerHTML = item.temp;
                         heading.appendChild(headingMain);
 
                         var timeText = document.createElement('p');
-                        timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i>' + '11 hours ago via Twitter' + '</small>';
+                        timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + item.time + ' via client' + '</small>';
                         heading.appendChild(timeText);
 
 
@@ -260,14 +260,11 @@
                 });
 
             },
-
             error: function (jqXHR, status) {
                 //alert(status);
             },
-            complete: function () {
-                setTimeout(getLatestSessionStateTimeline(), 10000);
-                //console.log("Complete: " + counter);
-                //alert("Complete " + counter);
+            complete: function (status) {
+                setTimeout(getLatestSessionStateTimeline, 10000);
             }
         });
     }
@@ -275,7 +272,7 @@
     function getLatestSessionStateTimeline() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:4082/TrackingService.svc/Session/Latest/5c54731b-089a-4f14-81bd-18765a59ad21",
+            url: "http://localhost:4082/TrackingService.svc/Session/Latest/" + user + "",
             cache: false,
             dataType: "json",
             success: function (data, status) {
@@ -325,11 +322,11 @@
                     var heading = document.createElement('div');
                     $(heading).addClass("timeline-heading");
                     var headingMain = document.createElement('h4');
-                    headingMain.innerHTML = "TEST";
+                    headingMain.innerHTML = data.temp;
                     heading.appendChild(headingMain);
 
                     var timeText = document.createElement('p');
-                    timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i>' + '11 hours ago via Twitter' + '</small>';
+                    timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + data.time + ' via client' + '</small>';
                     heading.appendChild(timeText);
 
 
@@ -351,12 +348,11 @@
                     'slow');
                 }
             },
-
             error: function (jqXHR, status) {
                 //alert(status);
             },
-            complete: function () {
-                setTimeout(getLatestSessionStateTimeline(), 10000);
+            complete: function (status) {
+                setTimeout(getLatestSessionStateTimeline, 10000);
             }
         });
     }
