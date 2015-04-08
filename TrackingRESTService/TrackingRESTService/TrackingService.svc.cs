@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net;
 using System.Net.Mail;
+using Twilio;
 
 namespace TrackingRESTService
 {
@@ -20,6 +21,7 @@ namespace TrackingRESTService
         private Hubs.NotificationHub notifyHub = new Hubs.NotificationHub();
         private int lastId;
         private Model.TrackingState latest;
+        private Model.SMSHelper smsHelper = new Model.SMSHelper();
 
         // TRACKING STATE METHODS
 
@@ -267,7 +269,7 @@ namespace TrackingRESTService
 
                         var fromAddress = new MailAddress("3rdyearprojectemail@gmail.com", "Baby Monitor");
                         var toAddress = new MailAddress(email, user.firstName + user.lastName);
-                        const string fromPassword = "OMITTED"; // DO NOT COMMIT WITH PW STILL INCLUDED
+                        const string fromPassword = "x00104195"; // DO NOT COMMIT WITH PW STILL INCLUDED
                         const string subject = "Event Triggered";
                         const string body = "Body - Somethings's been detected";
 
@@ -290,6 +292,8 @@ namespace TrackingRESTService
                         }
                     }
 
+                    // Find your Account Sid and Auth Token at twilio.com/user/account                   
+                    smsHelper.sendMessage("+3530852107831", "TEST");
                     return 1;
                 }
             }
