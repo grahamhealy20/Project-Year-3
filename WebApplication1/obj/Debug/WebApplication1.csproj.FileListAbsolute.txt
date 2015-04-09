@@ -246,6 +246,7 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.AspNet.SignalR.Core.d
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Data.Edm.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Data.OData.dll
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Cors.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
@@ -261,6 +262,7 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.WindowsAzure.Storage.
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Newtonsoft.Json.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Owin.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Spatial.dll
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.Cors.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.Helpers.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.Mvc.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\System.Web.Optimization.dll
@@ -282,6 +284,7 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.AspNet.SignalR.System
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Data.Edm.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Data.OData.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.xml
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Cors.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Security.xml
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
@@ -349,3 +352,4 @@ D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migration
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.dll
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net;
 using System.Net.Mail;
 using Twilio;
+using Microsoft.AspNet.SignalR;
 
 namespace TrackingRESTService
 {
@@ -18,7 +19,6 @@ namespace TrackingRESTService
     // NOTE: In order to launch WCF Test Client for testing this service, please select TrackingService.svc or TrackingService.svc.cs at the Solution Explorer and start debugging.
     public class TrackingService : ITrackingService
     {
-        private Hubs.NotificationHub notifyHub = new Hubs.NotificationHub();
         private int lastId;
         private Model.TrackingState latest;
         private Model.SMSHelper smsHelper = new Model.SMSHelper();
@@ -227,14 +227,12 @@ namespace TrackingRESTService
                     db.Sessions.Add(toAdd);
                     db.SaveChanges();        
                     //return p.Id;
-                    notifyHub.send(toAdd.UserId, "Session started Successfully!");
                     return 1;
                 }
 
             }
             catch (Exception ex)
             {
-                notifyHub.send(toAdd.UserId, "Error starting session!");
                 throw new FaultException(ex.Message);
             }
         }
@@ -244,6 +242,7 @@ namespace TrackingRESTService
             // Get session
             try
             {
+
                 using(var db = new Model.TrackingContext()) {
                     Model.Session session = db.Sessions.Include(s => s.states).Where(p => p.UserId == toAdd.UserId).OrderByDescending(p => p.Id).First();
                     //Add state and save
@@ -259,9 +258,12 @@ namespace TrackingRESTService
                         const string subject = "Event Triggered";
                         const string body = "Body - Somethings's been detected";
 
-                        emailHelper.sendMessage(toAddress, subject, body);
+                        //emailHelper.sendMessage(toAddress, subject, body);
                     }               
-                    smsHelper.sendMessage("+3530852107831", "TEST");
+                    //smsHelper.sendMessage("+3530852107831", "TEST");
+                    var context = GlobalHost.ConnectionManager.GetHubContext<Hubs.NotificationHub>();
+                    string connectionId = Hubs.ConnectionInfo.userConnections[toAdd.UserId];
+                    context.Clients.Client(connectionId).send("State Added");            
                     return 1;
                 }
             }

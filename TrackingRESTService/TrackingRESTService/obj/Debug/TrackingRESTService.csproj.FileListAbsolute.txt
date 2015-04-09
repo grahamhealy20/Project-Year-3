@@ -51,6 +51,7 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microso
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.Core.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Cors.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Host.SystemWeb.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Security.dll
@@ -58,6 +59,7 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microso
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Newtonsoft.Json.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Owin.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\RestSharp.dll
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\System.Web.Cors.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Twilio.Api.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\EntityFramework.SqlServer.xml
@@ -66,12 +68,12 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microso
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.xml
+D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Cors.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Host.SystemWeb.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Microsoft.Owin.Security.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Newtonsoft.Json.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\RestSharp.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Twilio.Api.pdb
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Twilio.Api.xml
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
