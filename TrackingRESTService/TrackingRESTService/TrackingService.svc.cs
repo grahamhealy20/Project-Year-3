@@ -219,6 +219,7 @@ namespace TrackingRESTService
             }
         }
 
+        /* This method will start a new session */
         public int AddSession(Model.Session toAdd) {
             try
             {
@@ -237,12 +238,11 @@ namespace TrackingRESTService
             }
         }
 
-        /* This method will add a state to the latest session*/
+        /* This method will add a state to the latest session and notify user*/
         public int AddStateToLatestSession(Model.TrackingState toAdd) { 
             // Get session
             try
             {
-
                 using(var db = new Model.TrackingContext()) {
                     Model.Session session = db.Sessions.Include(s => s.states).Where(p => p.UserId == toAdd.UserId).OrderByDescending(p => p.Id).First();
                     //Add state and save
@@ -257,9 +257,9 @@ namespace TrackingRESTService
                         var toAddress = new MailAddress(email, user.firstName + user.lastName);
                         const string subject = "Event Triggered";
                         const string body = "Body - Somethings's been detected";
-
-                        //emailHelper.sendMessage(toAddress, subject, body);
-                    }               
+                        emailHelper.sendMessage(toAddress, subject, body);
+                    }   
+                    // Uncomment to enable SMS notificaitons.
                     //smsHelper.sendMessage("+3530852107831", "TEST");
                     var context = GlobalHost.ConnectionManager.GetHubContext<Hubs.NotificationHub>();
                     string connectionId = Hubs.ConnectionInfo.userConnections[toAdd.UserId];

@@ -27,7 +27,7 @@
     function getSession() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:4082/TrackingService.svc/Session/5c54731b-089a-4f14-81bd-18765a59ad21",
+            url: "https://localhost:44301/TrackingService.svc/Session/5c54731b-089a-4f14-81bd-18765a59ad21",
             cache: false,
             dataType: "json",
             success: function (data, status) {
@@ -104,7 +104,7 @@
     function getLatestSessionState() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:4082/TrackingService.svc/Session/Latest/5c54731b-089a-4f14-81bd-18765a59ad21",
+            url: "https://localhost:44301/TrackingService.svc/Session/Latest/5c54731b-089a-4f14-81bd-18765a59ad21",
             cache: false,
             dataType: "json",
             success: function (data, status) {
@@ -165,7 +165,7 @@
     function getSessionTimeline() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:4082/TrackingService.svc/Session/" + user + "",
+            url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
             cache: false,
             dataType: "json",
             success: function (data, status) {
@@ -272,7 +272,7 @@
     function getLatestSessionStateTimeline() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:4082/TrackingService.svc/Session/Latest/" + user + "",
+            url: "https://localhost:44301/TrackingService.svc/Session/Latest/" + user + "",
             cache: false,
             dataType: "json",
             success: function (data, status) {

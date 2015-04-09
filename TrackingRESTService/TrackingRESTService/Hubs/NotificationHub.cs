@@ -22,7 +22,10 @@ namespace TrackingRESTService.Hubs
         public override Task OnConnected()
         {
             string user_id = Context.QueryString["userID"];
-            ConnectionInfo.userConnections.Add(user_id, Context.ConnectionId);
+            if(!ConnectionInfo.userConnections.ContainsKey(user_id)) {
+               ConnectionInfo.userConnections.Add(user_id, Context.ConnectionId);
+            }
+         
             return base.OnConnected();
         
         }

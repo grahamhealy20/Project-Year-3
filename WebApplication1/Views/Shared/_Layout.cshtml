@@ -67,7 +67,7 @@
         <script>
             $(function () {
                 var userID = "@User.Identity.GetUserId()";
-                var connection = $.hubConnection("http://localhost:4082/signalr", { useDefaultPath: false });
+                var connection = $.hubConnection("https://localhost:44301/signalr", { useDefaultPath: false });
                 // Reference the auto-generated proxy for the hub.
                 connection.qs = { 'userID': userID };
                 console.log(userID);
