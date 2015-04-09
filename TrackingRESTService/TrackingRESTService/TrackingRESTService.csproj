@@ -123,6 +123,7 @@
     <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="ITrackingService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\EMailHelper.cs" />
     <Compile Include="Model\IdentityModel.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\SessionContext.cs" />

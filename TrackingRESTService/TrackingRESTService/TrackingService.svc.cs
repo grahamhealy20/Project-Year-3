@@ -22,7 +22,7 @@ namespace TrackingRESTService
         private int lastId;
         private Model.TrackingState latest;
         private Model.SMSHelper smsHelper = new Model.SMSHelper();
-
+        private Model.EMailHelper emailHelper = new Model.EMailHelper();
         // TRACKING STATE METHODS
 
         public Model.TrackingState GetLatestTrackingState(string user_Id)
@@ -245,17 +245,6 @@ namespace TrackingRESTService
             try
             {
                 using(var db = new Model.TrackingContext()) {
-                    //List<Model.Session> session = db.Sessions.Where(p => p.UserId == user_Id).ToList();
-                    //db.Sessions.OrderByDescending(p => p.Id);
-                    //Model.Session session = db.Sessions.First(p => p.UserId == user_Id);
-
-                    //session.states.Add(toAdd);
-                    //db.SaveChanges();
-                    //Model.Session singleSession = session.Last();
-                    //singleSession.states.Add(toAdd);
-                    //db.Sessions.
-                    //db.Sessions.Add(singleSession);
-                    // Get latest session
                     Model.Session session = db.Sessions.Include(s => s.states).Where(p => p.UserId == toAdd.UserId).OrderByDescending(p => p.Id).First();
                     //Add state and save
                     session.states.Add(toAdd);
@@ -266,33 +255,12 @@ namespace TrackingRESTService
                         //Notify user via email
                         Model.ApplicationUser user = innerdb.Users.FirstOrDefault(x => x.Id == toAdd.UserId);
                         string email = user.Email;
-
-                        var fromAddress = new MailAddress("3rdyearprojectemail@gmail.com", "Baby Monitor");
                         var toAddress = new MailAddress(email, user.firstName + user.lastName);
-                        const string fromPassword = "x00104195"; // DO NOT COMMIT WITH PW STILL INCLUDED
                         const string subject = "Event Triggered";
                         const string body = "Body - Somethings's been detected";
 
-                        var smtp = new SmtpClient
-                        {
-                            Host = "smtp.gmail.com",
-                            Port = 587,
-                            EnableSsl = true,
-                            DeliveryMethod = SmtpDeliveryMethod.Network,
-                            UseDefaultCredentials = false,
-                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-                        };
-                        using (var message = new MailMessage(fromAddress, toAddress)
-                        {
-                            Subject = subject,
-                            Body = body
-                        })
-                        {
-                            smtp.Send(message);
-                        }
-                    }
-
-                    // Find your Account Sid and Auth Token at twilio.com/user/account                   
+                        emailHelper.sendMessage(toAddress, subject, body);
+                    }               
                     smsHelper.sendMessage("+3530852107831", "TEST");
                     return 1;
                 }
@@ -300,9 +268,6 @@ namespace TrackingRESTService
             catch (Exception ex) {
                 throw new FaultException(ex.Message);
             }
-           
         }
-
-
     }
 }

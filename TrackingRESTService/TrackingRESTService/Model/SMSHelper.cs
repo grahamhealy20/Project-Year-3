@@ -19,7 +19,6 @@ namespace TrackingRESTService.Model
         public int sendMessage(string destination, string messageToSend) {
             try
             {
-                var twilio = new TwilioRestClient(AccountSid, AuthToken);
                 var msg = twilio.SendMessage("+15016536511", destination, messageToSend);
                 return 1;
             }
