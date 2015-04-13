@@ -1,5 +1,4 @@
 ﻿@using WebApplication1.Models;
-@using Microsoft.AspNet.Identity.EntityFramework
 @using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Manage Account";
@@ -9,10 +8,11 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         @Html.Partial("_UploadProfileImage")
         @if (ViewBag.HasLocalPassword)
         {
+
             @Html.Partial("_ChangePasswordPartial")
         }
         else
@@ -24,25 +24,6 @@
             @Html.Action("RemoveAccountList")
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
-    </div>
-    <div class="col-md-2" style="float: right;">
-        @{
-            if (User.Identity.IsAuthenticated)
-            {
-                var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
-                var manager = new UserManager<ApplicationUser>(userStore);
-                var currentUser = manager.FindById(User.Identity.GetUserId());
-                //string path = @currentUser.profileImagePath.ToString();
-            
-                <img src="@Url.Content(@currentUser.profileImagePath)" class="img-circle visible-md visible-lg img-responsive" style="max-height:300px;" />
-            <div class="text-center">
-                <h4>@currentUser.firstName @currentUser.lastName</h4>
-            </div>
-
-            }
-
-}
-
     </div>
 </div>
 @section Scripts {
