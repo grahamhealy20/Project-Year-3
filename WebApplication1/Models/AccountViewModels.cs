@@ -46,6 +46,12 @@ namespace WebApplication1.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UploadProfileImageViewModel {
+        [Required]
+        [Display(Name = "Profile Image")]
+        public string profileImagePath { get; set; }
+    }
+
     public class LoginViewModel
     {
         [Required]
