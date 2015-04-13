@@ -10,7 +10,7 @@ namespace TrackingRESTService.Model
     public class EMailHelper
     {
         private static MailAddress fromAddress = new MailAddress("3rdyearprojectemail@gmail.com", "Baby Monitor");
-        const string fromPassword = "OMITTED! RE-ENTER WHEN WORKING ON PROJECT"; // DO NOT COMMIT WITH PW STILL INCLUDED
+        const string fromPassword = "x00104195"; // DO NOT COMMIT WITH PW STILL INCLUDED
 
         SmtpClient smtp = new SmtpClient(){
             Host = "smtp.gmail.com",
