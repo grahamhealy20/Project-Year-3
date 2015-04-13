@@ -337,10 +337,20 @@ namespace WebApplication1.Controllers
             if (file != null && file.ContentLength > 0)
                 try
                 {
-                    string path = Path.Combine(Server.MapPath("~/Images"),
-                                               Path.GetFileName(file.FileName));
+                    var fileName = Path.GetFileName(file.FileName);
+                    var dbPath = "~/App_Data/uploads/" + fileName; 
+                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
                     file.SaveAs(path);
-                    ViewBag.Message = "File uploaded successfully";
+
+
+                    string userId = User.Identity.GetUserId();
+                    var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                    var manager = new UserManager<ApplicationUser>(store);
+                    var user = manager.FindById(userId);
+                    user.profileImagePath = dbPath;
+                    manager.UpdateAsync(user);
+                    var ctx = store.Context;
+                    ctx.SaveChanges();
                 }
                 catch (Exception ex)
                 {
