@@ -94,7 +94,8 @@ namespace WebApplication1.Controllers
                 var user = new ApplicationUser() { 
                     UserName = model.firstName + " " + model.lastName, Email = model.Email, 
                     firstName = model.firstName,
-                    lastName = model.lastName
+                    lastName = model.lastName,
+                    PhoneNumber = model.phoneNumber
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -417,8 +418,8 @@ namespace WebApplication1.Controllers
                     UserName = model.Email, Email = model.Email,
                     // Custom attributes
                     firstName = model.firstName,
-                    lastName = model.lastName
-
+                    lastName = model.lastName,
+                    PhoneNumber = model.phoneNumber
                 };
                 IdentityResult result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -451,7 +452,7 @@ namespace WebApplication1.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            Success(string.Format("<strong>Bye Bye!</strong> Missing you already!"), true);
+            //Success(string.Format("<strong>Bye Bye!</strong> Missing you already!"), true);
             return RedirectToAction("Index", "Home");
         }
 

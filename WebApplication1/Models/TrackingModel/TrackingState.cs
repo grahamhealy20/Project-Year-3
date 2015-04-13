@@ -20,16 +20,17 @@ namespace WebApplication1.Models.TrackingModel
         [DataMemberAttribute]
         public string place { get; set; }
         [DataMemberAttribute]
-        public string temp { get; set; }
+        public double temp { get; set; }
         [DataMemberAttribute]
         public int noAlerts { get; set; }
+
 
         public TrackingState(string UserId, string time, string place, double temp, int noAlerts)
         {
             this.UserId = UserId;
             this.time = time;
             this.place = place;
-            this.temp = temp.ToString();
+            this.temp = temp;
             this.noAlerts = noAlerts;
         }
 

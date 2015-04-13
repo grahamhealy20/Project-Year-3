@@ -9,13 +9,12 @@ namespace TrackingRESTService.Hubs
 {
     public class NotificationHub : Hub
     {
-
         public void Hello()
         {
             Clients.All.hello();
         }
 
-        public void send(string message) {
+        public void sendAdminBroadcast(string message) {
             Clients.All.sendNotification(message);
         }
       
@@ -25,9 +24,7 @@ namespace TrackingRESTService.Hubs
             if(!ConnectionInfo.userConnections.ContainsKey(user_id)) {
                ConnectionInfo.userConnections.Add(user_id, Context.ConnectionId);
             }
-         
-            return base.OnConnected();
-        
+            return base.OnConnected();     
         }
 
         public override Task OnDisconnected(bool stopCalled)

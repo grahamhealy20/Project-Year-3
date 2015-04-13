@@ -8,10 +8,17 @@ namespace WebApplication1.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string phoneNumber { get; set; }
         // Custom attributes
+        [Required]
+        [Display(Name = "First Name")]
         public string firstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
         public string lastName { get; set; }
+      
     }
 
     public class ExternalLoginListViewModel
@@ -69,6 +76,10 @@ namespace WebApplication1.Models
         [Required]
         [Display(Name = "Last Name")]
         public string lastName { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string phoneNumber { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

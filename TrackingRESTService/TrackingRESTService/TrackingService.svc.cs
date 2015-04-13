@@ -157,8 +157,6 @@ namespace TrackingRESTService
         }
 
         // SESSION METHODS
-
-
         public Model.Session GetLatestSession(string user_Id) {
             try
             {
@@ -179,20 +177,16 @@ namespace TrackingRESTService
 
         public Model.TrackingState GetLatestSessionState(string user_Id)
         {
+            Model.TrackingState state = new Model.TrackingState();
             try
-            {
+             {
                 using (var db = new Model.TrackingContext())
                 {
-                    Debug.WriteLine("IN METHOD");
-
                     // Get latest session
                     Model.Session session = db.Sessions.Include(s => s.states).Where(p => p.UserId == user_Id).OrderByDescending(p => p.Id).First();
                     //Then access last state in list
-
-                    Model.TrackingState state = session.states.Last();
-                    state.place = "HELLO TEST";
-
-                    return state;
+                        state = session.states.Last();
+                        return state;
                 }
             }
             catch (Exception ex)
@@ -205,8 +199,6 @@ namespace TrackingRESTService
         public List<Model.Session> GetSessions(string user_Id) {
             try
             {
-                //Parse string to int
-                //int lastId = Convert.ToInt32(lastAddedID);
                 using (var db = new Model.TrackingContext())
                 {
                     return db.Sessions.Include(s => s.states).Where(p => p.UserId == user_Id).ToList();
@@ -214,7 +206,6 @@ namespace TrackingRESTService
             }
             catch (Exception ex)
             {
-                //return FaultException(ex.Message);
                 throw new FaultException(ex.Message);
             }
         }
@@ -225,12 +216,11 @@ namespace TrackingRESTService
             {
                 using (var db = new Model.TrackingContext())
                 {
+                    toAdd.states.Insert(0, new Model.TrackingState(toAdd.UserId, "Session Started"));
                     db.Sessions.Add(toAdd);
-                    db.SaveChanges();        
-                    //return p.Id;
+                    db.SaveChanges();
                     return 1;
                 }
-
             }
             catch (Exception ex)
             {
@@ -248,7 +238,6 @@ namespace TrackingRESTService
                     //Add state and save
                     session.states.Add(toAdd);
                     db.SaveChanges();
-
                     using (var innerdb = new Model.ApplicationDbContext())
                     {
                         //Notify user via email
@@ -258,9 +247,10 @@ namespace TrackingRESTService
                         const string subject = "Event Triggered";
                         const string body = "Body - Somethings's been detected";
                         emailHelper.sendMessage(toAddress, subject, body);
+                        string pNumber = "+353" + user.PhoneNumber;
+                        smsHelper.sendMessage(pNumber, "TEST");
                     }   
                     // Uncomment to enable SMS notificaitons.
-                    //smsHelper.sendMessage("+3530852107831", "TEST");
                     var context = GlobalHost.ConnectionManager.GetHubContext<Hubs.NotificationHub>();
                     string connectionId = Hubs.ConnectionInfo.userConnections[toAdd.UserId];
                     context.Clients.Client(connectionId).send("State Added");            

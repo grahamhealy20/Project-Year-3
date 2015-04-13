@@ -224,9 +224,13 @@
     </Compile>
     <Compile Include="Helpers\Alert.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
-    <Compile Include="Migrations\201504081746565_mig3.cs" />
-    <Compile Include="Migrations\201504081746565_mig3.Designer.cs">
-      <DependentUpon>201504081746565_mig3.cs</DependentUpon>
+    <Compile Include="Migrations\201504131343251_userPnumber.cs" />
+    <Compile Include="Migrations\201504131343251_userPnumber.Designer.cs">
+      <DependentUpon>201504131343251_userPnumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504131358153_mig.cs" />
+    <Compile Include="Migrations\201504131358153_mig.Designer.cs">
+      <DependentUpon>201504131358153_mig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -326,8 +330,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504081746565_mig3.resx">
-      <DependentUpon>201504081746565_mig3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504131343251_userPnumber.resx">
+      <DependentUpon>201504131343251_userPnumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504131358153_mig.resx">
+      <DependentUpon>201504131358153_mig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
