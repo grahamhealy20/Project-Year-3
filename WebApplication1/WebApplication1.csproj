@@ -223,6 +223,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Alert.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="Migrations\201504131343251_userPnumber.cs" />
     <Compile Include="Migrations\201504131343251_userPnumber.Designer.cs">

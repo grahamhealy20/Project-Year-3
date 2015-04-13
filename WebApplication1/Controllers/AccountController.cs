@@ -96,7 +96,8 @@ namespace WebApplication1.Controllers
                     UserName = model.firstName + " " + model.lastName, Email = model.Email, 
                     firstName = model.firstName,
                     lastName = model.lastName,
-                    PhoneNumber = model.phoneNumber
+                    PhoneNumber = model.phoneNumber,
+                    profileImagePath = "~/Images/Uploads/default.png"
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -343,13 +344,11 @@ namespace WebApplication1.Controllers
                     file.SaveAs(path);
 
                     string userId = User.Identity.GetUserId();
-                    var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
-                    var manager = new UserManager<ApplicationUser>(store);
-                    var user = manager.FindById(userId);
+                   // var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                    //var manager = new UserManager<ApplicationUser>(store);
+                    var user = Helpers.UserHelper.getUser(userId);
                     user.profileImagePath = dbPath;
-                    manager.UpdateAsync(user);
-                    var ctx = store.Context;
-                    ctx.SaveChanges();
+                    Helpers.UserHelper.updateUser(user);
                     ViewBag.Message = "File uploaded successfully";
                 }
                 catch (Exception ex)
