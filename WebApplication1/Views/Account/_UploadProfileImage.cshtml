@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @model WebApplication1.Models.ManageUserViewModel
 <h4><i class="glyphicon glyphicon-file"></i> Profile Photo Upload</h4>
-@using (Html.BeginForm("ImageUpload", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("ImageUpload", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
 {
     
     @Html.AntiForgeryToken()
