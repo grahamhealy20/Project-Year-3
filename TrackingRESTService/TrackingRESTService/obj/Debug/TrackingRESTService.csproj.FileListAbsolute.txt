@@ -92,3 +92,5 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\T
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csproj.GenerateResource.Cache
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.pdb
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.Migrations.removeNum.resources
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csproj.GenerateResource.Cache
