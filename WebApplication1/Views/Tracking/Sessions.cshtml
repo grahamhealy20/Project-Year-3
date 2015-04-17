@@ -229,7 +229,7 @@
                         var heading = document.createElement('div');
                         $(heading).addClass("timeline-heading");
                         var headingMain = document.createElement('h4');
-                        headingMain.innerHTML = item.temp;
+                        headingMain.innerHTML = item.temp + "°C";
                         heading.appendChild(headingMain);
 
                         var timeText = document.createElement('p');
@@ -240,7 +240,7 @@
                         // Panel body
                         var body = document.createElement('div');
                         $(body).addClass("timeline-body");
-                        body.innerHTML = "TEST";
+                        body.innerHTML = "Motion Warning!";
 
                         panel.appendChild(heading);
                         panel.appendChild(body);
