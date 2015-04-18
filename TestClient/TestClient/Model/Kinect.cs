@@ -20,10 +20,11 @@ namespace TestClient.Model
 {
     class Kinect
     {
+        private int frameIterator = 0;
         private int noOfFrames = 100;
-        private double averageDepth = 0;
         private int frameCounter = 0;
         private bool detectedMotion = false;
+        private bool alertWait = true;
         private int noOfMovedPixels = 0;
         private int noOfNotMovedPixels = 0;
         private double percentage = 0;
@@ -50,7 +51,6 @@ namespace TestClient.Model
         /// <summary>
         /// Intermediate storage for the depth data received from the camera
         /// </summary>
-        private DepthImageFrame depthFrameComp;
 
         private DepthImagePixel[] depthPixelsComp = new DepthImagePixel[307200];
         private short[] depthPixelsRes = new short[307200];
@@ -137,15 +137,21 @@ namespace TestClient.Model
         {
             using (DepthImageFrame depthFrame = e.OpenDepthImageFrame())
             {
+
                 if (depthFrame != null)
                 {
-
                     frameCounter++;
                     if (frameCounter == 100)
                     {
                         frameCounter = 0;
                     }
 
+                    frameIterator++;
+                    // 30 fps so wait for a second after each detection
+                    if (frameIterator == 100) {
+                        alertWait = false;
+                        frameIterator = 0;
+                    }
                     // Copy the pixel data from the image to a temporary array
                     depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
 
@@ -155,10 +161,6 @@ namespace TestClient.Model
                         //detected.Content = "NoOfFrames reached" ;
                         depthFrame.CopyDepthImagePixelDataTo(this.depthPixelsComp);
                         frameCounter = 0;
-                    }
-                    else
-                    {
-
                     }
 
                     // Get the min and max reliable depth for the current frame
@@ -230,7 +232,14 @@ namespace TestClient.Model
                         detectedMotion = true;
                         // Fire event
                         EventArgs eventargs = new EventArgs();
-                        OnMotionDetected(this, eventargs);
+                        // Only fire if bool is false 
+                        if (alertWait == false) {
+                            alertWait = true;
+                            OnMotionDetected(this, eventargs);
+ 
+                        }
+                        
+                        // Need to include some sort of wait
                     }
                     else {
                         detectedMotion = false;

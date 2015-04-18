@@ -58,11 +58,12 @@
     <Compile Include="Model\Sensor.cs" />
     <Compile Include="Model\SensorFactory.cs" />
     <Compile Include="Model\serialPort.cs" />
+    <Compile Include="Model\Session.cs" />
     <Compile Include="Model\TrackingSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RESTConsume.cs" />
-    <Compile Include="TrackingState.cs" />
+    <Compile Include="Model\TrackingState.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

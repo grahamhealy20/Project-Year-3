@@ -8,16 +8,14 @@ namespace TestClient.Model
 {
     class TrackingSession
     {
-        private int userId;
+        private string userId;
         private DateTime time;
         private string place;
         private double temp;
         private int noAlert;
         private Kinect sensor = new Kinect();
         //private Sensor tempSensor = new Sensor();
-        public delegate void TrackingHandler(object myObject,
-                                             EventArgs myArgs);
-
+        public delegate void TrackingHandler(object myObject, EventArgs myArgs);
         public event TrackingHandler onTrackingDetected;
 
         public int startTracking() {
@@ -29,6 +27,7 @@ namespace TestClient.Model
                 sensor.OnMotionDetected += new Kinect.DetectionHandler(FireTrackingEvent);
                 // Start Temp
                 //tempSensor.start();
+                // Start Session on REST
                 return 1;    
 
             } catch(Exception ex) {
@@ -37,26 +36,27 @@ namespace TestClient.Model
             }
         }
 
-        public TrackingState getLatestState() {
-          userId = 1;
-          time = new DateTime();
-          time = DateTime.Now;
+        public int startSession()
+        {
+            Session sess = new Session("7dad98de-37f9-4830-a56b-83c1aef20a14");
+            RESTConsume.StartSession(sess);
+            return 1;
+        }
 
-          place = "Dublin";
-          //temp = tempSensor.getTemp();
-          if (sensor.getDetected() == true)
-          {
-            noAlert++;
-          }
-          else { 
-          
-          }
-          string timestr = time.ToString(); 
-          TrackingState state = new TrackingState(userId, timestr, place, temp, noAlert);
-          return state;
+        public int addState(Model.TrackingState state) {
+            try {
+               RESTConsume.AddState(state);
+               return 1;
+            }
+            catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
         }
 
         void FireTrackingEvent(object a, EventArgs e) {
+            // Call Rest call to add state
+            //Model.TrackingState state = new Model.TrackingState("7dad98de-37f9-4830-a56b-83c1aef20a14", DateTime.Now.ToString(), "Dublin", 30, 1, "Motion Event");
+            //addState(state);
             onTrackingDetected(a, e);
         } 
     }

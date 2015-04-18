@@ -87,7 +87,6 @@ D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Newtons
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\RestSharp.xml
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Twilio.Api.pdb
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\bin\Twilio.Api.xml
-D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.Migrations.removeNum.resources
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.csproj.GenerateResource.Cache
 D:\Y3-PROJECT\Project-Year-3\TrackingRESTService\TrackingRESTService\obj\Debug\TrackingRESTService.dll
