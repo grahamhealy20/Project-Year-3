@@ -237,10 +237,6 @@
     <Compile Include="Migrations\201504131512045_image.Designer.cs">
       <DependentUpon>201504131512045_image.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504182328448_2sd.cs" />
-    <Compile Include="Migrations\201504182328448_2sd.Designer.cs">
-      <DependentUpon>201504182328448_2sd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -304,7 +300,6 @@
     <Content Include="Views\Tracking\_MorrisAreaChart.cshtml" />
     <Content Include="Views\Tracking\GoogleMap.cshtml" />
     <Content Include="Views\Account\_UploadProfileImage.cshtml" />
-    <Content Include="Views\Tracking\Session.cshtml" />
     <None Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -350,9 +345,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504131512045_image.resx">
       <DependentUpon>201504131512045_image.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504182328448_2sd.resx">
-      <DependentUpon>201504182328448_2sd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
