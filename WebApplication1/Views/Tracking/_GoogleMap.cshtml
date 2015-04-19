@@ -1,8 +1,8 @@
 ﻿
 @{
 
-<h2> Emergency Services </h2>
-<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+<h4 style="color:white;"> Emergency Services </h4>
+<script src="https://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
 <style>
@@ -21,7 +21,7 @@
 
     $(document).ready(function ()
     {
-        Initialize();
+        initialize();
     });
 
     var map;
@@ -33,6 +33,8 @@
     function initialize() {
 
         var mapOptions = {
+            streetViewControl: false,
+            zoomControl: false,
             zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: true,
@@ -48,19 +50,12 @@
             navigator.geolocation.getCurrentPosition(function (position)
             {
                 pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
                 infowindow = new google.maps.InfoWindow({ map: map, position: pos, content: 'You Are Here' });
-
                 var request = { location: pos, radius: 50000, types: ['hospital']};
-
                 map.setCenter(pos);
-
-                infowindow = new google.maps.InfoWindow();
                 var service = new google.maps.places.PlacesService(map);
                 service.nearbySearch(request, callback);
-
             },
-
              function () {
                  handleNoGeolocation(true);
              });
@@ -71,16 +66,15 @@
 
         function callback(results, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
+
                 for (var i = 0; i < results.length; i++) {
+                    //alert(results[i].place_id);
                     createMarker(results[i]);
                 }
             }
         }
 
-
-
         function createMarker(place) {
-            var placeLoc = place.geometry.location;
             var marker = new google.maps.Marker({
                 map: map,
                 position: place.geometry.location
@@ -88,8 +82,22 @@
 
             google.maps.event.addListener(marker, 'click', function ()
             {
+                var placeId = place.place_id;
+                //alert(placeId);
+                var request = {
+                    placeId: place.place_id
+                };
 
-                infowindow.setContent(place.name);
+                var service = new google.maps.places.PlacesService(map);
+                service.getDetails(request, function (place, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        infowindow.setContent('<h5>' + place.name + '</h5>' + '<h5>' + place.formatted_phone_number + '</h6>' + place.vicinity);
+                    }
+                });
+
+                //infowindow.setContent(place.name + place.vicinity);
+                //infowindow.setContent('<h5>' + place.name + '</h5>' + '<h5>' + place.rating + '</h6>' + place.vicinity + place.place_id);
+
                 infowindow.open(map, this);
             });
 
