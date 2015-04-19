@@ -1,39 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Runtime.Serialization;
-using System.ComponentModel.DataAnnotations;
-
 namespace WebApplication1.Models.TrackingModel
 {
-   [DataContractAttribute(Namespace = "http://schemas.datacontract.org/2004/07/TrackingRESTService.Model")]
-    public class TrackingState
-    {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-        [DataMemberAttribute]
-        public int Id { get; set; }
-        [DataMemberAttribute]
+    public partial class TrackingState
+    {
         public string UserId { get; set; }
-        [DataMemberAttribute]
+
         public string time { get; set; }
-        [DataMemberAttribute]
+
         public string place { get; set; }
-        [DataMemberAttribute]
-        public double temp { get; set; }
-        [DataMemberAttribute]
+
         public int noAlerts { get; set; }
 
+        public int Session_Id { get; set; }
 
-        public TrackingState(string UserId, string time, string place, double temp, int noAlerts)
-        {
-            this.UserId = UserId;
-            this.time = time;
-            this.place = place;
-            this.temp = temp;
-            this.noAlerts = noAlerts;
-        }
+        [Key]
+        public int TrackingId { get; set; }
 
-  
+        public double temp { get; set; }
+
+        public string stateType { get; set; }
     }
 }

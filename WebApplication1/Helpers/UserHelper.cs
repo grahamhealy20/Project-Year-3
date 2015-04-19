@@ -14,7 +14,6 @@ namespace WebApplication1.Helpers
         private static UserManager<Models.ApplicationUser> manager = new UserManager<Models.ApplicationUser>(store);
         static public Models.ApplicationUser getUser(string userId)
         {
-
             var user = manager.FindById(userId);
             return user;
         }
