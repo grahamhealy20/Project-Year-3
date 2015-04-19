@@ -310,12 +310,12 @@
     <Content Include="Views\Tracking\_MorrisBarChart.cshtml" />
     <Content Include="Views\Tracking\_MorrisDonutChart.cshtml" />
     <Content Include="Views\Tracking\_MorrisAreaChart.cshtml" />
-    <Content Include="Views\Tracking\GoogleMap.cshtml" />
     <Content Include="Views\Account\_UploadProfileImage.cshtml" />
     <Content Include="Views\Tracking\Session.cshtml" />
     <Content Include="Views\Tracking\_SmallSessionInfoPanel.cshtml" />
     <Content Include="Views\Tracking\_EasyChartAVGTemp.cshtml" />
     <Content Include="Views\Tracking\_EasyChartNoOfAlerts.cshtml" />
+    <Content Include="Views\Tracking\_GoogleMap.cshtml" />
     <None Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
