@@ -1,4 +1,4 @@
-namespace WebApplication1.Models.TrackingModel
+namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +8,11 @@ namespace WebApplication1.Models.TrackingModel
 
     public partial class Session
     {
+        public Session()
+        {
+            TrackingStates = new HashSet<Models.TrackingModel.TrackingState>();
+        }
+
         public int Id { get; set; }
 
         public string UserId { get; set; }
@@ -19,5 +24,7 @@ namespace WebApplication1.Models.TrackingModel
         public string temp { get; set; }
 
         public int noAlerts { get; set; }
+
+        public virtual ICollection<Models.TrackingModel.TrackingState> TrackingStates { get; set; }
     }
 }
