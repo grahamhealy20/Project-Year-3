@@ -4,39 +4,90 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
-using System.Data.Entity;
 using System.IO;
 using System.Runtime.Serialization;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApplication1.Controllers
 {
     public class TrackingController : BaseController
     {
+        private static WebClient proxy = new WebClient();
+        private List<Models.TrackingModel.TrackingState> objects = new List<Models.TrackingModel.TrackingState>();
         private Models.TrackingModel.TrackingState state;
-        Models.ApplicationDbContext db = new Models.ApplicationDbContext();
+
 
         // GET: Tracking
         public ActionResult Index()
         {
+          try {
+              objects = GetAllTrackingStateByID(User.Identity.GetUserId());
+              Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
+           }
+          catch (Exception ex) { 
+            Danger(string.Format("<strong>ERROR: </strong>{0}", ex.Message), true);
+           }    
             // objects.Add(new Models.TrackingModel.TrackingState(2, "3:00", "Ballyfermot", 30.00, 4));
-            return View();
+            return View(objects);
         }
 
         public ActionResult Sessions() {
             return View();
         }
 
-        public ActionResult Session(int id)
+        public ActionResult ListOfStatesID()
         {
-            //var session = db.Sessions.Include(x => x.states).Where(x => x.Id == id);
-            //var session = db.Sessions.Find(id);
-            Models.TrackingModel.Session session = db.Sessions.Include(s => s.Session_Id).Where(p => p.Id == id ).First();
-
-            return View(session);
+            try
+            {
+                Warning("IN TRACKING FUNC");
+                objects = GetAllTrackingStateByID(User.Identity.GetUserId());
+                Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
+            }
+            catch (Exception ex)
+            {
+                Danger(string.Format("<strong>ERROR: </strong>{0}", ex.Message), true);
+            }
+            // objects.Add(new Models.TrackingModel.TrackingState(2, "3:00", "Ballyfermot", 30.00, 4));
+            return View(objects);
         }
 
+
+        public ActionResult TrackingInfoID() {
+            //state = GetTrackingState(Convert.ToInt32(User.Identity.GetUserId()));
+            
+            state = GetTrackingState(2147483647);
+            return View(state);
+        }
+
+        public List<Models.TrackingModel.TrackingState> GetAllTrackingState() { 
+            byte[] toByte = proxy.DownloadData((new Uri("http://localhost:4082/TrackingService.svc/GetAllTrackingState")));
+
+            Stream strm = new MemoryStream(toByte); 
+            DataContractSerializer obj = new DataContractSerializer(typeof(List<Models.TrackingModel.TrackingState>));
+            var objects = (List<Models.TrackingModel.TrackingState>) obj.ReadObject(strm);
+            return objects;
+        }
+
+        public Models.TrackingModel.TrackingState GetTrackingState(int id)
+        {
+            byte[] toByte = proxy.DownloadData((new Uri("http://localhost:4082/TrackingService.svc/TrackingState/latest/" + id)));
+
+            Stream strm = new MemoryStream(toByte);
+            DataContractSerializer obj = new DataContractSerializer(typeof(Models.TrackingModel.TrackingState));
+            var state = (Models.TrackingModel.TrackingState)obj.ReadObject(strm);
+            return state;
+        }
+        public List<Models.TrackingModel.TrackingState> GetAllTrackingStateByID(string id)
+        {
+            string user_id = id;
+        //a99f2883-8ed3-4583-afdb-3f570f159cf3
+            byte[] toByte = proxy.DownloadData((new Uri("http://localhost:4082/TrackingService.svc/TrackingState/" + id)));
+
+            Stream strm = new MemoryStream(toByte);
+            DataContractSerializer obj = new DataContractSerializer(typeof(List<Models.TrackingModel.TrackingState>));
+            var objects = (List<Models.TrackingModel.TrackingState>)obj.ReadObject(strm);
+            return objects;
+        }
 
         public string Welcome() {
             return "This is the welcome action method.";

@@ -141,7 +141,6 @@
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
@@ -226,29 +225,17 @@
     <Compile Include="Helpers\Alert.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
-    <Compile Include="Migrations\201504182341283_SessionCRUD.cs" />
-    <Compile Include="Migrations\201504182341283_SessionCRUD.Designer.cs">
-      <DependentUpon>201504182341283_SessionCRUD.cs</DependentUpon>
+    <Compile Include="Migrations\201504131343251_userPnumber.cs" />
+    <Compile Include="Migrations\201504131343251_userPnumber.Designer.cs">
+      <DependentUpon>201504131343251_userPnumber.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504190040584_cf.cs" />
-    <Compile Include="Migrations\201504190040584_cf.Designer.cs">
-      <DependentUpon>201504190040584_cf.cs</DependentUpon>
+    <Compile Include="Migrations\201504131358153_mig.cs" />
+    <Compile Include="Migrations\201504131358153_mig.Designer.cs">
+      <DependentUpon>201504131358153_mig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504190049012_cf1.cs" />
-    <Compile Include="Migrations\201504190049012_cf1.Designer.cs">
-      <DependentUpon>201504190049012_cf1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504190055380_cf2.cs" />
-    <Compile Include="Migrations\201504190055380_cf2.Designer.cs">
-      <DependentUpon>201504190055380_cf2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504190109243_cf3.cs" />
-    <Compile Include="Migrations\201504190109243_cf3.Designer.cs">
-      <DependentUpon>201504190109243_cf3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504190123399_mig.cs" />
-    <Compile Include="Migrations\201504190123399_mig.Designer.cs">
-      <DependentUpon>201504190123399_mig.cs</DependentUpon>
+    <Compile Include="Migrations\201504131512045_image.cs" />
+    <Compile Include="Migrations\201504131512045_image.Designer.cs">
+      <DependentUpon>201504131512045_image.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -313,7 +300,6 @@
     <Content Include="Views\Tracking\_MorrisAreaChart.cshtml" />
     <Content Include="Views\Tracking\GoogleMap.cshtml" />
     <Content Include="Views\Account\_UploadProfileImage.cshtml" />
-    <Content Include="Views\Tracking\Session.cshtml" />
     <None Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -337,6 +323,7 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Tracking\Index.cshtml" />
+    <Content Include="Views\Tracking\TrackingInfoID.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
@@ -350,23 +337,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504182341283_SessionCRUD.resx">
-      <DependentUpon>201504182341283_SessionCRUD.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504131343251_userPnumber.resx">
+      <DependentUpon>201504131343251_userPnumber.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504190040584_cf.resx">
-      <DependentUpon>201504190040584_cf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504131358153_mig.resx">
+      <DependentUpon>201504131358153_mig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504190049012_cf1.resx">
-      <DependentUpon>201504190049012_cf1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504190055380_cf2.resx">
-      <DependentUpon>201504190055380_cf2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504190109243_cf3.resx">
-      <DependentUpon>201504190109243_cf3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504190123399_mig.resx">
-      <DependentUpon>201504190123399_mig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504131512045_image.resx">
+      <DependentUpon>201504131512045_image.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

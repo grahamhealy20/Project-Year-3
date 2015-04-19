@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
 
 namespace WebApplication1.Models
 {
@@ -35,7 +34,5 @@ namespace WebApplication1.Models
         }
 
         public System.Data.Entity.DbSet<WebApplication1.Models.TrackingModel.TrackingState> TrackingStates { get; set; }
-
-        public System.Data.Entity.DbSet<WebApplication1.Models.TrackingModel.Session> Sessions { get; set; }
     }
 }
