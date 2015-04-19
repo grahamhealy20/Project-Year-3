@@ -362,3 +362,5 @@ C:\Users\Keith\Documents\GitHub\Project-Year-3\WebApplication1\obj\Debug\WebAppl
 C:\Users\Keith\Documents\GitHub\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migrations.mig.resources
 C:\Users\Keith\Documents\GitHub\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migrations.image.resources
 D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migrations.mig1.resources
+D:\Y3-PROJECT\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migrations.mig2.resources

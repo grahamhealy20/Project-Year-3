@@ -1,0 +1,91 @@
+﻿@model WebApplication1.Models.TrackingModel.Session
+@using WebApplication1.Models.TrackingModel;
+
+@{
+    ViewBag.Title = "Session";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Session @Html.DisplayFor(model => model.Id)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.temp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noAlerts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noAlerts)
+        </dd>
+    </dl>
+    
+    <ul class="timeline">
+        @{
+            var iterate = 1;
+            var inverse = "";
+                     
+        foreach (var item in Model.states)
+        {
+            if (iterate == 1)
+            {
+                inverse = "timeline-inverted";
+                iterate = 0;
+            }
+            else
+            {
+                inverse = "";
+                iterate = 1;
+            }
+            <li class="@inverse">
+                <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title"> @item.temp °C</h4>
+                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                    </div>
+                </div>
+            </li>        
+        }
+        }
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Delete", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Sessions")
+</p>

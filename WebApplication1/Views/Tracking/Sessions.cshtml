@@ -179,7 +179,7 @@
                     var panelHeader = document.createElement('div')
                     $(panelHeader).addClass("panel-heading");
                     //Header info goes here
-                    panelHeader.innerHTML = '<h5><strong>Session: ' + item.Id + '<strong></h5>';
+                    panelHeader.innerHTML = '<h5><strong><a href="session/' + item.Id + '"> Session: ' + item.Id + '</a><strong></h5>';
 
                     div.appendChild(panelHeader);
 
@@ -253,10 +253,6 @@
                     document.getElementById("trackingInfo").appendChild(div);
                     $(div).fadeIn("slow");
                     $(timeline).fadeIn("slow");
-                    $('html,body').animate({
-                        scrollTop: $(timeline).offset().top
-                    },
-                  'slow');
                 });
 
             },

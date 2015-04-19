@@ -7,6 +7,7 @@ using System.Net;
 using System.IO;
 using System.Runtime.Serialization;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace WebApplication1.Controllers
 {
@@ -33,6 +34,14 @@ namespace WebApplication1.Controllers
 
         public ActionResult Sessions() {
             return View();
+        }
+        public ActionResult Session(int id)
+        {
+            Models.TrackingModel.Session session;
+            using (var db = new Models.ApplicationDbContext()) {
+                 session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+            }
+            return View(session);
         }
 
         public ActionResult ListOfStatesID()
