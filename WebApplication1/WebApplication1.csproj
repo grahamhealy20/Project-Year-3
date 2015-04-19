@@ -251,6 +251,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\TrackingModel\Session.cs" />
     <Compile Include="Models\TrackingModel\TrackingState.cs" />
+    <Compile Include="Models\TrackingModel\TrackingViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -295,7 +296,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -10,7 +10,6 @@
 }
 
 <h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>
-@{Html.RenderPartial("_MorrisLineChart"); }
 
 <script>
     var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
