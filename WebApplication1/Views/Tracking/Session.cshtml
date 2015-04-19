@@ -1,17 +1,58 @@
 ﻿@model WebApplication1.Models.TrackingModel.Session
 @using WebApplication1.Models.TrackingModel;
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Session";
+    if (User.Identity.GetUserId() != Model.UserId)
+    {
+        <h1>NOT ALLOWED</h1>
+        Response.Redirect("~/Tracking/Sessions", false);
+    }
+    
+    if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login?returnUrl="
+            + Request.Url.LocalPath);
+    }
+
+
 }
 
-<h2>Details</h2>
 
-<div id="tempchart"> </div>
+<div id="sessionDetails" class="">
+    <div class="row" style="background-color:#0070ea; color:white;">
+        <h1 style="color:#ffffff; padding-left:10px;">Details <i class="glyphicon glyphicon-info-sign"></i><small> #@Html.DisplayFor(model => model.Id)</small></h1>
+    </div>
+    <div class="row" style="background-color:#0057b6; color:white;">
+        <div class="col-md-4" style="background-color:#0057b6; padding-top:5px;">
+            <h4 class="text-center">Start Time <i class="glyphicon glyphicon-time"></i></h4>
+            <hr />
+            <h5 class="text-center">@Html.DisplayFor(model => model.time)</h5>
+            <hr />
+        </div>
+        <div class="col-md-4" style="background-color:#0057b6; padding-top:5px;">
+            <div style="height:150px" class="text-center">
+                <h4 class="">Average Temperature</h4>
+                <div class="chart"  data-scale-color="#ffb400"><span class="percent" id="tempPer"></span></div>
+
+            </div>
+        </div>
+        <div class="col-md-4 text-center" style="background-color:#0057b6; padding-top:5px;">
+            <h4>Total Events</h4>
+            <div id="totalNo" class="chart" data-percent="@Model.states.Count" data-scale-color="#ffb400"><span class="percent2" id="totalNoLabel">@Model.states.Count</span></div>
+        </div>
+    </div>
+</div>
+<div id="maps" style="color:white;">
+    <div class="row" style="background-color:#f25151"><h2 style="padding-left:10px;">Maps <i class="glyphicon glyphicon-map-marker"></i></h2></div>
+    <div class="row" style="background-color:#c44646">
+     Location
+    </div>
+</div>
 
 <div>
-    @{Html.RenderPartial("_MorrisLineChart", Model); }
-    <h4>Session @Html.DisplayFor(model => model.Id)</h4>
+    <h4>Session</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -54,7 +95,7 @@
             @Html.DisplayFor(model => model.noAlerts)
         </dd>
     </dl>
-    
+    <div id="tempchart" class="panelBorder" style="height:400px;"> </div>
     <ul class="timeline">
         @{
             var iterate = 1;
@@ -92,3 +133,11 @@
     @Html.ActionLink("Delete", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Sessions")
 </p>
+
+@if (Model.states != null)
+{
+    Html.RenderPartial("_MorrisLineChart", Model);
+    Html.RenderPartial("_MorrisDonutChart", Model);
+    Html.RenderPartial("_EasyChartAVGTemp", Model);
+    Html.RenderPartial("_EasyChartNoOfAlerts", Model);
+}

@@ -2,16 +2,16 @@
 @using WebApplication1.Models.TrackingModel;
 
 @{
+    <div id="infoPanel"></div>
     <script>
-        $.get('@Url.Action("GetDataForPlot/" + Model.Id)', function (result) {
+        $.get('@Url.Action("GetNoOfStatesInSession/" + Model.Id)', function (result) {
             if (result != null) {
-                new Morris.Area({
+                new Morris.Line({
                     // ID of the element in which to draw the chart.
-                    element: 'tempchart',
+                    element: 'infoPanel',
                     // Chart data records -- each entry in this array corresponds to a point on
                     // the chart.
                     parseTime: false,
-                    resize: true,
                     data: result,
                     // The name of the data record attribute that contains x-values.
                     xkey: 'date',
@@ -22,6 +22,6 @@
                     labels: ['Temp']
                 });
             }
-        });    
+        });
     </script>
 }

@@ -20,4 +20,17 @@ namespace WebApplication1.Models.TrackingModel
             this.temp = temp;
         }
     }
+
+    public class TrackingTempDonutChartModel
+    {
+        public string type { get; set; }
+        public int count { get; set; }
+
+        public TrackingTempDonutChartModel() { }
+        public TrackingTempDonutChartModel(string type, int count)
+        {
+            this.type = type;
+            this.count = count;
+        }
+    }
 }
