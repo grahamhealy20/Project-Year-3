@@ -119,6 +119,10 @@ namespace WebApplication1.Controllers
             return View(objects);
         }
 
+        public ActionResult DeleteSession(int id) {
+            Success("Session Deleted", true);
+            return View("Sessions");
+        }
 
         public ActionResult TrackingInfoID()
         {
