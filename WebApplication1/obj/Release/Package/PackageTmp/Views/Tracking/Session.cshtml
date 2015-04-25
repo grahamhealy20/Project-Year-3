@@ -1,0 +1,145 @@
+﻿@model WebApplication1.Models.TrackingModel.Session
+@using WebApplication1.Models.TrackingModel;
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Session";
+    if (User.Identity.GetUserId() != Model.UserId)
+    {
+        <h1>NOT ALLOWED</h1>
+        Response.Redirect("~/Tracking/Sessions", false);
+    }
+    
+    if (!Request.IsAuthenticated)
+    {
+        Response.Redirect("~/Account/Login?returnUrl="
+            + Request.Url.LocalPath);
+    }
+
+
+}
+
+
+<div id="sessionDetails" class="">
+    <div class="row" style="background-color:#0070ea; color:white;">
+        <h1 style="color:#ffffff; padding-left:10px;">Details <i class="glyphicon glyphicon-info-sign"></i><small> #@Html.DisplayFor(model => model.Id)</small></h1>
+    </div>
+    <div class="row" style="background-color:#0057b6; color:white;">
+        <div class="col-md-4" style="background-color:#0057b6; padding-top:5px;">
+            <h4 class="text-center">Start Time <i class="glyphicon glyphicon-time"></i></h4>
+            <hr />
+            <h5 class="text-center">@Html.DisplayFor(model => model.time)</h5>
+            <hr />
+        </div>
+        <div class="col-md-4" style="background-color:#0057b6; padding-top:5px;">
+            <div style="height:150px" class="text-center">
+                <h4 class="">Average Temperature</h4>
+                <div class="chart"  data-scale-color="#ffb400"><span class="percent" id="tempPer"></span></div>
+
+            </div>
+        </div>
+        <div class="col-md-4 text-center" style="background-color:#0057b6; padding-top:5px;">
+            <h4>Total Events</h4>
+            <div id="totalNo" class="chart" data-percent="@Model.states.Count" data-scale-color="#ffb400"><span class="percent2" id="totalNoLabel">@Model.states.Count</span></div>
+        </div>
+    </div>
+</div>
+<div id="maps" style="color:white;">
+    <div class="row" style="background-color:#f25151"><h2 style="padding-left:10px;">Maps <i class="glyphicon glyphicon-map-marker"></i></h2></div>
+    <div class="row" style="background-color:#c44646">
+        <div style="height:400px; color:black;">
+            @{Html.RenderPartial("_GoogleMap");}
+        </div>
+    </div>
+</div>
+
+<div>
+    <h4>Session</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.place)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.place)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.temp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.temp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noAlerts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noAlerts)
+        </dd>
+    </dl>
+    <div id="tempchart" class="panelBorder" style="height:400px;"> </div>
+    <ul class="timeline">
+        @{
+            var iterate = 1;
+            var inverse = "";
+                     
+        foreach (var item in Model.states)
+        {
+            if (iterate == 1)
+            {
+                inverse = "timeline-inverted";
+                iterate = 0;
+            }
+            else
+            {
+                inverse = "";
+                iterate = 1;
+            }
+            <li class="@inverse">
+                <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title"> @item.temp °C</h4>
+                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> @item.time </small></p>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                    </div>
+                </div>
+            </li>        
+        }
+        }
+    </ul>
+</div>
+<p>
+    @Html.ActionLink("Delete", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Sessions")
+</p>
+
+@if (Model.states != null)
+{
+    Html.RenderPartial("_MorrisLineChart", Model);
+    Html.RenderPartial("_MorrisDonutChart", Model);
+    Html.RenderPartial("_EasyChartAVGTemp", Model);
+    Html.RenderPartial("_EasyChartNoOfAlerts", Model);
+}

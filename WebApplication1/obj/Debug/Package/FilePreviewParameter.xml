@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="BabyMonitor" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="AppHostConfig" match="^WebApplication1$" />
+    <parameterEntry kind="ProviderPath" scope="contentPath" match="^D:\\Y3-PROJECT\\Project-Year-3\\WebApplication1\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Y3-PROJECT\\Project-Year-3\\WebApplication1\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="IIS Web Application Pool Name" description="" value="ASP.NET v4.0" tags="">
+    <parameterEntry kind="DeploymentObjectAttribute" scope="application" match="application[@applicationPool='Clr4IntegratedAppPool']/@applicationPool" />
+  </parameter>
+  <parameter name="IisVirtualDirectoryPhysicalPath" description="" value="D:\Y3-PROJECT\Project-Year-3\WebApplication1_deploy" tags="PhysicalPath">
+    <parameterEntry kind="DestinationVirtualDirectory" scope=".*" match="^D:\\Y3-PROJECT\\Project-Year-3\\WebApplication1$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="BabyMonitor/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Y3-PROJECT\\Project-Year-3\\WebApplication1\\obj\\Debug\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="TrackingContext-Web.config Connection String" description="" value="Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Y3-PROJECT\Project-Year-3\WebApplication1\App_Data\aspnet-WebApplication1-20150320065626.mdf;Integrated Security=True;Connect Timeout=30" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Y3-PROJECT\\Project-Year-3\\WebApplication1\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TrackingContext']/@connectionString" />
+  </parameter>
+</parameters>

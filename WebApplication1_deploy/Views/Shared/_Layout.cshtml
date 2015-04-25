@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNet.Identity;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Baby Monitor Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/extrajs")
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    @RenderSection("scripts", required: false)
+</head>
+<body id="body" data-user-id="@User.Identity.GetUserId()">
+    @{ Html.RenderPartial("_Alerts"); }
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Baby Monitor", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @{
+                        if (Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Tracking")</li>
+                            <li>@Html.ActionLink("Tracking", "Index", "Tracking")</li>
+                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div id="conatiner" class="container body-content">
+        @User.Identity.GetUserId()
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Graham Healy &amp; Keith Doolan</p>
+        </footer>
+    </div>
+
+    @if (Request.IsAuthenticated)
+    {
+        <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+        <script>
+            $(function () {
+                var userID = "@User.Identity.GetUserId()";
+                var connection = $.hubConnection("https://localhost:44301/signalr", { useDefaultPath: false });
+                // Reference the auto-generated proxy for the hub.
+                connection.qs = { 'userID': userID };
+                console.log(userID);
+                var notification = connection.createHubProxy('notificationHub');
+
+                // Set query string and cross domain URL
+
+                notification.on('send', function (message) {
+                    console.log(message);
+                });
+                // Start the connection.
+                connection.start().done(function () {
+                    console.log("Connected, connection ID: " + connection.id);
+                }).fail(function () {
+                    console.log("Cant even right now");
+                });
+            });
+            // This optional function html-encodes messages for display in the page.
+            function htmlEncode(value) {
+                var encodedValue = $('<div />').text(value).html();
+                return encodedValue;
+            }
+        </script>
+    }
+</body>
+</html>

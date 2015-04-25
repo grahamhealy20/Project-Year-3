@@ -1,0 +1,27 @@
+﻿@model WebApplication1.Models.TrackingModel.Session
+@using WebApplication1.Models.TrackingModel;
+
+@{
+    <script>
+        $.get('@Url.Action("GetDataForPlot/" + Model.Id)', function (result) {
+            if (result != null) {
+                new Morris.Area({
+                    // ID of the element in which to draw the chart.
+                    element: 'tempchart',
+                    // Chart data records -- each entry in this array corresponds to a point on
+                    // the chart.
+                    parseTime: false,
+                    resize: true,
+                    data: result,
+                    // The name of the data record attribute that contains x-values.
+                    xkey: 'date',
+                    // A list of names of data record attributes that contain y-values.
+                    ykeys: ['temp'],
+                    // Labels for the ykeys -- will be displayed when you hover over the
+                    // chart.
+                    labels: ['Temp']
+                });
+            }
+        });    
+    </script>
+}

@@ -28,9 +28,9 @@ C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Debug\T
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.exe.config
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.exe
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Form1.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properties.Resources.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
