@@ -17,6 +17,11 @@ namespace TestClient
     {
         private System.Timers.Timer delay;
         private bool started = false;
+        private static Model.ApplicationUser user;
+        public void setUser(Model.ApplicationUser user_in) {
+            user = user_in;
+        }
+
 
         private Model.TrackingSession trackedState;
         public Form1()

@@ -34,3 +34,12 @@ D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.G
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.LoginForm.resources
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.dll
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.SqlServer.dll
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.xml
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.SqlServer.xml
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
