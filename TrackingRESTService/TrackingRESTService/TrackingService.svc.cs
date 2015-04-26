@@ -261,5 +261,25 @@ namespace TrackingRESTService
                 throw new FaultException(ex.Message);
             }
         }
+
+        public bool DeleteSession(string id)
+        {
+            try
+            {
+                int sessionId = Convert.ToInt32(id);
+
+                using (var db = new Model.TrackingContext())
+                {
+                    Model.Session session = db.Sessions.Include(x => x.states).SingleOrDefault(x => x.Id == sessionId);
+                    db.Sessions.Remove(session);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
     }
 }

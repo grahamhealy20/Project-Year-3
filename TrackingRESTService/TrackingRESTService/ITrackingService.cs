@@ -68,6 +68,10 @@ namespace TrackingRESTService
         [WebInvoke(UriTemplate = "Session/Add/TrackingState/", Method = "POST")]
         int AddStateToLatestSession(Model.TrackingState toAdd);
 
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Session/Delete/{id}", Method = "DELETE")]
+        bool DeleteSession(string id);
+
 
     }
 }

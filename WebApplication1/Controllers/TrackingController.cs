@@ -120,8 +120,21 @@ namespace WebApplication1.Controllers
         }
 
         public ActionResult DeleteSession(int id) {
-            Success("Session Deleted", true);
-            return View("Sessions");
+            try
+            {
+                using (var client = new WebClient()) {
+                   // client.BaseAddress = new Uri("https://localhost:44301/TrackingService.svc/delete/" + id).ToString();
+                    client.UploadString("https://localhost:44301/TrackingService.svc/Session/Delete/" + id, "DELETE", "");
+                }
+
+                Success("Session Deleted", true);
+
+                return RedirectToAction("Sessions");
+            }
+            catch (Exception ex) {
+                Danger(ex.Message, true);
+                return RedirectToAction("Sessions");
+            }        
         }
 
         public ActionResult TrackingInfoID()

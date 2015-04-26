@@ -16,8 +16,9 @@ namespace TrackingRESTService.Model
         public virtual DbSet<TrackingState> TrackingStates { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
        // public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Session>().HasMany(x => x.states).WithRequired().WillCascadeOnDelete();
+        }
     }
 }
