@@ -29,5 +29,20 @@ namespace TrackingRESTService.Model
 
 
         }
+
+        public int sendAlertMessage(string destination, TrackingState state) {
+            try
+            {
+                string message = "Alert Fired " +
+                    "\nTime: " + state.time +
+                    "\nTemperature: " + state.temp +
+                    "\nAlert Type: " + state.stateType;
+                var msg = twilio.SendMessage("+15016536511", destination, message);
+                return 1;
+            }
+            catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

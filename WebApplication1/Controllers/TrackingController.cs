@@ -94,7 +94,7 @@ namespace WebApplication1.Controllers
             //};
 
             // Convert to a percentage of 30 deg
-            averageTemp = (averageTemp / 30) * 100;
+            
             averageTemp = Math.Round(averageTemp);
 
             JsonResult jr = new JsonResult();
@@ -127,12 +127,12 @@ namespace WebApplication1.Controllers
                     client.UploadString("https://localhost:44301/TrackingService.svc/Session/Delete/" + id, "DELETE", "");
                 }
 
-                Success("Session Deleted", true);
+                Success("<strong>Success!</strong> Session Deleted", true);
 
                 return RedirectToAction("Sessions");
             }
             catch (Exception ex) {
-                Danger(ex.Message, true);
+                Danger("<strong>Warning!</strong> " + ex.Message, true);
                 return RedirectToAction("Sessions");
             }        
         }

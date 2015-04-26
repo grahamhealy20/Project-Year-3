@@ -248,7 +248,8 @@ namespace TrackingRESTService
                         const string body = "Body - Somethings's been detected";
                         emailHelper.sendMessage(toAddress, subject, body);
                         string pNumber = "+353" + user.PhoneNumber;
-                        smsHelper.sendMessage(pNumber, "TEST");
+                        //smsHelper.sendMessage(pNumber, "TEST");
+                        smsHelper.sendAlertMessage(pNumber, toAdd);
                     }   
                     // Uncomment to enable SMS notificaitons.
                     var context = GlobalHost.ConnectionManager.GetHubContext<Hubs.NotificationHub>();

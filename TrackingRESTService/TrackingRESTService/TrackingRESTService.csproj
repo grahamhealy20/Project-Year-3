@@ -130,14 +130,6 @@
     <Compile Include="Hubs\ConnectionInfo.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="ITrackingService.cs" />
-    <Compile Include="Migrations\201504131357361_removeNum.cs" />
-    <Compile Include="Migrations\201504131357361_removeNum.Designer.cs">
-      <DependentUpon>201504131357361_removeNum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504261647124_cascade.cs" />
-    <Compile Include="Migrations\201504261647124_cascade.Designer.cs">
-      <DependentUpon>201504261647124_cascade.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Alert.cs" />
     <Compile Include="Model\EMailHelper.cs" />
@@ -169,14 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201504131357361_removeNum.resx">
-      <DependentUpon>201504131357361_removeNum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504261647124_cascade.resx">
-      <DependentUpon>201504261647124_cascade.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
