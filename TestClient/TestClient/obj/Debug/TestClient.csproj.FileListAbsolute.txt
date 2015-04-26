@@ -43,3 +43,12 @@ D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.xml
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.SqlServer.xml
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.LoginForm.resources
