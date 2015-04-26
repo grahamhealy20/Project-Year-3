@@ -8,6 +8,7 @@ namespace TestClient.Model
 {
     class TrackingSession
     {
+        private Model.ApplicationUser user;
         private string userId;
         private DateTime time;
         private string place;
@@ -17,6 +18,12 @@ namespace TestClient.Model
         //private Sensor tempSensor = new Sensor();
         public delegate void TrackingHandler(object myObject, EventArgs myArgs);
         public event TrackingHandler onTrackingDetected;
+
+        public TrackingSession() { }
+
+        public TrackingSession(Model.ApplicationUser user_in) {
+            user = user_in;
+        }
 
         public int startTracking() {
             try {
@@ -38,7 +45,7 @@ namespace TestClient.Model
 
         public int startSession()
         {
-            Session sess = new Session("7dad98de-37f9-4830-a56b-83c1aef20a14");
+            Session sess = new Session(user.Id);
             RESTConsume.StartSession(sess);
             return 1;
         }
@@ -55,7 +62,7 @@ namespace TestClient.Model
 
         void FireTrackingEvent(object a, EventArgs e) {
             // Call Rest call to add state
-            //Model.TrackingState state = new Model.TrackingState("7dad98de-37f9-4830-a56b-83c1aef20a14", DateTime.Now.ToString(), "Dublin", 30, 1, "Motion Event");
+            //Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", 30, 1, "Motion Event");
             //addState(state);
             onTrackingDetected(a, e);
         } 

@@ -34,10 +34,11 @@
             this.SignOutButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.URLAnchorLabel = new System.Windows.Forms.LinkLabel();
+            this.ProjectNameLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ProjectNameLabel = new System.Windows.Forms.Label();
-            this.URLAnchorLabel = new System.Windows.Forms.LinkLabel();
+            this.UserName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -102,6 +103,28 @@
             this.panel1.Size = new System.Drawing.Size(344, 45);
             this.panel1.TabIndex = 7;
             // 
+            // URLAnchorLabel
+            // 
+            this.URLAnchorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.URLAnchorLabel.AutoSize = true;
+            this.URLAnchorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.URLAnchorLabel.Location = new System.Drawing.Point(201, 18);
+            this.URLAnchorLabel.Name = "URLAnchorLabel";
+            this.URLAnchorLabel.Size = new System.Drawing.Size(140, 18);
+            this.URLAnchorLabel.TabIndex = 1;
+            this.URLAnchorLabel.TabStop = true;
+            this.URLAnchorLabel.Text = "BabyGuard Website";
+            // 
+            // ProjectNameLabel
+            // 
+            this.ProjectNameLabel.AutoSize = true;
+            this.ProjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.ProjectNameLabel.Location = new System.Drawing.Point(13, 13);
+            this.ProjectNameLabel.Name = "ProjectNameLabel";
+            this.ProjectNameLabel.Size = new System.Drawing.Size(111, 25);
+            this.ProjectNameLabel.TabIndex = 0;
+            this.ProjectNameLabel.Text = "BabyGuard";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.SignOutButton);
@@ -114,6 +137,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.UserName);
             this.panel3.Controls.Add(this.MotionLabel);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -122,27 +146,13 @@
             this.panel3.Size = new System.Drawing.Size(344, 162);
             this.panel3.TabIndex = 9;
             // 
-            // ProjectNameLabel
+            // UserName
             // 
-            this.ProjectNameLabel.AutoSize = true;
-            this.ProjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.ProjectNameLabel.Location = new System.Drawing.Point(13, 13);
-            this.ProjectNameLabel.Name = "ProjectNameLabel";
-            this.ProjectNameLabel.Size = new System.Drawing.Size(111, 25);
-            this.ProjectNameLabel.TabIndex = 0;
-            this.ProjectNameLabel.Text = "BabyGuard";
-            // 
-            // URLAnchorLabel
-            // 
-            this.URLAnchorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.URLAnchorLabel.AutoSize = true;
-            this.URLAnchorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.URLAnchorLabel.Location = new System.Drawing.Point(201, 18);
-            this.URLAnchorLabel.Name = "URLAnchorLabel";
-            this.URLAnchorLabel.Size = new System.Drawing.Size(140, 18);
-            this.URLAnchorLabel.TabIndex = 1;
-            this.URLAnchorLabel.TabStop = true;
-            this.URLAnchorLabel.Text = "BabyGuard Website";
+            this.UserName.AutoSize = true;
+            this.UserName.Location = new System.Drawing.Point(12, 7);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(0, 13);
+            this.UserName.TabIndex = 7;
             // 
             // Form1
             // 
@@ -176,6 +186,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.LinkLabel URLAnchorLabel;
+        private System.Windows.Forms.Label UserName;
     }
 }
 

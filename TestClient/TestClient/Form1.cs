@@ -21,6 +21,7 @@ namespace TestClient
         private static Model.ApplicationUser user;
         public void setUser(Model.ApplicationUser user_in) {
             user = user_in;
+            UserName.Text = user.firstName + " " + user.lastName;
         }
 
 
