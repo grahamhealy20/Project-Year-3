@@ -134,10 +134,6 @@
     <Compile Include="Migrations\201504131357361_removeNum.Designer.cs">
       <DependentUpon>201504131357361_removeNum.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504261406257_d.cs" />
-    <Compile Include="Migrations\201504261406257_d.Designer.cs">
-      <DependentUpon>201504261406257_d.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Alert.cs" />
     <Compile Include="Model\EMailHelper.cs" />
@@ -173,9 +169,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201504131357361_removeNum.resx">
       <DependentUpon>201504131357361_removeNum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504261406257_d.resx">
-      <DependentUpon>201504261406257_d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
