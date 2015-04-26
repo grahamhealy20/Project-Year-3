@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using System.Diagnostics;
 
 namespace TestClient
 {
@@ -23,12 +24,17 @@ namespace TestClient
         public void SignIn(string userName, string password) {
             if (VerifyUserNamePassword(userName, password) == true)
             {
+                ErrorLabel.Text = "Correct! Logging in";
+                ErrorLabel.ForeColor = System.Drawing.Color.Green;
                 //Application.Run(new Form1());
                 form.Show();
+                this.Hide();
                 //Close();
             }
             else {
-                EmailTextBox.Text = "Incorrect Credentials";
+                ErrorLabel.Text = "Incorrect User Name or Password";
+                PasswordTextBox.Clear();
+                ErrorLabel.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -52,6 +58,17 @@ namespace TestClient
         private void VerifyUser_Click(object sender, EventArgs e)
         {
             SignIn(EmailTextBox.Text, PasswordTextBox.Text);
+        }
+
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegisterLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegisterLabel.LinkVisited = true;
+            Process.Start("https://localhost:44320/");
         }
 
         //public async Task<bool> VerifyUserNamePassword(string userName, string password)

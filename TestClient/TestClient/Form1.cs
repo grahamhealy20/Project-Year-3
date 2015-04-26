@@ -15,6 +15,7 @@ namespace TestClient
 {
     public partial class Form1 : Form
     {
+        //private LoginForm login = new LoginForm();
         private System.Timers.Timer delay;
         private bool started = false;
         private static Model.ApplicationUser user;
@@ -48,20 +49,28 @@ namespace TestClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            started = true;
-            if (started == true)
-            {
-                //backgroundWorker1 = new BackgroundWorker();
+            if (button1.Text == "Start") {
+                button1.Text = "Stop";
                 backgroundWorker1.RunWorkerAsync();
-                trackedState.startSession();
             }
+            else if (button1.Text == "Stop") {
+                button1.Text = "Start";
+                // Stop Session
+            }
+
+            //started = true;
+           // if (started == true)
+           // {
+                //backgroundWorker1 = new BackgroundWorker();
+                //backgroundWorker1.RunWorkerAsync();
+                //trackedState.startSession();
+            //}
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             try
             {
-
             }
             catch (Exception ex)
             {
@@ -70,6 +79,11 @@ namespace TestClient
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MotionLabel_Click(object sender, EventArgs e)
         {
 
         }
