@@ -13,10 +13,25 @@
 
                 $('.chart').data('easyPieChart').update(result);
                 //update instance after 5 sec
-                //setTimeout(function () {
-                //    $('.chart').data('easypiechart').update(40);
-                //}, 5000);
+                setTimeout(function () {
+                    updateChart();
+                }, 5000);
             }
         });
+
+        function updateChart() {
+            $.get('@Url.Action("GetAvgTempFromSession/" + Model.Id)', function (result) {
+                if (result != null) {
+                    var temp = document.getElementById('tempPer');
+                    temp.innerHTML = result;
+                    $('.chart').data('easyPieChart').update(result);
+                    //update instance after 5 sec
+                    setTimeout(function () {
+                        updateChart();
+                    }, 5000);
+                }
+            });
+
+        }
     </script>
 }

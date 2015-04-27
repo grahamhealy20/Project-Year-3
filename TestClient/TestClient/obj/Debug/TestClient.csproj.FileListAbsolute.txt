@@ -51,3 +51,4 @@ C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Debug\T
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
 C:\Users\Keith\Documents\GitHub\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache

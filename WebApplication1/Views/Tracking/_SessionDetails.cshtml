@@ -1,0 +1,132 @@
+﻿@{
+    <script>
+        var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
+        var counter = 0;
+        var iterate = 1;
+        var table;
+        var list;
+
+        $(document).ready(function () {
+            //getSession();
+            getTrackingTimeline();
+        });
+
+        function getTrackingTimeline() {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
+                cache: false,
+                dataType: "json",
+                success: function (data, status) {
+                    console.log(data);
+                    // For every session
+                    $.each(data, function (i, item) {
+                        // For each state in states
+                        $.each(item.states, function (i, item) {
+                            counter = item.TrackingId;
+                        })
+                    });
+
+                },
+                error: function (jqXHR, status) {
+                    //alert(status);
+                },
+                complete: function (status) {
+                    setTimeout(getLatestTrackingStateTimeline, 10000);
+                }
+            });
+        }
+
+        function getLatestTrackingStateTimeline() {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44301/TrackingService.svc/Session/Latest/" + user + "",
+                cache: false,
+                dataType: "json",
+                success: function (data, status) {
+                    console.log(data);
+                    console.log(data.TrackingId);
+                    // For every session
+
+                    //For each state in states
+                    if (counter == data.TrackingId) {
+                        console.log("the same TrackingID!");
+                    } else {
+
+                        // Update charts
+
+
+                        var inverse;
+                        if (iterate == 1) {
+                            inverse = "timeline-inverted";
+                            iterate = 0;
+                        } else {
+                            inverse = "";
+                            iterate = 1;
+                        }
+
+                        counter = data.TrackingId;
+                        // create list element
+                        var listItem = document.createElement('li');
+                        listItem.style.display = "none";
+                        $(listItem).addClass(inverse);
+
+                        //Create badge
+                        var badge = document.createElement('div');
+                        $(badge).addClass("timeline-badge");
+
+                        //Create ICON
+                        var icon = document.createElement('i');
+                        $(icon).addClass("glyphicon glyphicon-check");
+                        //Add icon to badge div
+                        badge.appendChild(icon);
+
+                        //Add badge to li
+                        listItem.appendChild(badge);
+
+                        //Create timeline panel
+                        var panel = document.createElement('div');
+                        $(panel).addClass("timeline-panel");
+
+                        //Heading here
+                        var heading = document.createElement('div');
+                        $(heading).addClass("timeline-heading");
+                        var headingMain = document.createElement('h4');
+                        headingMain.innerHTML = data.temp;
+                        heading.appendChild(headingMain);
+
+                        var timeText = document.createElement('p');
+                        timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + data.time + ' via client' + '</small>';
+                        heading.appendChild(timeText);
+
+
+                        // Panel body
+                        var body = document.createElement('div');
+                        $(body).addClass("timeline-body");
+                        body.innerHTML = "TEST";
+
+                        panel.appendChild(heading);
+                        panel.appendChild(body);
+                        listItem.appendChild(panel);
+
+                        $(listItem).fadeIn("slow");
+                        timeline.appendChild(listItem);
+
+                        //$('html,body').animate({
+                        //    scrollTop: $(listItem).offset().top
+                        //},
+                        //'slow');
+                    }
+                },
+                error: function (jqXHR, status) {
+                    //alert(status);
+                },
+                complete: function (status) {
+                    setTimeout(getLatestTrackingStateTimeline, 10000);
+                }
+            });
+        }
+
+    </script>
+
+}
