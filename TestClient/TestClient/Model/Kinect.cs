@@ -34,9 +34,7 @@ namespace TestClient.Model
             
         }
 
-        public delegate void DetectionHandler(object myObject,
-                                            EventArgs myArgs);
-
+        public delegate void DetectionHandler(object myObject, EventArgs myArgs);
         public event DetectionHandler OnMotionDetected;
 
         /// <summary>

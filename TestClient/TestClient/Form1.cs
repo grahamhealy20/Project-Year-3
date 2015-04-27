@@ -34,6 +34,8 @@ namespace TestClient
             delay.Interval = 10;
             delay.Enabled = true;
             trackedState.onTrackingDetected += new Model.TrackingSession.TrackingHandler(UpdateGUI);
+            trackedState.onTempGUI += new Model.TrackingSession.TemperatureGUIHandler(UpdateTemp);
+            trackedState.onTempDetected += new Model.TrackingSession.TemperatureHandler(UpdateGUITemp);
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
         }
 
@@ -42,9 +44,18 @@ namespace TestClient
             MotionLabel.Invoke((MethodInvoker)(() => MotionLabel.Text = "MOTION DETECTED, EVENT TRIGGERED BY: " + sender.ToString() + "AT: " + DateTime.Now));
         }
 
+        private void UpdateTemp(object myObject, Model.TemperatureEventArgs myArgs)
+        {
+            string temp = myArgs.temp + "°C";
+            MotionLabel.Invoke((MethodInvoker)(() => TempLabel.Text = temp));
+        }
+        private void UpdateGUITemp(object myObject, Model.TemperatureEventArgs myArgs)
+        {
+            MotionLabel.Invoke((MethodInvoker)(() => MotionLabel.Text = "WARNING! HIGH TEMPERATURE!: " + myArgs.temp));
+        }
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //label1.Text = "Started";
             trackedState.startTracking();
         }
 
@@ -56,7 +67,7 @@ namespace TestClient
             }
             else if (button1.Text == "Stop") {
                 button1.Text = "Start";
-                // Stop Session
+                trackedState.Stop();
             }
 
             //started = true;

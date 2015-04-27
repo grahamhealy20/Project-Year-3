@@ -39,6 +39,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.UserName = new System.Windows.Forms.Label();
+            this.TempLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -48,7 +49,7 @@
             // 
             this.MotionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MotionLabel.AutoSize = true;
-            this.MotionLabel.Location = new System.Drawing.Point(155, 43);
+            this.MotionLabel.Location = new System.Drawing.Point(155, 34);
             this.MotionLabel.Name = "MotionLabel";
             this.MotionLabel.Size = new System.Drawing.Size(35, 13);
             this.MotionLabel.TabIndex = 0;
@@ -86,7 +87,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(155, 103);
+            this.label1.Location = new System.Drawing.Point(155, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 6;
@@ -96,11 +97,12 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.URLAnchorLabel);
+            this.panel1.Controls.Add(this.UserName);
             this.panel1.Controls.Add(this.ProjectNameLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 45);
+            this.panel1.Size = new System.Drawing.Size(344, 63);
             this.panel1.TabIndex = 7;
             // 
             // URLAnchorLabel
@@ -119,7 +121,7 @@
             // 
             this.ProjectNameLabel.AutoSize = true;
             this.ProjectNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.ProjectNameLabel.Location = new System.Drawing.Point(13, 13);
+            this.ProjectNameLabel.Location = new System.Drawing.Point(3, 0);
             this.ProjectNameLabel.Name = "ProjectNameLabel";
             this.ProjectNameLabel.Size = new System.Drawing.Size(111, 25);
             this.ProjectNameLabel.TabIndex = 0;
@@ -137,22 +139,32 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.UserName);
+            this.panel3.Controls.Add(this.TempLabel);
             this.panel3.Controls.Add(this.MotionLabel);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 45);
+            this.panel3.Location = new System.Drawing.Point(0, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(344, 162);
+            this.panel3.Size = new System.Drawing.Size(344, 144);
             this.panel3.TabIndex = 9;
             // 
             // UserName
             // 
             this.UserName.AutoSize = true;
-            this.UserName.Location = new System.Drawing.Point(12, 7);
+            this.UserName.Location = new System.Drawing.Point(12, 29);
             this.UserName.Name = "UserName";
             this.UserName.Size = new System.Drawing.Size(0, 13);
             this.UserName.TabIndex = 7;
+            // 
+            // TempLabel
+            // 
+            this.TempLabel.AutoSize = true;
+            this.TempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.TempLabel.Location = new System.Drawing.Point(10, 7);
+            this.TempLabel.MinimumSize = new System.Drawing.Size(70, 0);
+            this.TempLabel.Name = "TempLabel";
+            this.TempLabel.Size = new System.Drawing.Size(70, 25);
+            this.TempLabel.TabIndex = 8;
             // 
             // Form1
             // 
@@ -187,6 +199,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.LinkLabel URLAnchorLabel;
         private System.Windows.Forms.Label UserName;
+        private System.Windows.Forms.Label TempLabel;
     }
 }
 
