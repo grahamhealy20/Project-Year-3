@@ -4,23 +4,22 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li class="hidden-xs hidden-sm">
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
             @{
-            var currentUser = WebApplication1.Helpers.UserHelper.getUser(User.Identity.GetUserId());
-            <a href="/Account/Manage" style="max-height: 50px; padding-top:15%;">
-                <img src="@Url.Content(@currentUser.profileImagePath)" class="img-circle" style="max-height:30px; margin-bottom: 10px;"/>
-            </a>
+                 var currentUser = WebApplication1.Helpers.UserHelper.getUser(User.Identity.GetUserId());
+                <li class="hidden-xs hidden-sm">                
+                    <a href="/Account/Manage" style="max-height: 50px; padding-top:15%;">
+                        <img src="@Url.Content(@currentUser.profileImagePath)" class="img-circle" style="max-height:30px; margin-bottom: 10px;" />
+                    </a>
+                </li>
+                <li>
+                    @Html.ActionLink("Hello " + currentUser.firstName + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                </li>
             }
-
-        </li>
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else

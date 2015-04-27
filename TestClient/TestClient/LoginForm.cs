@@ -71,6 +71,21 @@ namespace TestClient
             Process.Start("https://localhost:44320/");
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         //public async Task<bool> VerifyUserNamePassword(string userName, string password)
         //{
         //    var usermanager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(new IdentityDbContext()));
