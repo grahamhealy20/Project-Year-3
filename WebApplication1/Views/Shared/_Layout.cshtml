@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="conatiner" class="container body-content">
+    <div id="conatiner" class="container body-content animated fadeIn">
         @User.Identity.GetUserId()
 
         @RenderBody()
@@ -78,11 +78,24 @@
                 // Set query string and cross domain URL
 
                 notification.on('send', function (message) {
-                    console.log(message);
+                    //console.log(message);
+                    //Noty Popup box
+                    noty({ text: message });
                 });
                 // Start the connection.
                 connection.start().done(function () {
                     console.log("Connected, connection ID: " + connection.id);
+                    var n = noty({
+                        layout: 'topRight',
+                        type: 'success',
+                        text: '<strong>Connection</strong> Successful!',
+                        animation: {
+                            open: 'animated bounceInDown', // Animate.css class names
+                            close: 'animated bounceOutRight', // Animate.css class names
+                            easing: 'swing', // unavailable - no need
+                            speed: 500 // unavailable - no need
+                        }
+                    });
                 }).fail(function () {
                     console.log("Cant even right now");
                 });

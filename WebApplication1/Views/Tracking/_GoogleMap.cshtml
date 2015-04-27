@@ -11,7 +11,7 @@
     }
 </style>
 
-<div id="map_canvas" style="height: 400px;"></div>
+<div id="map_canvas" class="animated fadeIn" style="height: 400px;"></div>
 
 <!-- Enclose the Javascript in a "section" so that it is rendered in the correct order after scripts have been loaded etc -->
 
@@ -68,7 +68,6 @@
             if (status == google.maps.places.PlacesServiceStatus.OK) {
 
                 for (var i = 0; i < results.length; i++) {
-                    //alert(results[i].place_id);
                     createMarker(results[i]);
                 }
             }

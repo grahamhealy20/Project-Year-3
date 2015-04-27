@@ -9,7 +9,7 @@
         <h1>NOT ALLOWED</h1>
         Response.Redirect("~/Tracking/Sessions", false);
     }
-    
+
     if (!Request.IsAuthenticated)
     {
         Response.Redirect("~/Account/Login?returnUrl="
@@ -20,27 +20,29 @@
 }
 
 
-<div id="sessionDetails" class="">
+<div id="sessionDetails">
     <div class="row" style="background-color:#0070ea; color:white;">
-        <h1 data-user-id=@User.Identity.GetUserId()  style="color:#ffffff; padding-left:10px;">Details <i class="glyphicon glyphicon-info-sign"></i><small> #@Html.DisplayFor(model => model.Id)</small></h1>
+        <h1 data-user-id=@User.Identity.GetUserId() style="color:#ffffff; padding-left:10px;">Details <i class="glyphicon glyphicon-info-sign"></i><small> #@Html.DisplayFor(model => model.Id)</small></h1>
     </div>
     <div class="row" style="background-color:#0057b6; color:white;">
         <div class="col-md-4" style="background-color:#0057b6; padding-top:5px;">
-            <h4 class="text-center">Start Time <i class="glyphicon glyphicon-time"></i></h4>
+            <h4 class="text-center animated fadeIn">Start Time <i class="glyphicon glyphicon-time"></i></h4>
             <hr />
             <h5 class="text-center">@Html.DisplayFor(model => model.time)</h5>
             <hr />
         </div>
         <div class="col-md-4" style="background-color:#0057b6; padding-top:5px;">
-            <div style="height:150px" class="text-center">
+            <div style="height:150px" class="text-center animated fadeIn">
                 <h4 class="">Average Temperature</h4>
-                <div class="chart"  data-scale-color="#ffb400"><span class="percent" id="tempPer"></span></div>
+                <div class="chart" data-scale-color="#ffb400"><span class="percent" id="tempPer"></span></div>
 
             </div>
         </div>
         <div class="col-md-4 text-center" style="background-color:#0057b6; padding-top:5px;">
-            <h4>Total Events</h4>
-            <div id="totalNo" class="chart" data-percent="" data-scale-color="#ffb400"><span class="percent2" id="totalNoLabel"></span></div>
+            <div style="height:150px" class="text-center animated fadeIn">
+                <h4>Total Events</h4>
+                <div id="totalNo" class="chart" data-percent="" data-scale-color="#ffb400"><span class="percent2" id="totalNoLabel"></span></div>
+            </div>
         </div>
     </div>
 </div>
@@ -105,7 +107,7 @@
 
             foreach (var item in Model.states)
             {
-               
+
                 if (iterate == 1)
                 {
                     inverse = "timeline-inverted";
@@ -116,19 +118,19 @@
                     inverse = "";
                     iterate = 1;
                 }
-            <li class="@inverse">
-                <div class="timeline-badge" data-counter="@item.TrackingId"><i class="glyphicon glyphicon-check"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="timeline-title"> @item.temp °C</h4>
-                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> @item.time </small></p>
+                <li class="@inverse">
+                    <div class="timeline-badge" data-counter="@item.TrackingId"><i class="glyphicon glyphicon-check"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title"> @item.temp °C</h4>
+                            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> @item.time </small></p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                        </div>
                     </div>
-                    <div class="timeline-body">
-                        <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                    </div>
-                </div>
-            </li>        
-        }
+                </li>
+            }
         }
     </ul>
 </div>
@@ -138,132 +140,132 @@
 </p>
 
 @*<script>
-    var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
-    var counter = 0;
-    var iterate = 1;
-    var table;
-    var list;
+        var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
+        var counter = 0;
+        var iterate = 1;
+        var table;
+        var list;
 
-    $(document).ready(function () {
-        //getSession();
-        getTrackingTimeline();
-    });
-
-    function getTrackingTimeline() {
-        $.ajax({
-            type: "GET",
-            url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
-            cache: false,
-            dataType: "json",
-            success: function (data, status) {
-                console.log(data);
-                // For every session
-                $.each(data, function (i, item) {
-                    // For each state in states
-                    $.each(item.states, function (i, item) {
-                        counter = item.TrackingId;
-                    })
-                });
-
-            },
-            error: function (jqXHR, status) {
-                //alert(status);
-            },
-            complete: function (status) {
-                setTimeout(getLatestTrackingStateTimeline, 10000);
-            }
+        $(document).ready(function () {
+            //getSession();
+            getTrackingTimeline();
         });
-    }
 
-    function getLatestTrackingStateTimeline() {
-        $.ajax({
-            type: "GET",
-            url: "https://localhost:44301/TrackingService.svc/Session/Latest/" + user + "",
-            cache: false,
-            dataType: "json",
-            success: function (data, status) {
-                console.log(data);
-                console.log(data.TrackingId);
-                // For every session
+        function getTrackingTimeline() {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
+                cache: false,
+                dataType: "json",
+                success: function (data, status) {
+                    console.log(data);
+                    // For every session
+                    $.each(data, function (i, item) {
+                        // For each state in states
+                        $.each(item.states, function (i, item) {
+                            counter = item.TrackingId;
+                        })
+                    });
 
-                //For each state in states
-                if (counter == data.TrackingId) {
-                    console.log("the same TrackingID!");
-                } else {
-
-
-                    var inverse;
-                    if (iterate == 1) {
-                        inverse = "timeline-inverted";
-                        iterate = 0;
-                    } else {
-                        inverse = "";
-                        iterate = 1;
-                    }
-
-                    counter = data.TrackingId;
-                    // create list element
-                    var listItem = document.createElement('li');
-                    listItem.style.display = "none";
-                    $(listItem).addClass(inverse);
-
-                    //Create badge
-                    var badge = document.createElement('div');
-                    $(badge).addClass("timeline-badge");
-
-                    //Create ICON
-                    var icon = document.createElement('i');
-                    $(icon).addClass("glyphicon glyphicon-check");
-                    //Add icon to badge div
-                    badge.appendChild(icon);
-
-                    //Add badge to li
-                    listItem.appendChild(badge);
-
-                    //Create timeline panel
-                    var panel = document.createElement('div');
-                    $(panel).addClass("timeline-panel");
-
-                    //Heading here
-                    var heading = document.createElement('div');
-                    $(heading).addClass("timeline-heading");
-                    var headingMain = document.createElement('h4');
-                    headingMain.innerHTML = data.temp;
-                    heading.appendChild(headingMain);
-
-                    var timeText = document.createElement('p');
-                    timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + data.time + ' via client' + '</small>';
-                    heading.appendChild(timeText);
-
-
-                    // Panel body
-                    var body = document.createElement('div');
-                    $(body).addClass("timeline-body");
-                    body.innerHTML = "TEST";
-
-                    panel.appendChild(heading);
-                    panel.appendChild(body);
-                    listItem.appendChild(panel);
-
-                    $(listItem).fadeIn("slow");
-                    timeline.appendChild(listItem);
-
-                    $('html,body').animate({
-                        scrollTop: $(listItem).offset().top
-                    },
-                    'slow');
+                },
+                error: function (jqXHR, status) {
+                    //alert(status);
+                },
+                complete: function (status) {
+                    setTimeout(getLatestTrackingStateTimeline, 10000);
                 }
-            },
-            error: function (jqXHR, status) {
-                //alert(status);
-            },
-            complete: function (status) {
-                setTimeout(getLatestTrackingStateTimeline, 10000);
-            }
-        });
-    }
+            });
+        }
 
-</script>*@
+        function getLatestTrackingStateTimeline() {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44301/TrackingService.svc/Session/Latest/" + user + "",
+                cache: false,
+                dataType: "json",
+                success: function (data, status) {
+                    console.log(data);
+                    console.log(data.TrackingId);
+                    // For every session
+
+                    //For each state in states
+                    if (counter == data.TrackingId) {
+                        console.log("the same TrackingID!");
+                    } else {
+
+
+                        var inverse;
+                        if (iterate == 1) {
+                            inverse = "timeline-inverted";
+                            iterate = 0;
+                        } else {
+                            inverse = "";
+                            iterate = 1;
+                        }
+
+                        counter = data.TrackingId;
+                        // create list element
+                        var listItem = document.createElement('li');
+                        listItem.style.display = "none";
+                        $(listItem).addClass(inverse);
+
+                        //Create badge
+                        var badge = document.createElement('div');
+                        $(badge).addClass("timeline-badge");
+
+                        //Create ICON
+                        var icon = document.createElement('i');
+                        $(icon).addClass("glyphicon glyphicon-check");
+                        //Add icon to badge div
+                        badge.appendChild(icon);
+
+                        //Add badge to li
+                        listItem.appendChild(badge);
+
+                        //Create timeline panel
+                        var panel = document.createElement('div');
+                        $(panel).addClass("timeline-panel");
+
+                        //Heading here
+                        var heading = document.createElement('div');
+                        $(heading).addClass("timeline-heading");
+                        var headingMain = document.createElement('h4');
+                        headingMain.innerHTML = data.temp;
+                        heading.appendChild(headingMain);
+
+                        var timeText = document.createElement('p');
+                        timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + data.time + ' via client' + '</small>';
+                        heading.appendChild(timeText);
+
+
+                        // Panel body
+                        var body = document.createElement('div');
+                        $(body).addClass("timeline-body");
+                        body.innerHTML = "TEST";
+
+                        panel.appendChild(heading);
+                        panel.appendChild(body);
+                        listItem.appendChild(panel);
+
+                        $(listItem).fadeIn("slow");
+                        timeline.appendChild(listItem);
+
+                        $('html,body').animate({
+                            scrollTop: $(listItem).offset().top
+                        },
+                        'slow');
+                    }
+                },
+                error: function (jqXHR, status) {
+                    //alert(status);
+                },
+                complete: function (status) {
+                    setTimeout(getLatestTrackingStateTimeline, 10000);
+                }
+            });
+        }
+
+    </script>*@
 
 
 

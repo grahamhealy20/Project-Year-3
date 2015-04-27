@@ -26,12 +26,14 @@ namespace WebApplication1
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/zocial.css"));
+                      "~/Content/zocial.css",
+                      "~/Content/animate.css"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/extrajs").Include(
                       "~/Scripts/extrajs.js",
-                      "~/Scripts/jquery.easypiechart.js"
+                      "~/Scripts/jquery.easypiechart.js",
+                      "~/Scripts/jquery.noty.packaged.min.js"
                       ));
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
