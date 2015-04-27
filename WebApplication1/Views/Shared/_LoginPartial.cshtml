@@ -9,7 +9,7 @@
     <ul class="nav navbar-nav navbar-right">
         <li class="hidden-xs hidden-sm">
             @{
-        var currentUser = WebApplication1.Helpers.UserHelper.getUser(User.Identity.GetUserId());
+            var currentUser = WebApplication1.Helpers.UserHelper.getUser(User.Identity.GetUserId());
             <a href="/Account/Manage" style="max-height: 50px; padding-top:15%;">
                 <img src="@Url.Content(@currentUser.profileImagePath)" class="img-circle" style="max-height:30px; margin-bottom: 10px;"/>
             </a>

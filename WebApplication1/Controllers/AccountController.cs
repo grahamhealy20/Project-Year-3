@@ -452,7 +452,8 @@ namespace WebApplication1.Controllers
                     // Custom attributes
                     firstName = model.firstName,
                     lastName = model.lastName,
-                    PhoneNumber = model.phoneNumber
+                    PhoneNumber = model.phoneNumber,
+                    profileImagePath  = "~/Images/Uploads/default.png"
                 };
                 IdentityResult result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
