@@ -68,7 +68,6 @@ namespace TestClient.Model
             if (tempDouble > 27) {
                 OnTemperatureReceived(this, args);
             }
-
             OnTemperatureGUIReceived(this, args);
         }
 
@@ -88,7 +87,6 @@ namespace TestClient.Model
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
         private void OpenMyPort()

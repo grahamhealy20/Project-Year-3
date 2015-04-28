@@ -66,7 +66,16 @@ namespace WebApplication1.Controllers
             Models.TrackingModel.Session session;
             using (var db = new Models.ApplicationDbContext())
             {
+              // Check for empty session
+              try
+              {
                 session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+              }
+              catch (Exception)
+              {   
+                throw;
+              }
+              
             }
             int length = session.states.Count;
             //    new Models.TrackingModel.TrackingTempLineChartModel { date ="1", temp = "30"}
@@ -83,7 +92,16 @@ namespace WebApplication1.Controllers
             Models.TrackingModel.Session session;
             using (var db = new Models.ApplicationDbContext())
             {
+              // Check for empty session
+              try
+              {
                 session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+              }
+              catch (Exception)
+              {              
+                throw;
+              }
+               
             }
             foreach (var state in session.states) {
                 averageTemp += state.temp;
