@@ -3,12 +3,26 @@
     var counter = 0;
     var iterate = 1;
     function getSessionTimeline() {
-            $.ajax({
+
+        var loading = $("#loading");
+        //$(document).ajaxStart(function () {
+        //    loading.show();
+        //});
+
+        //$(document).ajaxStop(function () {
+        //    loading.hide();
+        //});
+
+        $.ajax({
                 type: "GET",
                 url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
                 cache: false,
                 dataType: "json",
+                beforeSend: function () {
+                    loading.show();
+                },
                 success: function (data, status) {
+                    loading.hide();
                     console.log(data);
                     // For every session
                     $.each(data, function (i, item) {

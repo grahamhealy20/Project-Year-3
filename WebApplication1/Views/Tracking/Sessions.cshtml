@@ -10,18 +10,84 @@
 }
 
     <h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>
-
+    <div id="loading" class="text-center animated fadeIn" style="display:none;"><img src="~/Images/Loading/spiffygif_108x108.gif" /></div>
     <script>
         var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
         var counter = 0;
         var iterate = 1;
         var table;
         var list;
+        var loading = $("#loading");
 
         $(document).ready(function () {
             //getSession();
-            getSessionTimeline();
+            getSessions();
         });
+
+
+        function getSessions() {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
+                cache: false,
+                dataType: "json",
+                beforeSend: function () {
+                    loading.show();
+                },
+                success: function (data, status) {
+                    loading.hide();
+                    console.log(data);
+                    // For every session
+                    $.each(data, function (i, item) {
+                        var div = document.createElement("div");
+                        div.style.display = "none";
+                        $(div).addClass("panel panel-default");
+
+                        var panelHeader = document.createElement('div')
+                        $(panelHeader).addClass("panel-heading");
+                        //Header info goes here
+                        panelHeader.innerHTML = '<h5><strong><a href="session/' + item.Id + '"> Session: ' + item.Id + '</a><strong></h5>';
+
+                        div.appendChild(panelHeader);
+
+                        // Create List
+                        var timeline = document.createElement("ul");
+                        $(timeline).addClass("timeline");
+                        //Add headers
+
+                        timeline.style.display = "none";
+                        timeline.style.paddingBottom = "30px";
+
+                        // For each state in states
+                        $.each(item.states, function (i, item) {
+
+                        })
+
+                        div.appendChild(timeline);
+                        document.getElementById("trackingInfo").appendChild(div);
+                        $(div).fadeIn("slow");
+                        $(timeline).fadeIn("slow");
+                    });
+
+                },
+                error: function (jqXHR, status) {
+                    var n = noty({
+                        layout: 'topRight',
+                        type: 'information',
+                        text: '<strong>Warning!</strong> ' + message,
+                        animation: {
+                            open: 'animated bounceInDown', // Animate.css class names
+                            close: 'animated bounceOutRight', // Animate.css class names
+                            easing: 'swing', // unavailable - no need
+                            speed: 500 // unavailable - no need
+                        }
+                    });
+                },
+                complete: function (status) {
+                    //setTimeout(getLatestSessionStateTimeline, 10000);
+                }
+            });
+        }
 
         //function getSession() {
         //    $.ajax({
@@ -358,4 +424,4 @@
 
     </div>
 
-    @Html.Partial("_GetSessions")
+    @*@Html.Partial("_GetSessions")*@
