@@ -44,6 +44,9 @@ namespace TrackingRESTService
         bool DeleteState(string id);
 
         // SESSION METHODS
+        [OperationContract]
+        [WebGet(UriTemplate = "Session/Selected/{session_Id}", ResponseFormat = WebMessageFormat.Json)]
+        Model.Session GetSession(string session_Id);
 
         [OperationContract]
         [WebGet(UriTemplate = "Session/LatestSession/{user_Id}", ResponseFormat = WebMessageFormat.Json)]
@@ -63,7 +66,6 @@ namespace TrackingRESTService
         [WebInvoke(UriTemplate = "Session/Add/", Method = "POST")]
         int AddSession(Model.Session toAdd);
 
-        /* This method will return the all of the sessions for the specified user*/
         [OperationContract]
         [WebInvoke(UriTemplate = "Session/Add/TrackingState/", Method = "POST")]
         int AddStateToLatestSession(Model.TrackingState toAdd);
@@ -71,7 +73,5 @@ namespace TrackingRESTService
         [OperationContract]
         [WebInvoke(UriTemplate = "Session/Delete/{id}", Method = "DELETE")]
         bool DeleteSession(string id);
-
-
     }
 }

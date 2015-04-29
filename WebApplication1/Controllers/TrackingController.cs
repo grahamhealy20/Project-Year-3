@@ -8,6 +8,8 @@ using System.IO;
 using System.Runtime.Serialization;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
+using System.Web.Script.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace WebApplication1.Controllers
 {
@@ -25,7 +27,9 @@ namespace WebApplication1.Controllers
 
         public ActionResult Sessions()
         {
-            return View();
+            List<Models.TrackingModel.Session> sessions = GetSessions(User.Identity.GetUserId());
+
+            return View(sessions);
         }
 
         public ActionResult Session(int id)
@@ -52,8 +56,7 @@ namespace WebApplication1.Controllers
             {
                 if (state.time != null) {
                     data.Add(new Models.TrackingModel.TrackingTempLineChartModel(state.time, state.temp.ToString()));
-                }
-                
+                }              
             }
             JsonResult jr = new JsonResult();
             jr.Data = data;
@@ -61,6 +64,85 @@ namespace WebApplication1.Controllers
             return jr;
             //return Json(data, JsonRequestBehavior.AllowGet);
         }
+        public Models.TrackingModel.Session GetSession(string id)
+        {
+            int sessionId = Convert.ToInt32(id);
+           // Models.TrackingModel.Session session;
+            string session_id = id;
+            byte[] toByte;
+            //a99f2883-8ed3-4583-afdb-3f570f159cf3
+            using (WebClient client = new WebClient()) {
+                toByte = client.DownloadData((new Uri("https://localhost:44301/TrackingService.svc/Session/Selected/" + sessionId)));
+            }
+           
+            Stream strm = new MemoryStream(toByte);
+            DataContractJsonSerializer obj = new DataContractJsonSerializer(typeof(Models.TrackingModel.Session));
+            var objects = (Models.TrackingModel.Session)obj.ReadObject(strm);
+            //session = (Models.TrackingModel.Session) objects;
+            return objects;
+        }
+
+        public List<Models.TrackingModel.Session> GetSessions(string id)
+        {
+            byte[] toByte;
+            //a99f2883-8ed3-4583-afdb-3f570f159cf3
+            using (WebClient client = new WebClient())
+            {
+                toByte = client.DownloadData((new Uri("https://localhost:44301/TrackingService.svc/Session/" + id)));
+            }
+
+            Stream strm = new MemoryStream(toByte);
+            DataContractJsonSerializer obj = new DataContractJsonSerializer(typeof(List<Models.TrackingModel.Session>));
+            var objects = (List<Models.TrackingModel.Session>)obj.ReadObject(strm);
+            foreach (var session in objects) {
+                session.temp = GetAvgTempFromSessionDouble(session.Id).ToString();
+                session.noAlerts = GetNoOfStatesInSessionInt(session.Id);
+            }
+            //session = (Models.TrackingModel.Session) objects;
+            return objects;
+        }
+
+        public ActionResult GetSessionsBarChart(string id)
+        {
+            Models.TrackingModel.Session session;
+           
+            session = GetSession(id);
+            var data = new List<Models.TrackingModel.TrackingTempBarChartModel>();
+            //    new Models.TrackingModel.TrackingTempLineChartModel { date ="1", temp = "30"}
+            //};
+            foreach (Models.TrackingModel.TrackingState state in session.states)
+            {
+                if (state.time != null || state.stateType != "Session Started")
+                {
+                    data.Add(new Models.TrackingModel.TrackingTempBarChartModel(state.time, state.temp.ToString()));          
+                }
+            }
+
+            JsonResult jr = new JsonResult();
+            jr.Data = data;
+            jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return jr;
+        }
+
+        private int GetNoOfStatesInSessionInt(int id)
+        {
+            Models.TrackingModel.Session session;
+            using (var db = new Models.ApplicationDbContext())
+            {
+                // Check for empty session
+                try
+                {
+                    session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+            }
+            return session.states.Count;
+        }
+
 
         public ActionResult GetNoOfStatesInSession(int id) {
             Models.TrackingModel.Session session;
@@ -86,6 +168,34 @@ namespace WebApplication1.Controllers
             return jr;
         }
 
+        public double GetAvgTempFromSessionDouble(int id)
+        {
+            double averageTemp = 0;
+            Models.TrackingModel.Session session;
+            using (var db = new Models.ApplicationDbContext())
+            {
+                // Check for empty session
+                try
+                {
+                    session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+            }
+            foreach (var state in session.states)
+            {
+                averageTemp += state.temp;
+            }
+
+            averageTemp /= session.states.Count;
+
+            averageTemp = Math.Round(averageTemp);
+            return averageTemp;
+        }
+
         public ActionResult GetAvgTempFromSession(int id)
         {
             double averageTemp = 0;
@@ -100,21 +210,14 @@ namespace WebApplication1.Controllers
               catch (Exception)
               {              
                 throw;
-              }
-               
+              }        
             }
             foreach (var state in session.states) {
                 averageTemp += state.temp;
             }
 
-            averageTemp /= session.states.Count;
-            //    new Models.TrackingModel.TrackingTempLineChartModel { date ="1", temp = "30"}
-            //};
-
-            // Convert to a percentage of 30 deg
-            
+            averageTemp /= session.states.Count;        
             averageTemp = Math.Round(averageTemp);
-
             JsonResult jr = new JsonResult();
             jr.Data = averageTemp;
             jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
@@ -125,7 +228,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                Warning("IN TRACKING FUNC");
+                //Warning("IN TRACKING FUNC");
                 objects = GetAllTrackingStateByID(User.Identity.GetUserId());
                 Success(string.Format("List successfully retrieved at: <strong>{0}</strong>", DateTime.Now.ToString()), true);
             }

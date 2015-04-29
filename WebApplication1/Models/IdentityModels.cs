@@ -36,4 +36,18 @@ namespace WebApplication1.Models
         public System.Data.Entity.DbSet<WebApplication1.Models.TrackingModel.Session> Sessions { get; set; }
         public System.Data.Entity.DbSet<WebApplication1.Models.TrackingModel.TrackingState> TrackingStates { get; set; }
     }
+
+    // Context for UserHelper
+    public class UserDbContext : IdentityDbContext<ApplicationUser>
+    {
+        public UserDbContext()
+            : base("UserContext", throwIfV1Schema: false)
+        {
+        }
+
+        public static UserDbContext Create()
+        {
+            return new UserDbContext();
+        }
+    }
 }

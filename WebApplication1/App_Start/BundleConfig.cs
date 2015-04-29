@@ -33,7 +33,8 @@ namespace WebApplication1
             bundles.Add(new ScriptBundle("~/bundles/extrajs").Include(
                       "~/Scripts/extrajs.js",
                       "~/Scripts/jquery.easypiechart.js",
-                      "~/Scripts/jquery.noty.packaged.min.js"
+                      "~/Scripts/jquery.noty.packaged.min.js",
+                      "~/Scripts/noty_theme_custom.js"
                       ));
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

@@ -221,6 +221,27 @@ textarea {
     border: 1px solid #e4e4e4;
 }
 
+.marginLeft {
+  margin-left: 10px;
+}
+
+.marginRight {
+  margin-right: 10px;
+}
+
+.marginTop {
+  margin-top: 10px;
+}
+
+.marginTopLarge {
+  margin-top: 50px;
+}
+
+.marginBottom {
+  margin-top: 10px;
+}
+
+
 .whiteText {
     color: white;
 }
@@ -243,20 +264,67 @@ textarea {
   display: inline-block;
   line-height: 110px;
   z-index: 2;
+  font-size: 1.0em;
 }
 .percent:after {
   content: 'C';
   margin-left: 0.1em;
-  font-size: .8em;
+  font-size: 1.0em;
 }
 
 .percent2 {
   display: inline-block;
   line-height: 110px;
   z-index: 2;
+  font-size: 1.0em;
 }
 .percent2:after {
   content: ' Alerts';
   margin-left: 0.1em;
-  font-size: .8em;
+  font-size: 1.0em;
+}
+
+.loadingSpinner {
+  position: fixed;
+    background-color:#FFF;
+    padding:10px;
+    border:1px solid #CCC;
+    z-index:200;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
+}
+
+.back-to-top {
+margin: 10px;
+position: fixed;
+bottom: 0;
+right: 0;
+width: 70px;
+height: 70px;
+z-index: 100;
+color:#FFFFFF;
+background-color: #C41F51;
+border-radius: 12px 12px 12px 12px;
+-moz-border-radius: 12px 12px 12px 12px;
+-webkit-border-radius: 12px 12px 12px 12px;
+border: 0px solid #000000;
+}
+
+.back-to-top i {
+  top:10%;
+  left:10%;
+  font-size: 50px;
+  color:#FFFFFF;
+}
+
+.back-to-top a:active, .back-to-top a:link  {
+
+}
+
+.roundedBorder {
+  border-radius: 12px 12px 12px 12px;
+  -moz-border-radius: 12px 12px 12px 12px;
+  -webkit-border-radius: 12px 12px 12px 12px;
+  border: 0px solid #000000;
 }

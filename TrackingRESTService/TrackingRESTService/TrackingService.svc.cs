@@ -157,6 +157,24 @@ namespace TrackingRESTService
         }
 
         // SESSION METHODS
+        public Model.Session GetSession(string session_Id) {
+            try
+            {
+                int id = Convert.ToInt32(session_Id);
+                using (var db = new Model.TrackingContext())
+                {
+                    Debug.WriteLine("IN METHOD");
+                    return db.Sessions.Include(s => s.states).SingleOrDefault(p => p.Id == id);
+                    //Debug.WriteLine("CALLING OBJ");
+                    //return db.Sessions.Include(s => s.states).First();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
+
         public Model.Session GetLatestSession(string user_Id) {
             try
             {

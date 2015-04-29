@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity;
-
+@model List<WebApplication1.Models.TrackingModel.Session>
 @{
     ViewBag.Title = "Sessions";
     if (!Request.IsAuthenticated)
@@ -9,9 +9,180 @@
     }
 }
 
-    <h1 data-user-id=@User.Identity.GetUserId()>Tracking Page</h1>
-    <div id="loading" class="text-center animated fadeIn" style="display:none;"><img src="~/Images/Loading/spiffygif_108x108.gif" /></div>
-    <script>
+<h1 data-user-id=@User.Identity.GetUserId()>Sessions Overview</h1>
+<div id="loading" class="loadingSpinner text-center animated fadeIn fadeOut" style="display:none;">
+    <img src="~/Images/Loading/spiffygif_108x108.gif" />
+</div>
+<div id="trackingInfo">
+    @{
+        foreach (var session in Model)
+        {
+
+            <div class="row" style="background-color:#06d38e; color:white; margin-bottom:20px;">
+                <div class="row" style="background-color:#06d38e; color:white;">
+                    <h4><a class="whiteText marginLeft" href="Session/@session.Id">Session @session.Id <i class="glyphicon glyphicon-info-sign"></i><small></small></a></h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" style="background-color:#00a56e; height:150px; padding-top:5px;">
+                        <h4 class="text-center animated fadeIn">Start Time <i class="glyphicon glyphicon-time"></i></h4>
+                        <hr />
+                        <h4 class="text-center whiteText">@session.time</h4>
+                        <hr />
+                    </div>
+                    <div class="col-md-4" style="background-color:#00a56e; height:150px; padding-top:5px;">
+                        <div style="height:150px" class="text-center animated fadeIn">
+                            <div class="text-center">
+                                <h5 class="whiteText">Average Tempertaure: <i class="glyphicon glyphicon-fire"></i></h5>
+                                <h4 class="tempHeader whiteText">@session.temp.ToString()°C</h4>
+                            </div>
+                            <div class="text-center">
+                                <h5 class="whiteText">Total Alerts: </h5>
+                                <h4 class="tempHeader whiteText">@session.states.Count.ToString()</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center visible-lg visible-md" style="background-color:#00a56e; height:150px; padding-top:5px;">
+                        <div id="@session.Id" class="text-center animated fadeIn" style="height:110px; max-height:110px; width:250px; max-width:250px;">
+                            <script>
+                                var loading = $("#loading");
+                                // get chart
+                                $(document).ready(function () {
+                                    var div = document.getElementById('@session.Id');
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "GetSessionsBarChart/" + "@session.Id",
+                                        cache: false,
+                                        dataType: "json",
+                                        beforeSend: function () {
+                                            loading.show();
+                                        },
+                                        success: function (data, status) {
+                                            loading.hide();
+                                            if (data != null) {
+                                                new Morris.Bar({
+                                                    element: div,
+                                                    parseTime: false,
+                                                    barColors: ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"],
+                                                    resize: true,
+                                                    axes: false,
+                                                    grid: false,
+                                                    data: data,
+                                                    hideHover: true,
+                                                    // The name of the data record attribute that contains x-values.
+                                                    xkey: 'date',
+                                                    // A list of names of data record attributes that contain y-values.
+                                                    ykeys: ['temp'],
+                                                    // Labels for the ykeys -- will be displayed when you hover over the
+                                                    // chart.
+                                                    labels: ['Temperature']
+                                                });
+                                            }
+
+                                        },
+                                        error: function (data, status) {
+
+                                        },
+                                        complete: function (data, status) {
+
+                                        }
+                                    });
+                                });
+
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="animated fadeIn row" style="margin-bottom:30px;">
+                            <div class="row" style="background-color:#06d38e">
+                                <h4 class="marginLeft"><a class="whiteText" href="Session/@session.Id">Session @session.Id <i class="glyphicon glyphicon-info-sign"></i></a></h4>
+                            </div>
+                            <div class="row" style="background-color:#00a56e">
+                                <div class="col-md-4 marginLeft">
+                                    <div class="row">
+                                        <h4 class="text-center whiteText">Start Time <i class="glyphicon glyphicon-time"></i></h4>
+                                        <hr />
+                                        <h4 class="text-center whiteText">@session.time</h4>
+                                        <hr />
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    TEST
+                                    <div class="row text-center">
+                                        <h5 class="whiteText">Average Tempertaure: <i class="glyphicon glyphicon-fire"></i></h5>
+                                        <h4 class="tempHeader whiteText">@session.temp.ToString()°C</h4>
+                                    </div>
+                                    <div class="row text-center">
+                                        <h5 class="whiteText">Total Alerts: </h5>
+                                        <h4 class="tempHeader whiteText">@session.states.Count.ToString()</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                TEST
+                <div id="@session.Id" class="text-center" style="max-height:50px; height:40px;">
+
+
+                                    </div>
+                                    @*<script>
+                                        var id = "@session.Id";
+                                        var loading = $("#loading");
+                                        // get chart
+                                        $(document).ready(function () {
+                                            var div = document.getElementById('@session.Id');
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "GetSessionsBarChart/" + id + "",
+                                                cache: true,
+                                                dataType: "json",
+                                                beforeSend: function () {
+                                                    loading.show();
+                                                },
+                                                success: function (data, status) {
+                                                    loading.hide();
+                                                    if (data != null) {
+                                                        new Morris.Bar({
+                                                            element: div,
+                                                            parseTime: false,
+                                                            barColors: ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"],
+                                                            resize: true,
+                                                            axes: false,
+                                                            grid: false,
+                                                            data: data,
+                                                            hideHover: true,
+                                                            // The name of the data record attribute that contains x-values.
+                                                            xkey: 'date',
+                                                            // A list of names of data record attributes that contain y-values.
+                                                            ykeys: ['temp'],
+                                                            // Labels for the ykeys -- will be displayed when you hover over the
+                                                            // chart.
+                                                            labels: ['Temperature']
+                                                        });
+                                                    }
+
+                                                },
+                                                error: function (data, status) {
+
+                                                },
+                                                complete: function (data, status) {
+
+                                                }
+                                            });
+                                        });
+
+                                    </script>*@
+            @*</div>
+                    </div>
+                </div>*@
+
+        }
+    }
+
+
+</div>
+@*<script>
         var user = document.getElementsByTagName("H1")[0].getAttribute("data-user-id");
         var counter = 0;
         var iterate = 1;
@@ -24,7 +195,6 @@
             getSessions();
         });
 
-
         function getSessions() {
             $.ajax({
                 type: "GET",
@@ -36,45 +206,106 @@
                 },
                 success: function (data, status) {
                     loading.hide();
-                    console.log(data);
+                    //console.log(data);
                     // For every session
                     $.each(data, function (i, item) {
                         var div = document.createElement("div");
                         div.style.display = "none";
-                        $(div).addClass("panel panel-default");
+                        div.style.maxHeight = "150px"
+                        div.style.marginBottom = "35px";
+                        div.style.marginTop = "35px";
+                        div.className = "row panelBorder";
 
                         var panelHeader = document.createElement('div')
-                        $(panelHeader).addClass("panel-heading");
                         //Header info goes here
-                        panelHeader.innerHTML = '<h5><strong><a href="session/' + item.Id + '"> Session: ' + item.Id + '</a><strong></h5>';
-
+                        panelHeader.innerHTML = '<h4><strong><a style="color:white;" href="session/' + item.Id + '"> Session: ' + item.Id + '</a><strong></h4>';
+                        panelHeader.style.marginLeft = "10px";
+                        div.style.backgroundColor = "#2AEB87";
                         div.appendChild(panelHeader);
 
-                        // Create List
-                        var timeline = document.createElement("ul");
-                        $(timeline).addClass("timeline");
-                        //Add headers
+                        // Create Div
+                        var barchart = document.createElement("div");
+                        barchart.style.backgroundColor = "#25BA6D";
+                        barchart.style.height = "100px";
+                        div.appendChild(barchart);
 
-                        timeline.style.display = "none";
-                        timeline.style.paddingBottom = "30px";
+                        var chartDiv = document.createElement('div');
+                        chartDiv.style.backgroundColor = "#25BA6D";
+                        chartDiv.style.maxHeight = "100px";
+                        chartDiv.style.height = "100px";
+                        chartDiv.style.maxWidth = "200px";
+                        chartDiv.style.cssFloat = "left";
+                        $(chartDiv).addClass("col-md-6 animated fadeIn");
 
-                        // For each state in states
-                        $.each(item.states, function (i, item) {
+                        var infoDiv = document.createElement('div');
+                        infoDiv.style.height = "100px";
+                        infoDiv.style.backgroundColor = "#25BA6D";
+                        infoDiv.style.cssFloat = "right";
+                        $(infoDiv).addClass("col-md-6");
+                        barchart.appendChild(chartDiv);
+                        barchart.appendChild(infoDiv);
 
-                        })
+                        barchart.style.display = "none";
+                        $(barchart).addClass("animated fadeIn");
+                        infoDiv.innerHTML = "TEST";
 
-                        div.appendChild(timeline);
+                        //  Make sub call to get sessions temp info from controller
+                        var id = item.Id;
+                        $.ajax({
+                            type: "GET",
+                            url: "GetSessionsBarChart/" + id + "",
+                            cache: false,
+                            dataType: "json",
+                            success: function (data, status) {
+                                console.log(data);
+                                if (data != null) {
+                                    new Morris.Bar({
+                                        element: chartDiv,
+                                        parseTime: false,
+                                        barColors: ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"],
+                                        resize: true,
+                                        axes: false,
+                                        grid: false,
+                                        data: data,
+                                        hideHover: true,
+                                        // The name of the data record attribute that contains x-values.
+                                        xkey: 'date',
+                                        // A list of names of data record attributes that contain y-values.
+                                        ykeys: ['temp'],
+                                        // Labels for the ykeys -- will be displayed when you hover over the
+                                        // chart.
+                                        labels: ['Temperature']
+                                    });
+                                }
+                            },
+                            error: function (jqXHR, status) {
+                                var n = noty({
+                                    layout: 'topRight',
+                                    type: 'warning',
+                                    text: '<strong>Error!</strong> ' + status,
+                                    animation: {
+                                        open: 'animated bounceInDown', // Animate.css class names
+                                        close: 'animated bounceOutRight', // Animate.css class names
+                                        easing: 'swing', // unavailable - no need
+                                        speed: 500 // unavailable - no need
+                                    }
+                                });
+                            },
+                            complete: function (status) {
+                                //setTimeout(getLatestSessionStateTimeline, 10000);
+                            }
+                        });
                         document.getElementById("trackingInfo").appendChild(div);
                         $(div).fadeIn("slow");
-                        $(timeline).fadeIn("slow");
+                        $(barchart).fadeIn("slow");
                     });
 
                 },
                 error: function (jqXHR, status) {
                     var n = noty({
                         layout: 'topRight',
-                        type: 'information',
-                        text: '<strong>Warning!</strong> ' + message,
+                        type: 'warning',
+                        text: '<strong>Error!</strong> ' + status,
                         animation: {
                             open: 'animated bounceInDown', // Animate.css class names
                             close: 'animated bounceOutRight', // Animate.css class names
@@ -418,10 +649,7 @@
         //    });
         //}
 
-    </script>
+    </script>*@
 
-    <div id="trackingInfo">
 
-    </div>
-
-    @*@Html.Partial("_GetSessions")*@
+@*@Html.Partial("_GetSessions")*@

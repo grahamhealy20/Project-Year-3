@@ -57,6 +57,9 @@
         @User.Identity.GetUserId()
 
         @RenderBody()
+        <a id="backToTop" href="#" class="back-to-top visible-sm-inline-block visible-xs-inline-block" style="display: inline;">
+            <i class="glyphicon glyphicon-arrow-up"></i>
+        </a>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Graham Healy &amp; Keith Doolan</p>
@@ -67,7 +70,15 @@
     {
         <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
         <script>
+
+            $("#backToTop").click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#body").offset().top
+                }, 1000);
+            });
+
             $(function () {
+
                 var userID = "@User.Identity.GetUserId()";
                 var connection = $.hubConnection("https://localhost:44301/signalr", { useDefaultPath: false });
                 // Reference the auto-generated proxy for the hub.
@@ -91,6 +102,8 @@
                             speed: 500 // unavailable - no need
                         }
                     });
+                    var notyUL = document.getElementById('noty_topRight_layout_container');
+                    notyUL.style.marginTop = "50px";
                 });
                 // Start the connection.
                 connection.start().done(function () {
@@ -98,6 +111,7 @@
                     var n = noty({
                         layout: 'topRight',
                         type: 'success',
+                        theme: 'noty_theme_custom',
                         text: '<strong>Connection</strong> Successful!',
                         animation: {
                             open: 'animated bounceInDown', // Animate.css class names
@@ -106,6 +120,8 @@
                             speed: 500 // unavailable - no need
                         }
                     });
+                    var notyUL = document.getElementById('noty_topRight_layout_container');
+                    notyUL.style.marginTop = "50px";
                 }).fail(function () {
                     console.log("Cant even right now");
                 });

@@ -33,4 +33,17 @@ namespace WebApplication1.Models.TrackingModel
             this.count = count;
         }
     }
+
+    public class TrackingTempBarChartModel
+    {
+        public string date { get; set; }
+        public string temp { get; set; }
+
+        public TrackingTempBarChartModel() { }
+        public TrackingTempBarChartModel(string time, string temp)
+        {
+            this.date = time;
+            this.temp = temp;
+        }
+    }
 }
