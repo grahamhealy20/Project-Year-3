@@ -300,5 +300,17 @@ namespace TrackingRESTService
                 throw new FaultException(ex.Message);
             }
         }
+
+        public int TestNetwork() {
+            try
+            {
+                return 1;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+           
+        }
     }
 }

@@ -11,7 +11,6 @@ namespace TestClient.Model
         private Model.ApplicationUser user;
         private Kinect sensor = new Kinect();
         private Sensor arduino = new Sensor();
-
         //private Sensor tempSensor = new Sensor();
         public delegate void TrackingHandler(object myObject, EventArgs myArgs);
         public event TrackingHandler onTrackingDetected;
@@ -21,8 +20,7 @@ namespace TestClient.Model
 
         public delegate void TemperatureGUIHandler(object myObject, TemperatureEventArgs myArgs);
         public event TemperatureGUIHandler onTempGUI;
-
-        
+    
         public TrackingSession() { }
 
         public TrackingSession(Model.ApplicationUser user_in) {
@@ -39,28 +37,17 @@ namespace TestClient.Model
             catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
-
         }
 
         public int startTracking() {
             try {
                 // Start Kinect
-                sensor = new Kinect();
-                sensor.Start();
+                sensor.StartKinect();
                 EventArgs eargs = new EventArgs();
                 sensor.OnMotionDetected += new Kinect.DetectionHandler(FireTrackingEvent);
-
-
-
-
                 arduino.OnTemperatureReceived += new Sensor.TemperatureHandler(FireTemperatureEvent);
                 arduino.OnTemperatureGUIReceived += new Sensor.TemperatureGUIHandler(UpdateGUITemp);
                 arduino.Start();
-
-
-                // Start Temp
-                //tempSensor.start();
-                // Start Session on REST
                 return 1;    
 
             } catch(Exception ex) {
@@ -105,7 +92,15 @@ namespace TestClient.Model
 
         private void UpdateGUITemp(object myObject, TemperatureEventArgs myArgs)
         {
-            onTempGUI(myObject, myArgs);
+            try
+            {
+                onTempGUI(myObject, myArgs);
+            }
+            catch (Exception)
+            {             
+                //throw;
+            }
+
         }
 
     }

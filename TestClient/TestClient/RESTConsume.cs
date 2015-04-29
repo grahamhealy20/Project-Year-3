@@ -13,7 +13,7 @@ namespace TestClient
     class RESTConsume
     {
         private static WebClient proxy = new WebClient();
-
+       
         public static int StartSession(Model.Session session) {
             try {
                 DataContractSerializer ser = new DataContractSerializer(typeof(Model.Session));
@@ -24,8 +24,7 @@ namespace TestClient
                 proxy.Headers["Content-type"] = "application/xml";
                 // Encoding
                 proxy.Encoding = Encoding.UTF8;
-                var response = proxy.UploadString("https://localhost:44301/TrackingService.svc/Session/Add", "POST", data);
-                
+                var response = proxy.UploadString("https://localhost:44301/TrackingService.svc/Session/Add", "POST", data);                
                 return 1;
             }
             catch (Exception ex) {
@@ -47,7 +46,6 @@ namespace TestClient
                     // Encoding
                     client.Encoding = Encoding.UTF8;
                     client.UploadString("https://localhost:44301/TrackingService.svc/Session/Add/TrackingState/", "POST", data);
-
                     return 1;
                 }      
             }

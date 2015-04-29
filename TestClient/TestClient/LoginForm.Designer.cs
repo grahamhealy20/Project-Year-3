@@ -37,6 +37,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.EmailLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,11 +52,12 @@
             this.EmailTextBox.Size = new System.Drawing.Size(167, 20);
             this.EmailTextBox.TabIndex = 0;
             this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
+            this.EmailTextBox.Click += new System.EventHandler(this.EmailTextBox_OnClick);
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PasswordTextBox.Location = new System.Drawing.Point(134, 263);
+            this.PasswordTextBox.Location = new System.Drawing.Point(134, 267);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(167, 20);
             this.PasswordTextBox.TabIndex = 1;
@@ -63,9 +66,9 @@
             // VerifyUser
             // 
             this.VerifyUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.VerifyUser.Location = new System.Drawing.Point(134, 302);
+            this.VerifyUser.Location = new System.Drawing.Point(134, 312);
             this.VerifyUser.Name = "VerifyUser";
-            this.VerifyUser.Size = new System.Drawing.Size(167, 20);
+            this.VerifyUser.Size = new System.Drawing.Size(167, 24);
             this.VerifyUser.TabIndex = 2;
             this.VerifyUser.Text = "Sign In";
             this.VerifyUser.UseVisualStyleBackColor = true;
@@ -87,13 +90,15 @@
             // 
             this.ErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ErrorLabel.AutoSize = true;
-            this.ErrorLabel.Location = new System.Drawing.Point(131, 208);
+            this.ErrorLabel.Location = new System.Drawing.Point(132, 293);
             this.ErrorLabel.Name = "ErrorLabel";
             this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.ErrorLabel.TabIndex = 4;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.EmailLabel);
             this.panel1.Controls.Add(this.ErrorLabel);
             this.panel1.Controls.Add(this.EmailTextBox);
             this.panel1.Controls.Add(this.PasswordTextBox);
@@ -130,6 +135,25 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // EmailLabel
+            // 
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Location = new System.Drawing.Point(131, 208);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
+            this.EmailLabel.TabIndex = 5;
+            this.EmailLabel.Text = "Email";
+            this.EmailLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(131, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Password";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,7 +163,7 @@
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(450, 392);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = "Baby Guard Baby Monitor";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -159,5 +183,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

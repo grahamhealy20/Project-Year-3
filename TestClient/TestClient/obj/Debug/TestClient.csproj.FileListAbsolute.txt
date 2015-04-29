@@ -27,7 +27,6 @@ D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.xml
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\EntityFramework.SqlServer.xml
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Form1.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.LoginForm.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properties.Resources.resources
 D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
@@ -70,3 +69,4 @@ C:\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.Properties.Resource
 C:\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.csproj.GenerateResource.Cache
 C:\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.exe
 C:\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.pdb
+D:\Y3-PROJECT\Project-Year-3\TestClient\TestClient\obj\Debug\TestClient.MainForm.resources

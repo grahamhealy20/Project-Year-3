@@ -73,5 +73,11 @@ namespace TrackingRESTService
         [OperationContract]
         [WebInvoke(UriTemplate = "Session/Delete/{id}", Method = "DELETE")]
         bool DeleteSession(string id);
+
+
+        //Method to check network
+        [OperationContract]
+        [WebGet(UriTemplate = "Network/Test/", ResponseFormat = WebMessageFormat.Json)]
+        int TestNetwork();
     }
 }
