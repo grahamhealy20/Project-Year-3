@@ -328,3 +328,8 @@ border: 0px solid #000000;
   -webkit-border-radius: 12px 12px 12px 12px;
   border: 0px solid #000000;
 }
+
+.jumbotron {
+  background-image: url('../Images/Logos/baby.jpg');
+
+}
