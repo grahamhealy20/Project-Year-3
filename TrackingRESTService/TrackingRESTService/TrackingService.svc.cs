@@ -125,6 +125,7 @@ namespace TrackingRESTService
                     oldDetails.UserId = state.UserId;
                     oldDetails.time = state.time;
                     oldDetails.noAlerts = state.noAlerts;
+
                     db.SaveChanges();
                     return true;
                 }

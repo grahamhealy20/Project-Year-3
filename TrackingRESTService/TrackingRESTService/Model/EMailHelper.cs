@@ -31,17 +31,5 @@ namespace TrackingRESTService.Model
                 smtp.Send(message);
             }
         }
-
-        public void sendMessage(MailAddress receiptent, Model.TrackingState state)
-        {
-          using (var message = new MailMessage(fromAddress, receiptent)
-          {
-            Subject = "Tracking Event",
-            Body = "ALERT: \nTime: " + state.time
-          })
-          {
-            smtp.Send(message);
-          }
-        }
     }
 }
