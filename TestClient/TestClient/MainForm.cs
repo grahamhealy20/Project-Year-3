@@ -18,6 +18,7 @@ namespace TestClient
     public partial class MainForm : Form
     {
         //private LoginForm login = new LoginForm();
+        private System.Timers.Timer delay;
         private bool started = false;
         private static Model.ApplicationUser user;
         public void setUser(Model.ApplicationUser user_in) {
@@ -30,7 +31,10 @@ namespace TestClient
         {
             InitializeComponent();
             CheckNetwork();
-            trackedState = new Model.TrackingSession(user);
+            trackedState = new Model.TrackingSession();
+            delay = new System.Timers.Timer();
+            delay.Interval = 10;
+            delay.Enabled = true;
             trackedState.onTrackingDetected += new Model.TrackingSession.TrackingHandler(UpdateGUI);
             trackedState.onTempGUI += new Model.TrackingSession.TemperatureGUIHandler(UpdateTemp);
             trackedState.onTempDetected += new Model.TrackingSession.TemperatureHandler(UpdateGUITemp);
@@ -83,7 +87,7 @@ namespace TestClient
         }
         private void UpdateGUITemp(object myObject, Model.TemperatureEventArgs myArgs)
         {
-          LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText("WARNING! HIGH TEMPERATURE!: " + myArgs.temp + Environment.NewLine)));
+            LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.Text = "WARNING! HIGH TEMPERATURE!: " + myArgs.temp));
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -96,13 +100,11 @@ namespace TestClient
             if (button1.Text == "Start" && started == false) {
                 started = true;
                 button1.Text = "Stop";
-                LoggingBox.Text = "Starting Tracking Service";
                 backgroundWorker1.RunWorkerAsync();
             }
             else if (button1.Text == "Stop" && started == true) {
                 started = false;
                 button1.Text = "Start";
-                LoggingBox.AppendText("Tracking Stopped" + Environment.NewLine);
                 trackedState.Stop();
             }
         }

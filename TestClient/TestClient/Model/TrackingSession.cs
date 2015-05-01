@@ -48,7 +48,6 @@ namespace TestClient.Model
                 arduino.OnTemperatureReceived += new Sensor.TemperatureHandler(FireTemperatureEvent);
                 arduino.OnTemperatureGUIReceived += new Sensor.TemperatureGUIHandler(UpdateGUITemp);
                 arduino.Start();
-                startSession();
                 return 1;    
 
             } catch(Exception ex) {
@@ -79,8 +78,8 @@ namespace TestClient.Model
 
         void FireTrackingEvent(object a, EventArgs e) {
             // Call Rest call to add state
-          //  Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", 3, 0, "Motion Event");
-           // addState(state);
+            //Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", 30, 1, "Motion Event");
+            //addState(state);
             onTrackingDetected(a, e);
         }
 
