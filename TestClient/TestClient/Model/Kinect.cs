@@ -112,7 +112,7 @@ namespace TestClient.Model
 
                     frameIterator++;
                     // 30 fps so wait for a second after each detection
-                    if (frameIterator == 150) {
+                    if (frameIterator == 100) {
                         alertWait = false;
 
                         frameIterator = 0;
@@ -157,7 +157,7 @@ namespace TestClient.Model
 
                     // Calculate percentage
                     percentage = ((double)noOfMovedPixels / (double) 307200) * 100;
-                    if (percentage > 30.00)
+                    if (percentage > 25.00)
                     {
                         EventArgs eventargs = new EventArgs();
                         // Only fire if bool is false 

@@ -12,7 +12,6 @@ namespace TestClient.Model
 {
     public class Sensor
     {
-      public double tmep;
         /* CODE LOADED ONTO ARDUINO MICROPROCESSOR
        
        #include <math.h>         //loads the more advanced math functions
@@ -42,7 +41,7 @@ namespace TestClient.Model
 
         // http://stackoverflow.com/questions/195483/c-sharp-check-if-a-com-serial-port-is-already-open
         private SerialPort MyPort = new SerialPort("COM3", 115200);
-        private byte[] serialIO = new byte[4];
+        private double temperature;
 
         public delegate void TemperatureHandler(object myObject,
                                     TemperatureEventArgs myArgs);
@@ -69,6 +68,7 @@ namespace TestClient.Model
               try
               {
                 double tempDouble = Convert.ToDouble(line);
+                temperature = tempDouble;
                 if (tempDouble > 27)
                 {
                   OnTemperatureReceived(this, args);
@@ -113,10 +113,7 @@ namespace TestClient.Model
         }
         public double GetTemperature()
         {
-            string temp = "";
-            temp = MyPort.ReadLine();
-            double tempDouble = Convert.ToDouble(temp);
-            return tempDouble;
+            return temperature;
         }
     }
 }

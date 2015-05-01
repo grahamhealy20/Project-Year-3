@@ -94,7 +94,7 @@ namespace TestClient.Model
         private void FireTemperatureEvent(object myObject, TemperatureEventArgs myArgs)
         {
           // Call Rest call to add state
-          Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", temp, 0, "Temperature Event");
+          Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", arduino.GetTemperature(), 0, "Temperature Event");
           RESTConsume.AddState(state);
           onTempDetected(myObject, myArgs);
         }

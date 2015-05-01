@@ -96,14 +96,14 @@
                         heading.appendChild(headingMain);
 
                         var timeText = document.createElement('p');
-                        timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + data.time + ' via client' + '</small>';
+                        timeText.innerHTML = '<small class="text-muted"><i class="glyphicon glyphicon-time"></i> ' + data.time + '</small>';
                         heading.appendChild(timeText);
 
 
                         // Panel body
                         var body = document.createElement('div');
                         $(body).addClass("timeline-body");
-                        body.innerHTML = "TEST";
+                        body.innerHTML = data.stateType;
 
                         panel.appendChild(heading);
                         panel.appendChild(body);

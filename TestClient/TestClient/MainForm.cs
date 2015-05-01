@@ -99,7 +99,7 @@ namespace TestClient
                 started = true;
                 trackedState.SetUser(user);
                 button1.Text = "Stop";
-                LoggingBox.Text = "Starting Tracking Service";
+                LoggingBox.Text = "Starting Tracking Service" + Environment.NewLine;
                 backgroundWorker1.RunWorkerAsync();
             }
             else if (button1.Text == "Stop" && started == true) {
@@ -114,6 +114,7 @@ namespace TestClient
         {
             try
             {
+
             }
             catch (Exception ex)
             {

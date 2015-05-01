@@ -271,8 +271,16 @@ namespace TrackingRESTService
                     }   
                     // Uncomment to enable SMS notificaitons.
                     var context = GlobalHost.ConnectionManager.GetHubContext<Hubs.NotificationHub>();
-                    string connectionId = Hubs.ConnectionInfo.userConnections[toAdd.UserId];
-                    context.Clients.Client(connectionId).send("State Added");            
+                    try
+                    {
+                        string connectionId = Hubs.ConnectionInfo.userConnections[toAdd.UserId];
+                        context.Clients.Client(connectionId).send("State Added");   
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                            
                     return 1;
                 }
             }
