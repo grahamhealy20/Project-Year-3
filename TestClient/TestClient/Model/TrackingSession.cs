@@ -11,6 +11,8 @@ namespace TestClient.Model
         private Model.ApplicationUser user;
         private Kinect sensor = new Kinect();
         private Sensor arduino = new Sensor();
+        private double temp;
+
         //private Sensor tempSensor = new Sensor();
         public delegate void TrackingHandler(object myObject, EventArgs myArgs);
         public event TrackingHandler onTrackingDetected;
@@ -23,8 +25,9 @@ namespace TestClient.Model
     
         public TrackingSession() { }
 
-        public TrackingSession(Model.ApplicationUser user_in) {
-            user = user_in;
+
+        public void SetUser(Model.ApplicationUser user_in) {
+          user = user_in;
         }
 
         public int Stop()
@@ -32,6 +35,9 @@ namespace TestClient.Model
             try {
                 sensor.Stop();
                 arduino.Stop();
+                sensor.OnMotionDetected -= new Kinect.DetectionHandler(FireTrackingEvent);
+                arduino.OnTemperatureReceived -= new Sensor.TemperatureHandler(FireTemperatureEvent);
+                arduino.OnTemperatureGUIReceived -= new Sensor.TemperatureGUIHandler(UpdateGUITemp);
                 return 1;
             }
             catch (Exception ex) {
@@ -41,6 +47,8 @@ namespace TestClient.Model
 
         public int startTracking() {
             try {
+                Session sess = new Session(user.Id);
+                RESTConsume.StartSession(sess);
                 // Start Kinect
                 sensor.StartKinect();
                 EventArgs eargs = new EventArgs();
@@ -48,7 +56,6 @@ namespace TestClient.Model
                 arduino.OnTemperatureReceived += new Sensor.TemperatureHandler(FireTemperatureEvent);
                 arduino.OnTemperatureGUIReceived += new Sensor.TemperatureGUIHandler(UpdateGUITemp);
                 arduino.Start();
-                startSession();
                 return 1;    
 
             } catch(Exception ex) {
@@ -79,16 +86,17 @@ namespace TestClient.Model
 
         void FireTrackingEvent(object a, EventArgs e) {
             // Call Rest call to add state
-          //  Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", 3, 0, "Motion Event");
-           // addState(state);
+            Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", arduino.GetTemperature(), 0, "Motion Event");
+            RESTConsume.AddState(state);
             onTrackingDetected(a, e);
         }
 
         private void FireTemperatureEvent(object myObject, TemperatureEventArgs myArgs)
         {
-            // Call Rest call to add state
-            //Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", 30, 1, "Temperture Event");
-            onTempDetected(myObject, myArgs);
+          // Call Rest call to add state
+          Model.TrackingState state = new Model.TrackingState(user.Id, DateTime.Now.ToString(), "Dublin", temp, 0, "Temperature Event");
+          RESTConsume.AddState(state);
+          onTempDetected(myObject, myArgs);
         }
 
         private void UpdateGUITemp(object myObject, TemperatureEventArgs myArgs)

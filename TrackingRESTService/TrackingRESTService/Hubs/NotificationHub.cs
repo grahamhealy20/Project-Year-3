@@ -32,6 +32,7 @@ namespace TrackingRESTService.Hubs
             string userKey = ConnectionInfo.userConnections.FirstOrDefault(x => x.Value == Context.ConnectionId).Key;
             ConnectionInfo.userConnections.Remove(userKey);
             return base.OnDisconnected(stopCalled);
+          
         }
     }
 }

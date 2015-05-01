@@ -264,7 +264,7 @@ namespace TrackingRESTService
                         var toAddress = new MailAddress(email, user.firstName + user.lastName);
                         const string subject = "Event Triggered";
                         const string body = "Body - Somethings's been detected";
-                        emailHelper.sendMessage(toAddress, subject, body);
+                        emailHelper.sendAlertMessage(toAddress, toAdd);
                         string pNumber = "+353" + user.PhoneNumber;
                         //smsHelper.sendMessage(pNumber, "TEST");
                         smsHelper.sendAlertMessage(pNumber, toAdd);

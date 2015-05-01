@@ -12,6 +12,7 @@ namespace TestClient.Model
 {
     public class Sensor
     {
+      public double tmep;
         /* CODE LOADED ONTO ARDUINO MICROPROCESSOR
        
        #include <math.h>         //loads the more advanced math functions
@@ -64,16 +65,26 @@ namespace TestClient.Model
             args.temp = line;
 
             // If temperature is greater than a set temp. (Default: Room Temperature)
-            double tempDouble = Convert.ToDouble(line);
-            if (tempDouble > 27) {
-                OnTemperatureReceived(this, args);
-            }
-            OnTemperatureGUIReceived(this, args);
+            if (line != null || line != "") {
+              try
+              {
+                double tempDouble = Convert.ToDouble(line);
+                if (tempDouble > 27)
+                {
+                  OnTemperatureReceived(this, args);
+                }
+                OnTemperatureGUIReceived(this, args);
+              }
+              catch (Exception)
+              {
+                
+              } 
+            
+          }
         }
 
         public void Start()
         {
-            MyPort.Handshake = Handshake.None;
             OpenMyPort();
             Console.WriteLine("BaudRate {0}", MyPort.BaudRate);
         }

@@ -54,18 +54,5 @@ namespace TestClient
                 throw new Exception(ex.Message);
             }
         }
-
-
-        public static Model.TrackingState getTrackingState(int id) {
-                string userId = Convert.ToString(id);
-                byte[] toByte = proxy.DownloadData((new Uri("http://localhost:4082/TrackingService.svc/TrackingState/Latest/" + id)));
-                Stream strm = new MemoryStream(toByte);
-                //return obj.ReadStream(strm).
-
-                DataContractSerializer obj = new DataContractSerializer(typeof(Model.TrackingState));
-                Model.TrackingState obje = (Model.TrackingState) obj.ReadObject(strm);
-                //TrackingState state = (TrackingState) obje;
-                return obje;      
-            }
     }
 }

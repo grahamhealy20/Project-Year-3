@@ -31,5 +31,17 @@ namespace TrackingRESTService.Model
                 smtp.Send(message);
             }
         }
+        public void sendAlertMessage(MailAddress receiptent, Model.TrackingState stateFired)
+        {
+          using (var message = new MailMessage(fromAddress, receiptent)
+          {
+            Subject = "Alert! Something's been dectected",
+            Body = "Alert fired at " + stateFired.time + Environment.NewLine + "Alert Type: " + stateFired.stateType + Environment.NewLine + "Temperature: " +
+            stateFired.temp
+          })
+          {
+            smtp.Send(message);
+          }
+        }
     }
 }

@@ -25,12 +25,14 @@ namespace TestClient
             UserName.Text = "User: " + user.firstName + " " + user.lastName;
         }
 
-        private Model.TrackingSession trackedState;
+        private Model.TrackingSession trackedState = new Model.TrackingSession();
+
         public MainForm()
         {
             InitializeComponent();
             CheckNetwork();
-            trackedState = new Model.TrackingSession(user);
+            trackedState = new Model.TrackingSession();
+            
             trackedState.onTrackingDetected += new Model.TrackingSession.TrackingHandler(UpdateGUI);
             trackedState.onTempGUI += new Model.TrackingSession.TemperatureGUIHandler(UpdateTemp);
             trackedState.onTempDetected += new Model.TrackingSession.TemperatureHandler(UpdateGUITemp);
@@ -72,7 +74,7 @@ namespace TestClient
             }
             catch (Exception)
             {               
-                throw;
+               // throw;
             }
         }
 
@@ -95,6 +97,7 @@ namespace TestClient
         {
             if (button1.Text == "Start" && started == false) {
                 started = true;
+                trackedState.SetUser(user);
                 button1.Text = "Stop";
                 LoggingBox.Text = "Starting Tracking Service";
                 backgroundWorker1.RunWorkerAsync();
