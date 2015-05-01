@@ -480,3 +480,4 @@ C:\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.Migrations.mig.resou
 C:\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
 C:\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Keith\Documents\GitHub\Project-Year-3\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
