@@ -165,7 +165,6 @@
             this.TempLabel.Name = "TempLabel";
             this.TempLabel.Size = new System.Drawing.Size(100, 25);
             this.TempLabel.TabIndex = 8;
-            this.TempLabel.Text = "T";
             // 
             // TextBoxPanel
             // 
