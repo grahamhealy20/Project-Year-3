@@ -39,8 +39,8 @@ namespace TestClient
             trackedState.onTempGUI += new Model.TrackingSession.TemperatureGUIHandler(UpdateTemp);
             trackedState.onTempDetected += new Model.TrackingSession.TemperatureHandler(UpdateGUITemp);
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
+            trackedState.onInfoEvent += new Model.TrackingSession.StatusMessageHandler(UpdateMessage);
         }
-
         public void CheckNetwork()
         {
             try
@@ -67,6 +67,8 @@ namespace TestClient
             }
         }
 
+      
+
         private void UpdateGUI(object sender, EventArgs e)
         {
             try
@@ -87,18 +89,32 @@ namespace TestClient
         }
         private void UpdateGUITemp(object myObject, Model.TemperatureEventArgs myArgs)
         {
-            LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.Text = "WARNING! HIGH TEMPERATURE!: " + myArgs.temp));
+            LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText("WARNING! HIGH TEMPERATURE!: " + myArgs.temp + Environment.NewLine)));
+        }
+
+        private void UpdateMessage(object myObject, Model.InfoEventArgs myArgs)
+        {
+            LoggingBox.AppendText( "INFO: " + myArgs.message + Environment.NewLine);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            trackedState.startTracking();
+            LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText("Starting Tracking Service" + Environment.NewLine)));
+            try
+            {
+              trackedState.startTracking();
+            }
+            catch (Exception ex)
+            {
+              LoggingBox.AppendText("ERROR: " + ex.Message + Environment.NewLine);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (button1.Text == "Start" && started == false) {
                 started = true;
+                LoggingBox.Clear();
                 button1.Text = "Stop";
                 backgroundWorker1.RunWorkerAsync();
             }

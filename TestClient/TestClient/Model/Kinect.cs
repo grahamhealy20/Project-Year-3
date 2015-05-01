@@ -8,8 +8,6 @@ using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
-//using System.Windows.Media;
-//using System.Windows.Media.Imaging;
 using Microsoft.Kinect;
 using System.ComponentModel;
 using System.Timers;
@@ -36,6 +34,9 @@ namespace TestClient.Model
 
         public delegate void DetectionHandler(object myObject, EventArgs myArgs);
         public event DetectionHandler OnMotionDetected;
+
+        public delegate void StatusMessageHandler(object myObject, InfoEventArgs myArgs);
+        public event StatusMessageHandler onInfoEvent;
 
         /// Active Kinect sensor
         private KinectSensor sensor;
@@ -65,10 +66,7 @@ namespace TestClient.Model
             {
                 // Turn on the depth stream to receive depth frames
                 this.sensor.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
-                //this.sensor.DepthStream.Enable(DepthImageFormat.Resolution80x60Fps30);
-                // Allocate space to put the depth pixels we'll receive
                 this.depthPixels = new DepthImagePixel[this.sensor.DepthStream.FramePixelDataLength];
-                // Allocate space to put the color pixels we'll create
                 // Add an event handler to be called whenever there is new depth frame data
                 this.sensor.DepthFrameReady += this.SensorDepthFrameReady;
 
@@ -87,7 +85,6 @@ namespace TestClient.Model
             }
             if (null == this.sensor)
             {
-                // Fire connect camera message
                 return false;
             }
             return false;
@@ -98,6 +95,7 @@ namespace TestClient.Model
             if (null != this.sensor)
             {
                 this.sensor.Stop();
+                onInfoEvent(this, new InfoEventArgs("Kinect Stopped"));
                 return true;
             }
             return false;
@@ -118,11 +116,11 @@ namespace TestClient.Model
 
                     frameIterator++;
                     // 30 fps so wait for a second after each detection
-                    if (frameIterator == 150) {
+                    if (frameIterator == 100) {
                         alertWait = false;
-
                         frameIterator = 0;
                     }
+
                     // Copy the pixel data from the image to a temporary array
                     depthFrame.CopyDepthImagePixelDataTo(this.depthPixels);
 
@@ -163,18 +161,24 @@ namespace TestClient.Model
 
                     // Calculate percentage
                     percentage = ((double)noOfMovedPixels / (double) 307200) * 100;
-                    if (percentage > 22.00)
+                    if (percentage > 30.00)
                     {
                         EventArgs eventargs = new EventArgs();
                         // Only fire if bool is false 
                         if (alertWait == false) {
                             alertWait = true;
-                            OnMotionDetected(this, eventargs);
+                            try
+                            {
+                              OnMotionDetected(this, eventargs);
+                            }
+                            catch (Exception)
+                            {                             
+                            throw;
+                            }
                         }
                     }                  
                 }
             }
         }
-
     }
 }
