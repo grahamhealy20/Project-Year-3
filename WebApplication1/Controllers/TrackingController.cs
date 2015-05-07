@@ -146,25 +146,29 @@ namespace WebApplication1.Controllers
 
         public ActionResult GetNoOfStatesInSession(int id) {
             Models.TrackingModel.Session session;
+            int length;
+            JsonResult jr = new JsonResult();
             using (var db = new Models.ApplicationDbContext())
             {
               // Check for empty session
               try
               {
                 session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+                length = session.states.Count;
+               
+                jr.Data = length;
+                jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
               }
               catch (Exception)
               {   
-                throw;
+                //Warning(ex.Message, true);
               }
               
             }
-            int length = session.states.Count;
+
             //    new Models.TrackingModel.TrackingTempLineChartModel { date ="1", temp = "30"}
             //};
-            JsonResult jr = new JsonResult();
-            jr.Data = length;
-            jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return jr;
         }
 
@@ -200,27 +204,30 @@ namespace WebApplication1.Controllers
         {
             double averageTemp = 0;
             Models.TrackingModel.Session session;
+            JsonResult jr = new JsonResult();
             using (var db = new Models.ApplicationDbContext())
             {
               // Check for empty session
               try
               {
                 session = db.Sessions.Include(x => x.states).Single(x => x.Id == id);
+                foreach (var state in session.states)
+                {
+                    averageTemp += state.temp;
+                }
+                averageTemp /= session.states.Count;
+                averageTemp = Math.Round(averageTemp);
+
+                jr.Data = averageTemp;
+                jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
               }
               catch (Exception)
-              {              
-                throw;
+              {
+                //Warning(ex.Message, true);    
+                //throw;
               }        
             }
-            foreach (var state in session.states) {
-                averageTemp += state.temp;
-            }
-
-            averageTemp /= session.states.Count;        
-            averageTemp = Math.Round(averageTemp);
-            JsonResult jr = new JsonResult();
-            jr.Data = averageTemp;
-            jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+           
             return jr;
         }
 

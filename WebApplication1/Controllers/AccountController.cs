@@ -29,7 +29,8 @@ namespace WebApplication1.Controllers
             UserManager = userManager;
         }
 
-        public ApplicationUserManager UserManager {
+        public ApplicationUserManager UserManager
+        {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -92,8 +93,10 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { 
-                    UserName = model.firstName + " " + model.lastName, Email = model.Email, 
+                var user = new ApplicationUser()
+                {
+                    UserName = model.firstName + " " + model.lastName,
+                    Email = model.Email,
                     firstName = model.firstName,
                     lastName = model.lastName,
                     PhoneNumber = model.phoneNumber,
@@ -110,7 +113,7 @@ namespace WebApplication1.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     Success(string.Format("<strong>{0}<strong> was successfully registered!", model.Email), true);
-                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -129,7 +132,7 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null) 
+            if (userId == null || code == null)
             {
                 return View("Error");
             }
@@ -189,13 +192,13 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-	
+
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null) 
+            if (code == null)
             {
                 return View("Error");
             }
@@ -331,6 +334,32 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        public ActionResult ManageExtraCredentials(ManageUserViewModel model)
+        {
+            bool hasPassword = HasPassword();
+            ViewBag.HasLocalPassword = hasPassword;
+            ViewBag.ReturnUrl = Url.Action("Manage");
+            if (hasPassword)
+            {
+                if (ModelState.IsValid)
+                {
+                    try 
+	                {	        
+		                var user = Helpers.UserHelper.getUser(User.Identity.GetUserId());
+                                    user.Email = model.EmailAddress;
+                                    user.PhoneNumber = model.PhoneNumber;
+                         //return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+	                }
+	                catch (Exception)
+	                {
+	
+	                }
+                }
+            }
+            // If we got this far, something failed, redisplay form
+            return View("Manage", model);
+        }
+
         // File upload
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult ImageUpload(HttpPostedFileBase file)
@@ -344,7 +373,7 @@ namespace WebApplication1.Controllers
                     file.SaveAs(path);
 
                     string userId = User.Identity.GetUserId();
-                   // var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                    // var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
                     //var manager = new UserManager<ApplicationUser>(store);
                     var user = Helpers.UserHelper.getUser(userId);
                     user.profileImagePath = dbPath;
@@ -358,7 +387,7 @@ namespace WebApplication1.Controllers
             else
             {
                 ViewBag.Message = "You have not specified a file.";
-            }  
+            }
             return RedirectToAction("Manage", "Account");
         }
 
@@ -447,13 +476,15 @@ namespace WebApplication1.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { 
-                    UserName = model.Email, Email = model.Email,
+                var user = new ApplicationUser()
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
                     // Custom attributes
                     firstName = model.firstName,
                     lastName = model.lastName,
                     PhoneNumber = model.phoneNumber,
-                    profileImagePath  = "~/Images/Uploads/default.png"
+                    profileImagePath = "~/Images/Uploads/default.png"
                 };
                 IdentityResult result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -462,13 +493,13 @@ namespace WebApplication1.Controllers
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        
+
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirm your account", "Please confirm your account by clicking this link");
-                        
+
                         return RedirectToLocal(returnUrl);
                     }
                 }
@@ -485,8 +516,9 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut();
-            //Success(string.Format("<strong>Bye Bye!</strong> Missing you already!"), true);
+            //AuthenticationManager.SignOut();
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Success(string.Format("<strong>Bye Bye!</strong> Missing you already!"), true);
             return RedirectToAction("Index", "Home");
         }
 
@@ -579,7 +611,8 @@ namespace WebApplication1.Controllers
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
             }
 

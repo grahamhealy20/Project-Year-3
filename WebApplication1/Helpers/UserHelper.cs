@@ -17,14 +17,13 @@ namespace WebApplication1.Helpers
         {
             try
             {
-                var user = manager.FindById(userId);
-                return user;
+                var user = manager.FindByIdAsync(userId);
+                return user.Result;
             }
             catch (Exception)
             {              
                 throw;
-            }
-          
+            }         
         }
 
         static public void updateUser(Models.ApplicationUser user) {

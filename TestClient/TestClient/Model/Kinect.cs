@@ -29,7 +29,7 @@ namespace TestClient.Model
 
         public Kinect()
         {
-            
+
         }
 
         public delegate void DetectionHandler(object myObject, EventArgs myArgs);
@@ -112,7 +112,8 @@ namespace TestClient.Model
 
                     frameIterator++;
                     // 30 fps so wait for a second after each detection
-                    if (frameIterator == 100) {
+                    if (frameIterator == 100)
+                    {
                         alertWait = false;
 
                         frameIterator = 0;
@@ -156,16 +157,18 @@ namespace TestClient.Model
                     }
 
                     // Calculate percentage
-                    percentage = ((double)noOfMovedPixels / (double) 307200) * 100;
-                    if (percentage > 25.00)
+                    percentage = ((double)noOfMovedPixels / (double)307200) * 100;
+                    if (percentage > 40.00)
                     {
                         EventArgs eventargs = new EventArgs();
                         // Only fire if bool is false 
-                        if (alertWait == false) {
+                        if (alertWait == false)
+                        {
                             alertWait = true;
-                            OnMotionDetected(this, eventargs);
+                            if (OnMotionDetected != null)
+                                OnMotionDetected(this, eventargs);
                         }
-                    }                  
+                    }
                 }
             }
         }

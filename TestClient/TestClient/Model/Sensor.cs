@@ -42,6 +42,8 @@ namespace TestClient.Model
         // http://stackoverflow.com/questions/195483/c-sharp-check-if-a-com-serial-port-is-already-open
         private SerialPort MyPort = new SerialPort("COM3", 115200);
         private double temperature;
+        private int frameIterator;
+        private bool alertWait;
 
         public delegate void TemperatureHandler(object myObject,
                                     TemperatureEventArgs myArgs);
@@ -54,33 +56,41 @@ namespace TestClient.Model
         public event TemperatureGUIHandler OnTemperatureGUIReceived;
         public Sensor()
         {
-            MyPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);    
+            MyPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
         }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
+            frameIterator++;
+            if (frameIterator == 150)
+            {
+                alertWait = false;
+                frameIterator = 0;
+            }
             string line = MyPort.ReadLine();
             TemperatureEventArgs args = new TemperatureEventArgs();
             args.temp = line;
 
             // If temperature is greater than a set temp. (Default: Room Temperature)
-            if (line != null || line != "") {
-              try
-              {
-                double tempDouble = Convert.ToDouble(line);
-                temperature = tempDouble;
-                if (tempDouble > 27)
+            if (line != null || line != "")
+            {
+                try
                 {
-                  OnTemperatureReceived(this, args);
+                    double tempDouble = Convert.ToDouble(line);
+                    temperature = tempDouble;
+                    if (tempDouble > 27 && alertWait == false)
+                    {
+                        alertWait = true;
+                        OnTemperatureReceived(this, args);
+                    }
+                    OnTemperatureGUIReceived(this, args);
                 }
-                OnTemperatureGUIReceived(this, args);
-              }
-              catch (Exception)
-              {
-                
-              } 
-            
-          }
+                catch (Exception)
+                {
+
+                }
+
+            }
         }
 
         public void Start()

@@ -70,7 +70,7 @@ namespace TestClient
             try
             {
                 //LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.Text = "MOTION DETECTED, EVENT TRIGGERED BY: " + sender.ToString() + "AT: " + DateTime.Now));
-                LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText("MOTION DETECTED, EVENT TRIGGERED BY: " + sender.ToString() + "AT: " + DateTime.Now + Environment.NewLine)));
+                LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText(Environment.NewLine + "MOTION DETECTED, EVENT TRIGGERED BY: " + sender.ToString() + " AT: " + DateTime.Now)));
             }
             catch (Exception)
             {               
@@ -85,7 +85,7 @@ namespace TestClient
         }
         private void UpdateGUITemp(object myObject, Model.TemperatureEventArgs myArgs)
         {
-          LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText("WARNING! HIGH TEMPERATURE!: " + myArgs.temp + Environment.NewLine)));
+          LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText(Environment.NewLine + "WARNING! HIGH TEMPERATURE!: " + myArgs.temp)));
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -106,15 +106,21 @@ namespace TestClient
                 started = false;
                 button1.Text = "Start";
                 LoggingBox.AppendText("Tracking Stopped" + Environment.NewLine);
-                trackedState.Stop();
+                backgroundWorker2.RunWorkerAsync();
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void SignOutButton_Click(object sender, EventArgs e)
         {
             try
             {
+                if (started == true) {
+                    backgroundWorker2.RunWorkerAsync();
+                }
 
+                LoginForm ls = new LoginForm();
+                ls.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -122,5 +128,9 @@ namespace TestClient
             }
         }
 
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            trackedState.Stop();
+        }
     }
 }

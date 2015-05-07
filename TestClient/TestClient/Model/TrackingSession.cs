@@ -11,7 +11,6 @@ namespace TestClient.Model
         private Model.ApplicationUser user;
         private Kinect sensor = new Kinect();
         private Sensor arduino = new Sensor();
-        private double temp;
 
         //private Sensor tempSensor = new Sensor();
         public delegate void TrackingHandler(object myObject, EventArgs myArgs);
@@ -49,12 +48,12 @@ namespace TestClient.Model
             try {
                 Session sess = new Session(user.Id);
                 RESTConsume.StartSession(sess);
-                // Start Kinect
-                sensor.StartKinect();
+                // Start Kinect            
                 EventArgs eargs = new EventArgs();
                 sensor.OnMotionDetected += new Kinect.DetectionHandler(FireTrackingEvent);
                 arduino.OnTemperatureReceived += new Sensor.TemperatureHandler(FireTemperatureEvent);
                 arduino.OnTemperatureGUIReceived += new Sensor.TemperatureGUIHandler(UpdateGUITemp);
+                sensor.StartKinect();
                 arduino.Start();
                 return 1;    
 

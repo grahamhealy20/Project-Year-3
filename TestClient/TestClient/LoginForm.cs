@@ -44,9 +44,12 @@ namespace TestClient
         {
             if (!userName.Contains('@'))
             {
+                //LoggingBox.Invoke((MethodInvoker)(() => LoggingBox.AppendText("MOTION DETECTED, EVENT TRIGGERED BY: " + sender.ToString() + " AT: " + DateTime.Now + Environment.NewLine)));
                 ErrorLabel.Text = "Please enter a valid email";
+                //ErrorLabel.Invoke((MethodInvoker)(() => ErrorLabel.Text = "Please Enter a valid email"), ErrorLabel.ForeColor = System.Drawing.Color.Red);
                 PasswordTextBox.Clear();
-                ErrorLabel.ForeColor = System.Drawing.Color.Red;
+                //PasswordTextBox.Invoke((MethodInvoker)(() => PasswordTextBox.Clear()));
+                //ErrorLabel.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
@@ -54,6 +57,7 @@ namespace TestClient
                 if (result == true)
                 {
                     ErrorLabel.Text = "Correct! Logging in";
+                    //ErrorLabel.Invoke((MethodInvoker)(() => ErrorLabel.Text = "Correct! Logging in"), ErrorLabel.ForeColor = System.Drawing.Color.Green);
                     ErrorLabel.ForeColor = System.Drawing.Color.Green;
                     //Application.Run(new Form1());
                     form.Show();
@@ -63,7 +67,9 @@ namespace TestClient
                 else
                 {
                     ErrorLabel.Text = "Incorrect User Name or Password";
+                    //ErrorLabel.Invoke((MethodInvoker)(() => ErrorLabel.Text = "Incorrect Username or Password"), ErrorLabel.ForeColor = System.Drawing.Color.Red);
                     PasswordTextBox.Clear();
+                    //PasswordTextBox.Invoke((MethodInvoker)(() => PasswordTextBox.Clear())); 
                     ErrorLabel.ForeColor = System.Drawing.Color.Red;
                 }
             }
@@ -92,6 +98,7 @@ namespace TestClient
         private void VerifyUser_Click(object sender, EventArgs e)
         {
             SignInAsync(EmailTextBox.Text, PasswordTextBox.Text);
+            //LoginWorker.RunWorkerAsync();
         }
 
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
@@ -116,21 +123,6 @@ namespace TestClient
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public async Task<bool> VerifyUserNamePasswordAsync(string userName, string password)
         {
             UserStore<Model.ApplicationUser> store = new UserStore<Model.ApplicationUser>(new Model.ApplicationDbContext());
@@ -146,6 +138,11 @@ namespace TestClient
                 return true;
             }
             //return await manager.FindAsync(userName, password) != null;
+        }
+
+        private void LoginWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+           
         }
     }
 }

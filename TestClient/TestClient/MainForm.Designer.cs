@@ -44,6 +44,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.LoggingBox = new System.Windows.Forms.RichTextBox();
             this.RealTimeLoggingLabel = new System.Windows.Forms.Label();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -78,7 +79,7 @@
             this.SignOutButton.TabIndex = 5;
             this.SignOutButton.Text = "Sign Out";
             this.SignOutButton.UseVisualStyleBackColor = true;
-            this.SignOutButton.Click += new System.EventHandler(this.button3_Click);
+            this.SignOutButton.Click += new System.EventHandler(this.SignOutButton_Click);
             // 
             // panel1
             // 
@@ -216,6 +217,10 @@
             this.RealTimeLoggingLabel.TabIndex = 1;
             this.RealTimeLoggingLabel.Text = "Real-time log";
             // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,6 +231,7 @@
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(600, 500);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baby Guard Baby Monitor";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -260,6 +266,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label RealTimeLoggingLabel;
         private System.Windows.Forms.RichTextBox LoggingBox;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }
 

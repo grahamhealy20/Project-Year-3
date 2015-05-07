@@ -262,8 +262,8 @@ namespace TrackingRESTService
                         Model.ApplicationUser user = innerdb.Users.FirstOrDefault(x => x.Id == toAdd.UserId);
                         string email = user.Email;
                         var toAddress = new MailAddress(email, user.firstName + user.lastName);
-                        const string subject = "Event Triggered";
-                        const string body = "Body - Somethings's been detected";
+                        //const string subject = "Event Triggered";
+                        //const string body = "Body - Somethings's been detected";
                         emailHelper.sendAlertMessage(toAddress, toAdd);
                         string pNumber = "+353" + user.PhoneNumber;
                         //smsHelper.sendMessage(pNumber, "TEST");

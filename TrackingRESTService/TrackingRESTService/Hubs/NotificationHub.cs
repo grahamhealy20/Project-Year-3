@@ -30,7 +30,9 @@ namespace TrackingRESTService.Hubs
         public override Task OnDisconnected(bool stopCalled)
         {
             string userKey = ConnectionInfo.userConnections.FirstOrDefault(x => x.Value == Context.ConnectionId).Key;
-            ConnectionInfo.userConnections.Remove(userKey);
+            if (userKey != null) {
+                ConnectionInfo.userConnections.Remove(userKey);
+            }          
             return base.OnDisconnected(stopCalled);
           
         }
