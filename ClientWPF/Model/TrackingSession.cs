@@ -20,6 +20,9 @@ namespace ClientWPF.Model
         public delegate void TrackingPercentHandler(object myObject, EventArguments.PercentEventArgs args);
         public event TrackingPercentHandler OnPercentageReceived;
 
+        public delegate void InformationHandler(object myObject, Model.EventArguments.InformationArgs myArgs);
+        public event InformationHandler OnInformationEvent;
+
         //public delegate void TemperatureHandler(object myObject, TemperatureEventArgs myArgs);
         //public event TemperatureHandler onTempDetected;
 
@@ -45,6 +48,7 @@ namespace ClientWPF.Model
                 //arduino.Stop();
                 sensor.OnMotionDetected -= new Kinect.DetectionHandler(FireTrackingEvent);
                 sensor.OnDepthFramePercent -= new Kinect.PerecentUpdater(UpdateGUIPercent);
+                sensor.OnInformationEvent -= new Kinect.InformationHandler(UpdateInfoStatus);
                 //arduino.OnTemperatureReceived -= new Sensor.TemperatureHandler(FireTemperatureEvent);
                 //arduino.OnTemperatureGUIReceived -= new Sensor.TemperatureGUIHandler(UpdateGUITemp);
                 return 1;
@@ -65,6 +69,7 @@ namespace ClientWPF.Model
                 EventArgs eargs = new EventArgs();
                 sensor.OnMotionDetected += new Kinect.DetectionHandler(FireTrackingEvent);
                 sensor.OnDepthFramePercent += new Kinect.PerecentUpdater(UpdateGUIPercent);
+                sensor.OnInformationEvent += new Kinect.InformationHandler(UpdateInfoStatus);
                 //arduino.OnTemperatureReceived += new Sensor.TemperatureHandler(FireTemperatureEvent);
                 //arduino.OnTemperatureGUIReceived += new Sensor.TemperatureGUIHandler(UpdateGUITemp);
                 sensor.StartKinect();
@@ -136,6 +141,11 @@ namespace ClientWPF.Model
         //    }
 
         //}
+
+        private void UpdateInfoStatus(object myObject, EventArguments.InformationArgs myArgs)
+        {
+                OnInformationEvent(this, myArgs);
+        }
 
     }
 }

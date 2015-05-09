@@ -36,6 +36,9 @@ namespace ClientWPF.Model
         public delegate void PerecentUpdater(object myObject, Model.EventArguments.PercentEventArgs myArgs);
         public event PerecentUpdater OnDepthFramePercent;
 
+        public delegate void InformationHandler(object myObject, Model.EventArguments.InformationArgs myArgs);
+        public event InformationHandler OnInformationEvent;
+
         /// Active Kinect sensor
         private KinectSensor sensor;
 
@@ -58,7 +61,8 @@ namespace ClientWPF.Model
             }
         }
 
-        public WriteableBitmap getImageSource() {
+        public WriteableBitmap getImageSource()
+        {
             return colorBitmap;
         }
 
@@ -81,6 +85,10 @@ namespace ClientWPF.Model
                 try
                 {
                     this.sensor.Start();
+                    EventArguments.InformationArgs args = new EventArguments.InformationArgs();
+                    args.InfoMessage = "Kinect Started";
+                    if (OnInformationEvent != null)
+                        OnInformationEvent(this, args);
                     return true;
                 }
                 catch (IOException)
@@ -91,7 +99,11 @@ namespace ClientWPF.Model
             }
             if (null == this.sensor)
             {
-                // Fire connect camera message
+                EventArguments.InformationArgs args = new EventArguments.InformationArgs();
+                args.InfoMessage = Properties.Resources.NoKinectReady;
+                if(OnInformationEvent != null)
+                    OnInformationEvent(this, args);
+
                 return false;
             }
             return false;
@@ -182,7 +194,8 @@ namespace ClientWPF.Model
 
                     // Calculate percentage
                     percentage = ((double)noOfMovedPixels / (double)307200) * 100;
-                    if (OnDepthFramePercent != null) {
+                    if (OnDepthFramePercent != null)
+                    {
                         EventArguments.PercentEventArgs args = new EventArguments.PercentEventArgs();
                         args.Percentage = Math.Round(percentage, 2);
                         OnDepthFramePercent(this, args);
@@ -199,18 +212,12 @@ namespace ClientWPF.Model
                                 OnMotionDetected(this, eventargs);
                         }
                     }
+                    this.colorBitmap.WritePixels(
+                         new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
+                         this.colorPixels,
+                         this.colorBitmap.PixelWidth * sizeof(int),
+                         0);
 
-                    //Dispatcher.Invoke((Action)delegate() { /*update UI thread here*/ }); 
-                    colorBitmap.WritePixels(
-                            new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
-                            this.colorPixels,
-                            this.colorBitmap.PixelWidth * sizeof(int),
-                            0);
-                        //this.colorBitmap.WritePixels(
-                        //    new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
-                        //    this.colorPixels,
-                        //    this.colorBitmap.PixelWidth * sizeof(int),
-                        //    0);
                     //this.colorBitmap.WritePixels(
                     //        new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight),
                     //        this.colorPixels,

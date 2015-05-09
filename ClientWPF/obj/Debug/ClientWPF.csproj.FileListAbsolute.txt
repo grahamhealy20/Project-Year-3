@@ -17,3 +17,11 @@ D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\MahApps.Metro.dll
 D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\System.Windows.Interactivity.dll
 D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\MahApps.Metro.xml
 D:\Y3-PROJECT\Project-Year-3\ClientWPF\obj\Debug\App.baml
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\EntityFramework.dll
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\EntityFramework.SqlServer.dll
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\EntityFramework.xml
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\EntityFramework.SqlServer.xml
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Y3-PROJECT\Project-Year-3\ClientWPF\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

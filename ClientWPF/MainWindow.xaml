@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="BabyGuard Baby Monitor" Height="588" Width="700"
-        WindowStartupLocation="CenterScreen"
+        Title="BabyGuard Baby Monitor" Height="588" Width="724"
+        WindowStartupLocation="CenterScreen" MinWidth="723" MinHeight="588"
 >
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
@@ -26,15 +26,47 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Image Name="LogoImage" HorizontalAlignment="Left" Source="Images/Logo/BabyGuardsidewardssmall.png" Margin="10, 0, 0, 0"></Image>
-        <TextBlock Name="UserName" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15" Margin="10, 0, 10, 0">Graham Healy</TextBlock>
-        <Viewbox Grid.Row="1" Stretch="Uniform" HorizontalAlignment="Center" Margin="0, 10, 0, 10">
+        <TextBlock Name="UserName" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15" Margin="10, 0, 10, 0"></TextBlock>
+        <Viewbox Grid.Row="1" Stretch="Uniform" HorizontalAlignment="Left" Margin="10, 10, 0, 10">
             <Image Name="Image" Width="640" Height="480"/>
         </Viewbox>
-        <TextBlock Name="PercentLabel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" Margin="10, 0, 0, 0">Percent:</TextBlock>
+        <Grid Grid.Row="1" HorizontalAlignment="Right" Width="175">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" FontSize="30">Alerts</Label>
+            <ListBox Name="AlertList" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="0, 10, 0, 0"/>
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" FontSize="20" Text="{Binding Path=Temperature}"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=Type}"/>
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding Path=Time}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+
+        <TextBlock Name="PercentLabel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" Margin="10, 0, 0, 0"></TextBlock>
         <TextBlock Name="TempLabel" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="25" Margin="0, 0, 10, 0">Temperature:</TextBlock>
-        <Button Name="Activate" Grid.Row="3" HorizontalAlignment="Left" Width="100" Height="30" Margin="10, 0, 0, 0" Click="Activate_Click">Start</Button>
+        <Button Name="Activate" Grid.Row="3" HorizontalAlignment="Left" Width="100" Height="30" Margin="10, 0, 0, 0" Background="LightBlue" Foreground="White" Click="Activate_Click">Start</Button>
         <Button Name="SignOut" Grid.Row="3" HorizontalAlignment="Right" Width="100" Height="30" Margin="0, 0, 10, 0" Click="SignOut_Click">Sign Out</Button>
+        <Label Name="InfoLabel" Grid.Row="3" HorizontalAlignment="Left" Margin="121,0,0,0" VerticalAlignment="Center"/>
     </Grid>
+    
 </Controls:MetroWindow>
     
     
