@@ -1,0 +1,25 @@
+﻿<Controls:MetroWindow x:Class="ClientWPF.LoginWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BabyGuard - Log In" Height="420" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="Images/Logo/BabyGuard2.png"></Image>
+        
+        <StackPanel Grid.Row="1" Margin="10" Width="160" HorizontalAlignment="Center">
+            <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="20">Log In</Label>
+            <Label Name="EmailLabel">Email</Label>
+            <TextBox Grid.Row="1" Name="EmailBox" Width="150" VerticalAlignment="Center">Email</TextBox>
+            <Label Name="PasswordLabel">Password</Label>
+            <PasswordBox Grid.Row="1" Name="PasswordBox" Width="150" VerticalAlignment="Center" ></PasswordBox>
+            <Label Name="ErrorLabel">Error</Label>
+        </StackPanel>  
+        <Button Name="LogInButton" Grid.Row="2" Width="100" Height="30" Background="LightBlue" Foreground="White" Click="Sign_In">Sign In</Button>
+    </Grid>
+</Controls:MetroWindow>

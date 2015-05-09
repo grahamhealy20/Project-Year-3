@@ -15,7 +15,7 @@
 
         $.ajax({
                 type: "GET",
-                url: "https://localhost:44301/TrackingService.svc/Session/" + user + "",
+                url: "https://192.168.192.3:44301/TrackingService.svc/Session/" + user + "",
                 cache: false,
                 dataType: "json",
                 beforeSend: function () {
@@ -122,7 +122,7 @@
     function getLatestSessionStateTimeline() {
         $.ajax({
             type: "GET",
-            url: "https://localhost:44301/TrackingService.svc/Session/Latest/" + user + "",
+            url: "https://192.168.192.3:44301/TrackingService.svc/Session/Latest/" + user + "",
             cache: false,
             dataType: "json",
             success: function (data, status) {
